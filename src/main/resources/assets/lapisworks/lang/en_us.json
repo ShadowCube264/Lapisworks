@@ -1,0 +1,30 @@
+{
+    "itemgroup.lapisworks.lapismagicshitgroup": "Magical Lapis Shit (Lapisworks)",
+    "item.lapisworks.amel": "Amethyst Lazuli",
+    "item.lapisworks.amel2": "Amethyst Lazuli",
+    "item.lapisworks.amel3": "Amethyst Lazuli",
+
+    "advancements.lapisworks.gotlapis.name": "Lapiswork Research",
+    "advancements.lapisworks.gotlapis.description": "A deep blue mineral, just as they wrote..",
+
+
+    "hexcasting.action.lapisworks:imbue_lap": "Imbue Lapis",
+    "hexcasting.action.lapisworks:swap_amel": "Change Amel Appearance",
+    "hexcasting.action.lapisworks:moar_health": "Enchant Skin",
+    "hexcasting.action.lapisworks:moar_attack": "Enchant Fists",
+    "hexcasting.action.lapisworks:moar_speed": "Enchant Feet",
+    "hexcasting.action.lapisworks:gib_dexterity": "Enchant Elbows and Shoulders",
+    "hexcasting.action.lapisworks:fireyfists": "Enchant with FireyFists",
+    "hexcasting.action.lapisworks:lightningbending": "Enchant with Lightningbending",
+
+
+    "lapisenchantments.lapisworks.fireyfists": "FireyFists",
+    "lapisenchantments.lapisworks.lightningbending": "Lightningbending",
+
+
+    "hexcasting.mishap.bad_item.lapis_lazuli": "Lapis Lazuli",
+    "hexcasting.mishap.bad_item.amel": "Amethyst Lazuli",
+
+    "mishaps.lapisworks.not_enough_offhand_items": "At least %dx %s required, but only %dx %s found in offhand.",
+    "mishaps.lapisworks.already_enchanted": "Cannot enchant %s with %s, as it is already enchanted with %s at the highest level (%d)."
+}

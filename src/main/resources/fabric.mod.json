@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "lapisworks",
+	"version": "${version}",
+	"name": "Lapisworks",
+	"description": "Harness Lapis' enchanting power with Media and abuse it to your liking.",
+	"authors": [
+		"Luxof"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/lapisworks/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"fabric-datagen": [
+			"com.luxof.lapisworks.datagen.Advancements"
+		],
+		"main": [
+			"com.luxof.lapisworks.Lapisworks",
+			{
+				"adapter": "kotlin",
+				"value": "com.luxof.lapisworks.MishapThrower"
+			}
+		]
+	},
+	"mixins": [
+		"lapisworks.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*",
+		"hexcasting": ">=0.11.2-pre-701",
+		"fabric-language-kotlin": ">=1.13.4+kotlin.2.2.0"
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "com.luxof.lapisworks.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"mixins": [
+		"LivingEntityMixin",
+		"PlayerBasedCastEnvMixin",
+		"EntityMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}

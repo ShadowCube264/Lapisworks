@@ -1,0 +1,27 @@
+# Changes here will be overwritten by Copier. NEVER EDIT MANUALLY
+# See: https://copier.readthedocs.io/en/stable/configuring/#the-copier-answersyml-file
+_commit: v0.1.13
+_src_path: gh:hexdoc-dev/hexdoc-hexcasting-template
+author: Real-Luxof
+book_id: hexcasting:thehexbook
+default_branch: main
+github_repo: Lapisworks\
+gradle_mod_version_key: mod_version
+hexdoc_mod_plugin_classname: LapisworksModPlugin
+hexdoc_plugin_classname: LapisworksPlugin
+java_lang:
+    ext: java
+    src: java
+java_package: com/luxof/lapisworks
+mod_display_name: Lapisworks
+modid: lapisworks
+multiloader: false
+package_export_root: doc/src/hexdoc_lapisworks/_export
+package_name: hexdoc-lapisworks
+package_slug: hexdoc_lapisworks
+package_src: doc/src/hexdoc_lapisworks
+pages_url: https://real-luxof.github.io/Lapisworks/
+pattern_regex:
+    per_world_value: 'true'
+    regex: make\(\s*"(?P<name>[a-zA-Z0-9_\/]+)",\s*(?:new )?(?:ActionRegistryEntry|OperationAction)\(\s*HexPattern\.fromAngles\(\s*"(?P<signature>[aqweds]+)",\s*HexDir.(?P<startdir>\w+)\)
+pattern_registry: init/Patterns.java

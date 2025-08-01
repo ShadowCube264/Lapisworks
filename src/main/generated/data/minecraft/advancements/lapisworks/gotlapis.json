@@ -1,0 +1,38 @@
+{
+  "criteria": {
+    "gotlapis": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:lapis_lazuli"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "minecraft:textures/gui/advancements/backgrounds/adventure.png",
+    "description": {
+      "translate": "advancements.lapisworks.gotlapis.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.lapisworks.gotlapis.name"
+    }
+  },
+  "requirements": [
+    [
+      "gotlapis"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
