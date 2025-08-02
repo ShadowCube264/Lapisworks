@@ -41,7 +41,7 @@ public class EnchantFire implements SpellAction {
         }
         LivingEntity entity = OperatorUtils.getPlayer(args, 0, getArgc());
 
-        if (((LapisworksInterface)entity).checkFireyFists()) {
+        if (((LapisworksInterface)entity).checkFireyFists() == 1) {
             MishapThrowerJava.throwMishap(
                 new MishapAlreadyHasEnchantment(
                     entity,
@@ -87,7 +87,7 @@ public class EnchantFire implements SpellAction {
 		@Override
 		public void cast(CastingEnvironment ctx) {
             caster.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY);
-            ((LapisworksInterface)this.entity).setFireyFists(true);
+            ((LapisworksInterface)this.entity).setFireyFists(1);
 		}
 
         @Override

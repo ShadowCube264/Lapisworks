@@ -28,7 +28,7 @@ public class EntityMixin {
                     .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, nbt.getDouble("LAPISWORKS_JUICED_FEET"))
                     .build()
             ));
-            ((LapisworksInterface)this).setFireyFists(nbt.getBoolean("LAPISWORKS_ENCHANTMENT_FIREYFISTS"));
+            ((LapisworksInterface)this).setFireyFists(nbt.getInt("LAPISWORKS_ENCHANTMENT_FIREYFISTS"));
             ((LapisworksInterface)this).setLightningBending(nbt.getInt("LAPISWORKS_ENCHANTMENT_LIGHTNINGBENDING"));
         }
 	}
@@ -41,7 +41,7 @@ public class EntityMixin {
             nbt.putDouble("LAPISWORKS_JUICED_DEX", attrs.getBaseValue(EntityAttributes.GENERIC_ATTACK_SPEED));
             nbt.putDouble("LAPISWORKS_JUICED_SKIN", attrs.getBaseValue(EntityAttributes.GENERIC_MAX_HEALTH));
             nbt.putDouble("LAPISWORKS_JUICED_FEET", attrs.getBaseValue(EntityAttributes.GENERIC_MOVEMENT_SPEED));
-            nbt.putBoolean("LAPISWORKS_ENCHANTMENT_FIREYFISTS", ((LapisworksInterface)this).checkFireyFists());
+            nbt.putInt("LAPISWORKS_ENCHANTMENT_FIREYFISTS", ((LapisworksInterface)this).checkFireyFists());
             nbt.putInt("LAPISWORKS_ENCHANTMENT_LIGHTNINGBENDING", ((LapisworksInterface)this).checkLightningBending());
         }
 	}

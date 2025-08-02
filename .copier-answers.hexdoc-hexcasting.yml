@@ -5,7 +5,7 @@ _src_path: gh:hexdoc-dev/hexdoc-hexcasting-template
 author: Real-Luxof
 book_id: hexcasting:thehexbook
 default_branch: main
-github_repo: Lapisworks\
+github_repo: Lapisworks
 gradle_mod_version_key: mod_version
 hexdoc_mod_plugin_classname: LapisworksModPlugin
 hexdoc_plugin_classname: LapisworksPlugin

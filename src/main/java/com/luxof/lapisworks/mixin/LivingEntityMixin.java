@@ -31,7 +31,7 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 			.add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0) // feet
 			.build()
 	);
-	public boolean fireyFists = false;
+	public int fireyFists = 0;
 	public int lightningBending = 0;
 
 	@Inject(at = @At("HEAD"), method = "onDeath", cancellable = true)
@@ -42,7 +42,7 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 	@Inject(at = @At("HEAD"), method = "onAttacking", cancellable = true)
 	public void onAttacking(Entity target, CallbackInfo ci) {
 		if (target instanceof LivingEntity) {
-			if (this.checkFireyFists()) {
+			if (this.checkFireyFists() == 1) {
 				((LivingEntity)target).setOnFireFor(3);
 			}
 			int lightningbendingLevel = this.checkLightningBending();
@@ -80,13 +80,13 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 	}
 
 	@Override
-	public boolean checkFireyFists() {
+	public int checkFireyFists() {
 		return this.fireyFists;
 	}
 
 	@Override
-	public void setFireyFists(boolean value) {
-		this.fireyFists = value;
+	public void setFireyFists(int level) {
+		this.fireyFists = level;
 	}
 
 	@Override
@@ -107,5 +107,16 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 	@Override
 	public void setLapisworksAttributes(AttributeContainer attributes) {
 		this.juicedUpVals = attributes;
+	}
+
+	@Override
+	public int checkEnchantment(int whatEnchant) {
+		if (whatEnchant == 0) {
+			return this.checkFireyFists();
+		} else if (whatEnchant == 1) {
+			return this.checkLightningBending();
+		} else {
+			return 0;
+		}
 	}
 }

@@ -8,15 +8,15 @@ public interface LapisworksInterface {
     void setAmountOfAttrJuicedUpByAmel(EntityAttribute attribute, double value);
     void setAllJuicedUpAttrsToZero();
 
-    boolean checkFireyFists();
-    void setFireyFists(boolean value);
+    int checkFireyFists();
+    void setFireyFists(int level);
 
     int checkLightningBending();
     void setLightningBending(int level);
 
+    int checkEnchantment(int whatEnchant);
+    void setEnchantmentLevel(int whatEnchant, int level);
+
     AttributeContainer getLapisworksAttributes();
     void setLapisworksAttributes(AttributeContainer attributes);
-
-    //void properlyInitiateAndLoadFieldsIfNotInitiated();
-    //void updateLapisworksHashMap();
 }

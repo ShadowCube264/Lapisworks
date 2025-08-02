@@ -26,5 +26,5 @@
     "hexcasting.mishap.bad_item.amel": "Amethyst Lazuli",
 
     "mishaps.lapisworks.not_enough_offhand_items": "At least %dx %s required, but only %dx %s found in offhand.",
-    "mishaps.lapisworks.already_enchanted": "Cannot enchant %s with %s, as it is already enchanted with %s at the highest level (%d)."
+    "mishaps.lapisworks.already_enchanted": "Cannot enchant %s with %s, as it is already enchanted with the maximum level of %s it can have right now (%d)."
 }

@@ -12,40 +12,39 @@ import net.minecraft.util.DyeColor;
 
 public class MishapAlreadyHasEnchantment extends Mishap {
     private final LivingEntity whatEntity;
-    private final Text enchantment;
+    private final Text enchantmentName;
     private final int whatEnchant;
     private final int whatLevel;
 
-    public MishapAlreadyHasEnchantment(LivingEntity whatEntity, Text enchantment, int whatEnchant, int whatLevel) {
+    public MishapAlreadyHasEnchantment(LivingEntity whatEntity, Text enchantmentName, int whatEnchant, int whatLevel) {
         this.whatEntity = whatEntity;
-        this.enchantment = enchantment;
+        this.enchantmentName = enchantmentName;
         this.whatEnchant = whatEnchant;
         this.whatLevel = whatLevel;
     }
 
     @Override
     public FrozenPigment accentColor(CastingEnvironment ctx, Context errorCtx) {
-        if (whatEnchant == 0) {
+        if (this.whatEnchant == 0) {
             return dyeColor(DyeColor.RED); // fireyfists
-        } else if (whatEnchant == 1) {
+        } else if (this.whatEnchant == 1) {
             return dyeColor(DyeColor.WHITE); // lightningbending
         } else {
-            return dyeColor(DyeColor.BLACK); // custom enchants
+            // any other stuff (like from an addon that hasn't mixined to this)
+            return dyeColor(DyeColor.BLACK);
         }
     }
 
     @Override
-    public void execute(CastingEnvironment env, Context errorCtx, List<Iota> stack) {
-        env.getMishapEnvironment().dropHeldItems();
-    }
+    public void execute(CastingEnvironment env, Context errorCtx, List<Iota> stack) {}
 
     @Override
     public Text errorMessage(CastingEnvironment ctx, Context errorCtx) {
         return Text.translatable(
             "mishaps.lapisworks.already_enchanted",
             this.whatEntity.getName(),
-            this.enchantment,
-            this.enchantment,
+            this.enchantmentName,
+            this.enchantmentName,
             whatLevel
         );
     }
