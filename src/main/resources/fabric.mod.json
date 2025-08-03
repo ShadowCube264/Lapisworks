@@ -3,7 +3,7 @@
 	"id": "lapisworks",
 	"version": "${version}",
 	"name": "Lapisworks",
-	"description": "Harness Lapis' enchanting power with Media and abuse it to your liking.",
+	"description": "Harness Lapis' enchanting power with Hex Casting's media and enchant yourself.",
 	"authors": [
 		"Luxof"
 	],
@@ -15,15 +15,15 @@
 	"icon": "assets/lapisworks/icon.png",
 	"environment": "*",
 	"entrypoints": {
-		"fabric-datagen": [
-			"com.luxof.lapisworks.datagen.Advancements"
-		],
 		"main": [
 			"com.luxof.lapisworks.Lapisworks",
 			{
 				"adapter": "kotlin",
 				"value": "com.luxof.lapisworks.MishapThrower"
 			}
+		],
+		"fabric-datagen": [
+			"com.luxof.lapisworks.datagen.Advancements"
 		]
 	},
 	"mixins": [

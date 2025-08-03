@@ -1,9 +1,9 @@
 {
     "name": "pages.lapisworks.lapisworks_mishaps.title",
     "icon": "minecraft:textures/mob_effect/poison.png",
-    "advancement": "lapisworks/got_lapis",
+    "advancement": "lapisworks:got_lapis",
     "category": "hexcasting:lapisworks",
-    "sortnum": 4,
+    "sortnum": 5,
     "pages": [
         {
             "type": "patchouli:text",

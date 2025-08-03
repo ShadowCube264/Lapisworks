@@ -1,9 +1,9 @@
 {
     "name": "pages.lapisworks.lapisworks_patterns.title",
     "icon": "lapisworks:amel2",
-    "advancement": "lapisworks/got_lapis",
+    "advancement": "lapisworks:got_lapis",
     "category": "hexcasting:lapisworks",
-    "sortnum": 2,
+    "sortnum": 3,
     "pages": [
         {
             "type": "hexcasting:pattern",
@@ -36,10 +36,6 @@
         {
             "type": "patchouli:text",
             "text": "pages.lapisworks.lapisworks_patterns.moar_health.detailed"
-        },
-        {
-            "type": "patchouli:text",
-            "text": "pages.lapisworks.lapisworks_patterns.moar_health.detailed2"
         },
         {
             "type": "hexcasting:pattern",

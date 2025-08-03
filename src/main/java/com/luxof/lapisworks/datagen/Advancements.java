@@ -15,6 +15,10 @@ import net.minecraft.item.Items;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
+// honestly datagen is a bitch
+// it generates the gotlapis.json
+// then deletes it immediately
+// what the fuck
 public class Advancements implements DataGeneratorEntrypoint {
     @Override
     public void onInitializeDataGenerator(FabricDataGenerator generator) {
@@ -41,7 +45,7 @@ public class Advancements implements DataGeneratorEntrypoint {
                     false
                 )
                 .criterion("gotlapis", InventoryChangedCriterion.Conditions.items(Items.LAPIS_LAZULI))
-                .build(consumer, Lapisworks.MOD_ID + "/gotlapis");
+                .build(consumer, Lapisworks.MOD_ID + ":gotlapis");
         }
     }
 }

@@ -1,9 +1,9 @@
 {
     "name": "pages.lapisworks.lapisworks_lore.title",
     "icon": "lapisworks:amel",
-    "advancement": "lapisworks/got_lapis",
+    "advancement": "lapisworks:got_lapis",
     "category": "hexcasting:lapisworks",
-    "sortnum": 1,
+    "sortnum": 2,
     "pages": [
         {
             "type": "patchouli:text",
@@ -16,10 +16,6 @@
         {
             "type": "patchouli:text",
             "text": "pages.lapisworks.lapisworks_lore.page3"
-        },
-        {
-            "type": "patchouli:text",
-            "text": "pages.lapisworks.lapisworks_lore.page4"
         }
     ]
 }

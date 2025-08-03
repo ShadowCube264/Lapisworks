@@ -1,0 +1,30 @@
+{
+  "parent": "hexcasting:root",
+  "display": {
+    "icon": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "title": {
+      "translate": "advancements.lapisworks.gotlapis.name"
+    },
+    "description": {
+      "translate": "advancements.lapisworks.gotlapis.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "get_diamond": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": ["minecraft:lapis_lazuli"]
+          }
+        ]
+      }
+    }
+  }
+}
