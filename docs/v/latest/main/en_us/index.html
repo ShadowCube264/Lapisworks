@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <title>Lapisworks Book</title>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="The Lapisworks Book, all in one place." />
+      <meta name="author" content="Real-Luxof" />
+        <link rel="None" type="image/ico" href="favicon.ico" />
+        <link rel="icon" type="image/png" href="favicon-16x16.png" />
+        <link rel="icon" type="image/png" href="favicon-32x32.png" />
+        <link rel="icon" type="image/png" href="favicon-64x64.png" />
+        <link rel="icon" type="image/png" href="favicon-96x96.png" />
+        <link rel="icon" type="image/png" href="favicon-180x180.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-60x60.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-152x152.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-167x167.png" />
+        <link rel="apple-touch-icon" type="image/png" href="apple-touch-icon-180x180.png" />
+        <link rel="None" type="image/png" href="mstile-70x70.png" />
+        <link rel="None" type="image/png" href="mstile-270x270.png" />
+        <link rel="None" type="image/png" href="mstile-310x310.png" />
+        <link rel="None" type="image/png" href="mstile-310x150.png" />
+        <link rel="shortcut icon" type="image/png" href="favicon-196x196.png" />
+      <link rel="mask-icon" href="https://raw.githubusercontent.com/hexdoc-dev/hexdoc/main/media/safari-pinned-tab.svg" color="#332233">
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Lapisworks Book" />
+<meta property="og:image" content="https://real-luxof.github.io/Lapisworks/v/latest/main/en_us/icon.png" />
+<meta property="og:url" content="https://real-luxof.github.io/Lapisworks/v/latest/main/en_us" />
+<meta property="og:description" content="The Lapisworks Book, all in one place." />
+<meta property="og:site_name" content="Lapisworks (latest/main)" />
+      <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+      integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="index.css">
+      <link rel="stylesheet" href="textures.css">
+      <noscript>
+        <style>
+          /* for accessibility */
+          .spoilered {
+            filter: none !important;
+          }
+        </style>
+      </noscript>
+        <script type="module" src="index.js"></script>
+  <script type="module" src="hexcasting.js"></script>
+  <script type="module" src="hexcasting_render.js"></script>
+  </head>
+  <body>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#navbar-collapse"
+        aria-expanded="false"
+      >
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../../../..">Lapisworks Book</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+            <li>
+    <a
+      href="https://github.com/Real-Luxof/Lapisworks/tree/b99d96082a72e606a424a92483dbc8cdd990ff49"
+        target="_blank"
+      class="navbar-link"
+      role="button"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >GitHub <i class="bi bi-box-arrow-up-right external-link-icon"></i></a>
+  </li>
+        <li class="dropdown">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >latest/main <span class="caret"></span></a>
+          <ul class="dropdown-menu" id="version-dropdown"></ul>
+        </li>
+        <li class="dropdown">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >English (United States) <span class="caret"></span></a>
+          <ul class="dropdown-menu dropdown-menu-left" id="lang-dropdown"></ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container" style="margin-top: 3em;">
+  <blockquote>
+      <h1><p>This is the online version of the Lapisworks documentation.</p></h1>
+        <p>This page is built from the latest code on GitHub. It may describe <strong>newer</strong> features that you may not necessarily have, even on the latest Modrinth/CurseForge version!</p>
+      <p><strong>Entries which are blurred are spoilers</strong>. Click to reveal them, but be aware that they may spoil endgame progression. Alternatively, click <a href="?nospoiler">here</a> to get a version with all spoilers showing.</p>
+      <span id="old-version-notice" class="hidden">
+        <br />
+        <p><i>The past is a foreign country; they do things differently there.</i></p>
+      </span>
+  </blockquote>
+</div>
+<div class="container">
+<div id="table-of-contents"></div>
+<nav class="toc-container">
+  <h2 class="page-header">
+    Table of <span class="nobr">Contents<a
+      href="javascript:void(0)"
+      class="permalink toggle-link small"
+      data-target="toc-category"
+      title="Toggle all"
+    ><i class="bi bi-list-nested"></i></a><a
+    href="#table-of-contents"
+    class="permalink small toc-permalink"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></span>
+  </h2>
+    <details class="toc-category">
+      <summary><a href="#lapisworks" class="toc-elem "><img
+      title="Lapis Lazuli"
+      alt="Lapis Lazuli"
+      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.20.2/items/lapis_lazuli.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    > Lapisworks</a></summary>
+      <ul>
+          <li><a href="#lapisworks_lore" class="toc-elem "><img
+      title="Amethyst Lazuli"
+      alt="Amethyst Lazuli"
+      src="https://raw.githubusercontent.com/Real-Luxof/Lapisworks/b99d96082a72e606a424a92483dbc8cdd990ff49/src/main/resources/assets/lapisworks/textures/item/amel.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    > Eureka! Lapis Lazuli</a></li>
+          <li><a href="#lapisworks_patterns" class="toc-elem "><img
+      title="Amethyst Lazuli"
+      alt="Amethyst Lazuli"
+      src="https://raw.githubusercontent.com/Real-Luxof/Lapisworks/b99d96082a72e606a424a92483dbc8cdd990ff49/src/main/resources/assets/lapisworks/textures/item/amel2.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    > Lapisworks Patterns</a></li>
+          <li><a href="#lapisworks_great" class="toc-elem spoilered"><img
+      title="Amethyst Lazuli"
+      alt="Amethyst Lazuli"
+      src="https://raw.githubusercontent.com/Real-Luxof/Lapisworks/b99d96082a72e606a424a92483dbc8cdd990ff49/src/main/resources/assets/lapisworks/textures/item/amel3.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    > ENCHANTMENTS</a></li>
+          <li><a href="#lapisworks_mishaps" class="toc-elem "><img
+      title="Poison"
+      alt="Poison"
+      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.20.2/mob_effect/poison.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    > Lapisworks Mishaps</a></li>
+      </ul>
+    </details>
+</nav>
+  <main class="book-body">
+<section id="lapisworks">
+    <h2 class="category-title page-header">
+    <img
+      title="Lapis Lazuli"
+      alt="Lapis Lazuli"
+      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.20.2/items/lapis_lazuli.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >Lapisworks<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#lapisworks"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h2>
+    <p>I have found a seemingly obscure branch of Hex Casting, &#34;Lapisworks&#34;. All of their texts are blank, but some outsider texts about the branch say they are encrypted with a &#34;deep blue, precious mineral&#34;.</p>
+<div id="lapisworks_lore" class="entry">
+    <h3 class="entry-title page-header">
+    <img
+      title="Amethyst Lazuli"
+      alt="Amethyst Lazuli"
+      src="https://raw.githubusercontent.com/Real-Luxof/Lapisworks/b99d96082a72e606a424a92483dbc8cdd990ff49/src/main/resources/assets/lapisworks/textures/item/amel.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >Eureka! Lapis Lazuli<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#lapisworks_lore"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I held the deep blue mineral known as &#34;Lapis Lazuli&#34; near the pages of the book and the mineral was sucked into them. I tried to get it off but had to be rough, and when I looked at the pages to check their condition, they had text on them! It seems I neeed to rub Lapis Lazuli on them to see their text. Let&#39;s see..</p>
+<br />
+    <p>The branch of Lapisworks is all about harnessing the enchantment powers of Lapis Lazuli and enhancing one&#39;s own body with it. To do this media is struck into Lapis Lazuli, forming a loosely-held-by-media material known as Amethyst Lazuli, or Amel for short. Continued..</p>
+<br />
+    <p>The media breaches the mineral&#39;s surface and cuts the Lapis Lazuli into many extremely small chunks then connects them like a glue. This allows any outside media to suck out all the enchantment energy of the Lapis Lazuli by interacting with the Amel&#39;s media layer.</p>
+<br />
+    <p>While I have found many patterns (documented just beside this entry), some pages of the texts remain blank and not even rubbing with Lapis Lazuli or Amel can decipher them. I suppose I will find out soon enough (or even never as the deciphering could be lost to time) and must be content with what I have now.</p>
+<br />
+</div>
+<div id="lapisworks_patterns" class="entry">
+    <h3 class="entry-title page-header">
+    <img
+      title="Amethyst Lazuli"
+      alt="Amethyst Lazuli"
+      src="https://raw.githubusercontent.com/Real-Luxof/Lapisworks/b99d96082a72e606a424a92483dbc8cdd990ff49/src/main/resources/assets/lapisworks/textures/item/amel2.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >Lapisworks Patterns<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#lapisworks_patterns"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+  <div id="lapisworks_patterns@lapisworks:imbue_lap" class="">
+<h4 class="pattern-title">Imbue Lapis<a
+    href="#lapisworks_patterns@lapisworks:imbue_lap"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qadwawdaqqeae"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qadwawdaqqeae</canvas>
+  </details>
+      <p>Transform all the Lapis Lazuli in my offhand into a loosely-held material called Amethyst Lazuli or Amel for short. Costs twice the number of Amethyst Shards as Lapis Lazuli in my offhand.</p>
+  </div>
+<br />
+  <div id="lapisworks_patterns@lapisworks:swap_amel" class="">
+<h4 class="pattern-title">Change Amel Appearance<a
+    href="#lapisworks_patterns@lapisworks:swap_amel"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wqqqwqq"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wqqqwqq</canvas>
+  </details>
+      <p>While I could shape Amel into whatever I want, I have decided on three primary shapes which are familiar to me. I can use this pattern to mold the Amel in my offhand for free.</p>
+  </div>
+<br />
+    <p>It is worth noting here that the next patterns can enchant my body, but the enchantments disappear upon death.</p>
+<br />
+  <div id="lapisworks_patterns@lapisworks:moar_health" class="">
+<h4 class="pattern-title">Enchant Skin (entity, num →)<a
+    href="#lapisworks_patterns@lapisworks:moar_health"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wqadaqwwawwwqwwawdwawwqwwwwa"
+        data-start="north_east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wqadaqwwawwwqwwawdwawwqwwwwa</canvas>
+  </details>
+      <p>Pass in an entity and a number of half-hearts, and it enchants that entity&#39;s skin thus increasing their health. The amount of expended Amel is the number given and the cost in media is twice the expended Amel. Continued..</p>
+  </div>
+<br />
+    <p>The limit to this is twice the entity&#39;s maximum healthiness and it will not expend any Amel or media above that limit (no wastefulness). Curiously, the enchanted skin also protects against Nature taking it&#39;s due, making it impossible for Nature to take a piece of the entity&#39;s mind.</p>
+<br />
+    <p>Interestingly enough, old texts suggest that beyond a certain level of power mages would lose sanity, and this is how certain powerful mages were able to keep their sanity. In any case my maximum healthiness is about twenty half-hearts.</p>
+<br />
+  <div id="lapisworks_patterns@lapisworks:moar_attack" class="">
+<h4 class="pattern-title">Enchant Fists (entity, num →)<a
+    href="#lapisworks_patterns@lapisworks:moar_attack"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="qaqwweaeaqwww"
+        data-start="east"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: qaqwweaeaqwww</canvas>
+  </details>
+      <p>Pass in an entity and a number of half-hearts, and it enchants that entity&#39;s fists thus increasing their physical damage upon hit. Expends one Amel and five Amethyst Shards per half-heart. Limit is four times the norm or just four for me.</p>
+  </div>
+<br />
+  <div id="lapisworks_patterns@lapisworks:moar_speed" class="">
+<h4 class="pattern-title">Enchant Feet (entity, num →)<a
+    href="#lapisworks_patterns@lapisworks:moar_speed"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="ddqwaqeqa"
+        data-start="north_west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: ddqwaqeqa</canvas>
+  </details>
+      <p>Enchants the given entity&#39;s feet to increase their movement speed. Costs 1x Amel and 5x Amethyst Shards. Limit is 3x the norm. The norm for me is about 1.</p>
+  </div>
+<br />
+  <div id="lapisworks_patterns@lapisworks:gib_dexterity" class="">
+<h4 class="pattern-title">Enchant Arms (entity, num →)<a
+    href="#lapisworks_patterns@lapisworks:gib_dexterity"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="aeaqqdeeeqewdwqwdwe"
+        data-start="west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: aeaqqdeeeqewdwqwdwe</canvas>
+  </details>
+      <p>Enchants the given entity&#39;s arms, increasing the rate at which they may attack. Costs 1x Amel and 16x Amethyst Shards. Limit is 4 PLUS the norm.</p>
+  </div>
+<br />
+</div>
+<div id="lapisworks_great" class="entry">
+    <div class="spoilered">
+      <h3 class="entry-title page-header">
+    <img
+      title="Amethyst Lazuli"
+      alt="Amethyst Lazuli"
+      src="https://raw.githubusercontent.com/Real-Luxof/Lapisworks/b99d96082a72e606a424a92483dbc8cdd990ff49/src/main/resources/assets/lapisworks/textures/item/amel3.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >ENCHANTMENTS<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#lapisworks_great"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>I HAVE SEEN I HAVE SEEN I NEED IT I NEED MY SANITY BACK ENCHANT SKIN CAN I ENCHANT MIND PLEASE MUST NOT LOSE SELF TAKE FIVE MINTUE BREAK HAVE NO TIME MUST DOCUMENT BEFORE</p>
+<br />
+    <p>THE EMPTY PAGES. WINKS OF MEDIA IN MY EYES GATHER TOGETHER. I CAN SEE I CAN SEE I CAN READ MUST WRITE DOWN. ALL OF THESE PATTERNS COST 64 AMEL FROM MY OFFHAND.</p>
+<br />
+  <div id="lapisworks_great@lapisworks:fireyfists" class="">
+<h4 class="pattern-title">Enchant with FireyFists (entity →)<a
+    href="#lapisworks_great@lapisworks:fireyfists"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wwewdawdewqewedadad"
+        data-start="west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wwewdawdewqewedadad</canvas>
+  </details>
+      <p>ENCHANT AN ENTITY&#39;S FISTS WITH FIRE, AND IT WILL HENCEFORTH LIGHT ANY ENTITIES IT HITS ON FIRE FOR THREE SECONDS. CONSUMES 10 CHARGED AMETHYST. HAS 1 LEVEL.</p>
+  </div>
+<br />
+  <div id="lapisworks_great@lapisworks:lightningbending" class="">
+<h4 class="pattern-title">Enchant with Lightningbending (entity →)<a
+    href="#lapisworks_great@lapisworks:lightningbending"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h4>
+  <details class="details-collapsible">
+    <summary class="collapse-details collapse-spell"></summary>
+    <div class="dropdown spell-settings-dropdown">
+      <span
+        href=""
+        class="dropdown-toggle spell-settings-toggle"
+        data-toggle="dropdown"
+        role="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+        <i class="bi bi-gear-fill"></i>
+      </span>
+      <ul class="dropdown-menu">
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Renders</a>
+          <ul class="dropdown-menu dropdown-menu-left render-dropdowns"></ul>
+        </li>
+        <li class="dropdown-submenu">
+          <a
+            href=""
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Palettes</a>
+          <ul class="dropdown-menu dropdown-menu-left palette-dropdowns"></ul>
+        </li>
+      </ul>
+    </div>
+      <canvas
+        class="spell-viz"
+        width="216"
+        height="216"
+        data-string="wewdawdewqewdqqeedqe"
+        data-start="west"
+        data-per-world="False"
+      >Your browser does not support visualizing patterns. Pattern code: wewdawdewqewdqqeedqe</canvas>
+  </details>
+      <p>ENCHANT AN ENTITY&#39;S FISTS WITH LIGHTNING. CONSUMES 20 CHARGED AMETHYST PER LEVEL. 3 LEVELS, EACH IMPROVING THE USER&#39;S ABILITY TO CHANNEL LIGHTNING.</p>
+  </div>
+<br />
+    <p>LEVEL ONE: EACH STRIKE CHANNELS THE LIGHTNING IN A THUNDERSTORM TO THE STRUCK VICTIM.<br />LEVEL TWO: STRIKES HIT WITH LIGHTNING UNDER RAIN AS WELL.<br />LEVEL THREE: SO GREAT EACH STRIKE IS EMPOWERED WITH LIGHTNING, NO MATTER THE WEATHER CONDITIONS.</p>
+<br />
+    </div>
+</div>
+<div id="lapisworks_mishaps" class="entry">
+    <h3 class="entry-title page-header">
+    <img
+      title="Poison"
+      alt="Poison"
+      src="https://raw.githubusercontent.com/PrismarineJS/minecraft-assets/a14c64362abe4a12c2dfd87f8d1673af9d1b09f4/data/1.20.2/mob_effect/poison.png"
+      loading="lazy"
+      class="item-texture  texture pixelated"
+    >Lapisworks Mishaps<a
+    href="#table-of-contents"
+    class="permalink small"
+    title="Jump to top"
+  ><i class="bi bi-box-arrow-up"></i></a><a
+    href="#lapisworks_mishaps"
+    class="permalink small"
+    title="Permalink"
+  ><i class="bi bi-link-45deg"></i></a></h3>
+    <p>With a new branch of Hex Casting comes new mishaps. I&#39;ve documented them here.</p>
+<br />
+  <h4>Not Enough Items in Offhand</h4>
+    <p>I have the correct item in my offhand, but not enough of it. Brown particles. Upends my held items and throws them to the ground.</p>
+<br />
+  <h4>pages.lapisworks.lapisworks_mishaps.leveltoohigh.title</h4>
+    <p>pages.lapisworks.lapisworks_mishaps.leveltoohigh.summary</p>
+<br />
+</div>
+</section>
+  </main>
+</div>
+      <footer class="footer">
+        <div class="container text-muted">
+          <p>Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p><p>Minecraft content and materials are the intellectual property of their respective owners.</p><p>Made with ❤️ using <a href="https://pypi.org/project/hexdoc/" target="_blank">hexdoc</a>.</p>
+        </div>
+      </footer>
+  </body>
+</html>
