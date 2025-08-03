@@ -38,7 +38,7 @@ public class Patterns {
         // north east wwwaqeeeqawww
         MoarAttr MoarSpeedAction = new MoarAttr(
             EntityAttributes.GENERIC_MOVEMENT_SPEED,
-            2.0,
+            3.0,
             0,
             50, // movement speed is base 0.1 and we want 5 amel per 0.1 movement speed
             false
