@@ -68,6 +68,6 @@
     "pages.lapisworks.lapisworks_mishaps.summary": "With a new branch of Hex Casting comes new mishaps. I've documented them here.",
     "pages.lapisworks.lapisworks_mishaps.notenoughamel.title": "Not Enough Items in Offhand",
     "pages.lapisworks.lapisworks_mishaps.notenoughamel.summary": "I have the correct item in my offhand, but not enough of it. Brown particles. Upends my held items and throws them to the ground.",
-    "pages.lapisworks.lapisworks_mishaps.toohighlevel.title": "Already Enchanted at Maximum Level",
-    "pages.lapisworks.lapisworks_mishaps.toohighlevel.summary": "Perhaps real enchantments like my enchanted tools was what those empty pages were about? Anyway. This means the entity is already enchanted at the maximum level of this enchantment. Differing particles for each enchantment, and no punishment."
+    "pages.lapisworks.lapisworks_mishaps.leveltoohigh.title": "Already Enchanted at Maximum Level",
+    "pages.lapisworks.lapisworks_mishaps.leveltoohigh.summary": "Perhaps real enchantments like my enchanted tools was what those empty pages were about? Anyway. This means the entity is already enchanted at the maximum level of this enchantment. Differing particles for each enchantment, and no punishment."
 }
