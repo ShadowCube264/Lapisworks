@@ -60,6 +60,14 @@
             "input": "entity, num",
             "output": "",
             "text": "pages.lapisworks.lapisworks_patterns.gib_dexterity.summary"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:check_attr",
+            "anchor": "lapisworks:check_attr",
+            "input": "entity, num",
+            "output": "",
+            "text": "pages.lapisworks.lapisworks_patterns.check_attr.summary"
         }
     ]
 }
