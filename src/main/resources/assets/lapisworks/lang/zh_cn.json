@@ -3,6 +3,7 @@
     "item.lapisworks.amel": "紫晶青金石",
     "item.lapisworks.amel2": "紫晶青金石",
     "item.lapisworks.amel3": "紫晶青金石",
+    "item.lapisworks.amel_staff": "紫晶青金石法杖",
 
 
     "advancements.lapisworks.gotlapis.name": "青金工程研究",
@@ -11,8 +12,8 @@
 
     "hexcasting.action.lapisworks:imbue_lap": "灌注青金石",
     "hexcasting.action.book.lapisworks:imbue_lap": "灌注青金石",
-    "hexcasting.action.lapisworks:swap_amel": "更改紫金石外观",
-    "hexcasting.action.book.lapisworks:swap_amel": "更改紫金石外观",
+    "hexcasting.action.lapisworks:swap_amel": "模塑紫金石",
+    "hexcasting.action.book.lapisworks:swap_amel": "模塑紫金石",
     "hexcasting.action.lapisworks:moar_health": "附魔皮肤",
     "hexcasting.action.book.lapisworks:moar_health": "附魔皮肤",
     "hexcasting.action.lapisworks:moar_attack": "附魔双拳",
@@ -70,6 +71,7 @@
     "pages.lapisworks.lapisworks_patterns.moar_speed.summary": "为所给实体的双足附魔，以此提升其移动速度。消耗 1 倍紫金石和 5 倍紫水晶碎片。上限为平常的 3 倍。对我来说大约是 1。",
     "pages.lapisworks.lapisworks_patterns.gib_dexterity.summary": "为所给$(o)玩家$()的双臂附魔，提升其攻击速度。消耗 1 倍紫金石和 16 倍紫水晶碎片。上限为 4 与平常值的$(bold)和$()。",
     "pages.lapisworks.lapisworks_patterns.check_attr.summary": "返回所给实体在给定范畴（由数指定）内所获增强的量。前页的图案已经过排序，0 对应最大生命值，1 对应攻击伤害，以此类推。消耗极少量媒质。",
+    "pages.lapisworks.lapisworks_patterns.imbue_with_amel.explanation": "有趣的是，虽然青金工程以增强人体为其重心，但确实有人用它来增强工具。",
 
     "pages.lapisworks.lapisworks_great.title": "魔咒",
     "pages.lapisworks.lapisworks_great.aahhhhelp": "$(bold)我已见我已见我需要我需要保护我的理智附魔皮肤我可否附魔意识我不能失去自我歇息不不能歇息没有时间必须记录以免$()",
