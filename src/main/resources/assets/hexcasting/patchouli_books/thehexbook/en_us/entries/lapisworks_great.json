@@ -16,6 +16,7 @@
         {
             "type": "hexcasting:pattern",
             "op_id": "lapisworks:checkenchant",
+            "anchor": "lapisworks:checkenchant",
             "input": "entity, num",
             "output": "num",
             "text": "pages.lapisworks.lapisworks_great.checkenchant.summary"
@@ -47,6 +48,14 @@
             "input": "entity",
             "output": "",
             "text": "pages.lapisworks.lapisworks_great.falldmgres.summary"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:longbreath",
+            "anchor": "lapisworks:longbreath",
+            "input": "entity",
+            "output": "",
+            "text": "pages.lapisworks.lapisworks_great.longbreath.summary"
         }
     ]
 }

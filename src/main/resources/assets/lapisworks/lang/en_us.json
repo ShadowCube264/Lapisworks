@@ -32,11 +32,14 @@
     "hexcasting.action.book.lapisworks:lightningbending": "Grant Lightningbending",
     "hexcasting.action.lapisworks:falldmgres": "Envelop Feet in Amel",
     "hexcasting.action.book.lapisworks:falldmgres": "Envelop Feet in Amel",
+    "hexcasting.action.lapisworks:longbreath": "Grant Amel Air Sacs",
+    "hexcasting.action.book.lapisworks:longbreath": "Grant Amel Air Sacs",
 
 
     "lapisenchantments.lapisworks.fireyfists": "FireyFists",
     "lapisenchantments.lapisworks.lightningbending": "Lightningbending",
     "lapisenchantments.lapisworks.falldmgres": "Fall Damage Resistance",
+    "lapisenchantments.lapisworks.longbreath": "Long Breath",
 
 
     "hexcasting.mishap.bad_item.lapis_lazuli": "Lapis Lazuli",
@@ -75,7 +78,8 @@
     "pages.lapisworks.lapisworks_great.fireyfists.summary": "ENCHANT AN ENTITY'S FISTS WITH FIRE, AND IT WILL HENCEFORTH LIGHT ANY ENTITIES IT HITS ON FIRE FOR THREE SECONDS. CONSUMES 10 CHARGED AMETHYST. HAS 1 LEVEL.",
     "pages.lapisworks.lapisworks_great.lightningbending.summary": "ENCHANT AN ENTITY'S FISTS WITH LIGHTNING. CONSUMES 20 CHARGED AMETHYST PER LEVEL. 3 LEVELS, EACH IMPROVING THE USER'S ABILITY TO CHANNEL LIGHTNING.",
     "pages.lapisworks.lapisworks_great.lightningbending.detailed": "LEVEL ONE: EACH STRIKE CHANNELS THE LIGHTNING IN A THUNDERSTORM TO THE STRUCK VICTIM.$(br2)LEVEL TWO: STRIKES HIT WITH LIGHTNING UNDER RAIN AS WELL.$(br2)LEVEL THREE: SO GREAT EACH STRIKE IS EMPOWERED WITH LIGHTNING, NO MATTER THE WEATHER CONDITIONS.",
-    "pages.lapisworks.lapisworks_great.falldmgres.summary": "ENVELOP FEET WITH AMEL THAT SPROUTS OUT TO BREAK ANY FALL. NEGATES UP TO 10 BLOCKS PER LEVEL, IF THE AMEL IS OVERWHELMED NO DAMAGE REDUCTION OCCURS. 5 CHARGED AMETHYST, 32 AMEL.",
+    "pages.lapisworks.lapisworks_great.falldmgres.summary": "ENVELOP FEET WITH AMEL THAT SPROUTS OUT TO BREAK ANY FALL 10 BLOCKS (PER LEVEL) OR BELOW. NO DAMAGE REDUCTION. TWO LEVELS. 5 CHARGED AMETHYST AND 32 AMEL PER LEVEL.",
+    "pages.lapisworks.lapisworks_great.longbreath.summary": "GIVES ME MORE LUNG CAPACITY, SIMILAR TO THE RESPIRATION ENCHANTMENT BUT TWICE AS STRONG. TWO LEVELS. 1 CHARGED AMETHYST AND 10 AMEL PER LEVEL.",
 
     "pages.lapisworks.lapisworks_mishaps.title": "Lapisworks Mishaps",
     "pages.lapisworks.lapisworks_mishaps.summary": "With a new branch of Hex Casting comes new mishaps. I've documented them here.",
