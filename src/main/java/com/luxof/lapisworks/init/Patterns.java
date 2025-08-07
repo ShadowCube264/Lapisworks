@@ -14,8 +14,10 @@ import com.luxof.lapisworks.actions.CheckAttr;
 import com.luxof.lapisworks.actions.ImbueLap;
 import com.luxof.lapisworks.actions.SwapAmel;
 import com.luxof.lapisworks.actions.MoarAttr;
+import com.luxof.lapisworks.actions.great.EnchantFallDmgRes;
 import com.luxof.lapisworks.actions.great.EnchantFire;
 import com.luxof.lapisworks.actions.great.EnchantLightning;
+import com.luxof.lapisworks.actions.great.EnchantLongBreath;
 import com.luxof.lapisworks.actions.CheckEnchant;
 
 public class Patterns {
@@ -62,6 +64,8 @@ public class Patterns {
         register("check_attr", "wwwaqeeqawww", HexDir.NORTH_EAST, new CheckAttr());
         register("fireyfists", "wwewdawdewqewedadad", HexDir.EAST, new EnchantFire());
         register("lightningbending", "wewdawdewqewdqqeedqe", HexDir.EAST, new EnchantLightning());
+        register("falldmgres", "qqwwqqqadwewdeq", HexDir.SOUTH_WEST, new EnchantFallDmgRes());
+        register("longbreath", "wewdwewewewewdwew", HexDir.SOUTH_EAST, new EnchantLongBreath());
         register("checkenchant", "aqawwqqwqqw", HexDir.SOUTH_EAST, new CheckEnchant());
     }
 
