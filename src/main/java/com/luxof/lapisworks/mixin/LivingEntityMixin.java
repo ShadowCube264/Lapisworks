@@ -2,6 +2,7 @@ package com.luxof.lapisworks.mixin;
 
 import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
 
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
@@ -15,10 +16,15 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
+import java.util.List;
+import java.util.Random;
+
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
 public abstract class LivingEntityMixin implements LapisworksInterface {
@@ -33,10 +39,13 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 	);
 	public int fireyFists = 0;
 	public int lightningBending = 0;
+	public int fallDmgRes = 0;
+	public int longBreath = 0;
 
 	@Inject(at = @At("HEAD"), method = "onDeath", cancellable = true)
 	public void onDeath(DamageSource damageSource, CallbackInfo ci) {
 		this.setAllJuicedUpAttrsToZero();
+		this.setAllEnchantsToZero();
 	}
 
 	@Inject(at = @At("HEAD"), method = "onAttacking", cancellable = true)
@@ -60,6 +69,39 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 		}
 	}
 
+	@Inject(at = @At("HEAD"), method = "computeFallDamage", cancellable = true)
+	public void computeFallDamage(float fallDistance, float damageMultiplier, CallbackInfoReturnable<Integer> cir) {
+		if (fallDistance < 10 * ((LapisworksInterface)this).checkFallDmgRes()) {
+			cir.setReturnValue(0);
+		}
+	}
+
+	@Shadow
+	public abstract Random getRandom();
+
+	@Inject(at = @At("HEAD"), method = "getNextAirUnderwater", cancellable = true)
+	public void getNextAirUnderwater(int air, CallbackInfoReturnable<Integer> cir) {
+		int i = EnchantmentHelper.getRespiration((LivingEntity)(Object)this); // this looks dangerous to me
+		cir.setReturnValue(
+			this.getRandom().nextInt(
+				i + (this.checkLongBreath() * 2) + 1
+			) > 0 ? air : air - 1
+		);
+	}
+
+	@Shadow
+	public abstract int getMaxAir();
+
+	@Inject(at = @At("HEAD"), method = "getNextAirOnLand", cancellable = true)
+	public void getNextAirOnLand(int air, CallbackInfoReturnable<Integer> cir) {
+		cir.setReturnValue(
+			Math.min(
+				air + 4 + (2 * this.checkLongBreath()),
+				this.getMaxAir()
+			)
+		);
+	}
+
 	@Override
 	public double getAmountOfAttrJuicedUpByAmel(EntityAttribute attribute) {
 		return this.juicedUpVals.getCustomInstance(attribute).getBaseValue();
@@ -79,44 +121,47 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 		);
 	}
 
+	@Override public int checkFireyFists() { return this.fireyFists; }
+	@Override public void setFireyFists(int level) { this.fireyFists = level; }
+
+	@Override public int checkLightningBending() { return this.lightningBending; }
+	@Override public void setLightningBending(int level) { this.lightningBending = level; }
+
+	@Override public int checkFallDmgRes() { return this.fallDmgRes; }
+	@Override public void setFallDmgRes(int level) { this.fallDmgRes = level; }
+
+	@Override public int checkLongBreath() { return this.longBreath; }
+	@Override public void setLongBreath(int level) { this.longBreath = level; }
+
 	@Override
-	public int checkFireyFists() {
-		return this.fireyFists;
+	public AttributeContainer getLapisworksAttributes() { return this.juicedUpVals; }
+	@Override
+	public void setLapisworksAttributes(AttributeContainer attributes) { this.juicedUpVals = attributes; }
+
+	@Override
+	public List<Integer> getEnchantments() {
+		return List.of(
+			this.checkFireyFists(),
+			this.checkLightningBending(),
+			this.checkFallDmgRes(),
+			this.checkLongBreath()
+		);
 	}
 
 	@Override
-	public void setFireyFists(int level) {
-		this.fireyFists = level;
+	public void setEnchantments(int[] levels) { // nbt shit
+		int size = levels.length;
+		this.setFireyFists(size >= 1 ? levels[0] : 0);
+		this.setLightningBending(size >= 2 ? levels[1] : 0);
+		this.setFallDmgRes(size >= 3 ? levels[2] : 0);
+		this.setLongBreath(size >= 4 ? levels[3] : 0);
 	}
 
 	@Override
-	public int checkLightningBending() {
-		return this.lightningBending;
-	}
-
-	@Override
-	public void setLightningBending(int level) {
-		this.lightningBending = level;
-	}
-
-	@Override
-	public AttributeContainer getLapisworksAttributes() {
-		return this.juicedUpVals;
-	}
-
-	@Override
-	public void setLapisworksAttributes(AttributeContainer attributes) {
-		this.juicedUpVals = attributes;
-	}
-
-	@Override
-	public int checkEnchantment(int whatEnchant) {
-		if (whatEnchant == 0) {
-			return this.checkFireyFists();
-		} else if (whatEnchant == 1) {
-			return this.checkLightningBending();
-		} else {
-			return 0;
-		}
+	public void setAllEnchantsToZero() {
+		this.setFireyFists(0);
+		this.setLightningBending(0);
+		this.setFallDmgRes(0);
+		this.setLongBreath(0);
 	}
 }

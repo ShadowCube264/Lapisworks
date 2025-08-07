@@ -15,6 +15,14 @@
         },
         {
             "type": "hexcasting:pattern",
+            "op_id": "lapisworks:checkenchant",
+            "anchor": "lapisworks:checkenchant",
+            "input": "entity, num",
+            "output": "num",
+            "text": "pages.lapisworks.lapisworks_great.checkenchant.summary"
+        },
+        {
+            "type": "hexcasting:pattern",
             "op_id": "lapisworks:fireyfists",
             "anchor": "lapisworks:fireyfists",
             "input": "entity",
@@ -32,6 +40,22 @@
         {
             "type": "patchouli:text",
             "text": "pages.lapisworks.lapisworks_great.lightningbending.detailed"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:falldmgres",
+            "anchor": "lapisworks:falldmgres",
+            "input": "entity",
+            "output": "",
+            "text": "pages.lapisworks.lapisworks_great.falldmgres.summary"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:longbreath",
+            "anchor": "lapisworks:longbreath",
+            "input": "entity",
+            "output": "",
+            "text": "pages.lapisworks.lapisworks_great.longbreath.summary"
         }
     ]
 }

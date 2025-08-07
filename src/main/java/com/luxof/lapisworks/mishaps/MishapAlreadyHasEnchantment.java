@@ -29,8 +29,12 @@ public class MishapAlreadyHasEnchantment extends Mishap {
             return dyeColor(DyeColor.RED); // fireyfists
         } else if (this.whatEnchant == 1) {
             return dyeColor(DyeColor.WHITE); // lightningbending
+        } else if (this.whatEnchant == 2) {
+            return dyeColor(DyeColor.GRAY); // falldmgres
+        } else if (this.whatEnchant == 3) {
+            return dyeColor(DyeColor.LIGHT_BLUE); // longbreath
         } else {
-            // any other stuff (like from an addon that hasn't mixined to this)
+            // any other stuff (like from an addon-addon that hasn't mixined to this)
             return dyeColor(DyeColor.BLACK);
         }
     }

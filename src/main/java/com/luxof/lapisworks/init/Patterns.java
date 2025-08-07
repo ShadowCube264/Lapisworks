@@ -10,11 +10,15 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 import com.luxof.lapisworks.Lapisworks;
+import com.luxof.lapisworks.actions.CheckAttr;
 import com.luxof.lapisworks.actions.ImbueLap;
 import com.luxof.lapisworks.actions.SwapAmel;
 import com.luxof.lapisworks.actions.MoarAttr;
+import com.luxof.lapisworks.actions.great.EnchantFallDmgRes;
 import com.luxof.lapisworks.actions.great.EnchantFire;
 import com.luxof.lapisworks.actions.great.EnchantLightning;
+import com.luxof.lapisworks.actions.great.EnchantLongBreath;
+import com.luxof.lapisworks.actions.CheckEnchant;
 
 public class Patterns {
     public static void init() {
@@ -36,11 +40,12 @@ public class Patterns {
         // so what else is there to enchant to make yourself stronger?
         // man i wish i could, i had such a cool ass fucking pattern too
         // north east wwwaqeeeqawww
+        // yeah just gonna use CheckAttr instead
         MoarAttr MoarSpeedAction = new MoarAttr(
             EntityAttributes.GENERIC_MOVEMENT_SPEED,
             3.0,
             0,
-            50, // movement speed is base 0.1 and we want 5 amel per 0.1 movement speed
+            50, // movement speed is base 0.1 and i want 5 amel per 0.1 movement speed
             false
         );
         MoarAttr GibDexterityAction = new MoarAttr(
@@ -51,13 +56,19 @@ public class Patterns {
             true
         );
         register("imbue_lap", "qadwawdaqqeae", HexDir.NORTH_EAST, new ImbueLap());
-        register("swap_amel", "wqqqwqq", HexDir.NORTH_EAST, new SwapAmel());
+        register("swap_amel", "wqwawwqwaqeq", HexDir.EAST, new SwapAmel());
+        
         register("moar_health", "wqadaqwwawwwqwwawdwawwqwwwwa", HexDir.NORTH_EAST, MoarHealthAction);
         register("moar_attack", "qaqwweaeaqwww", HexDir.EAST, MoarAttackAction);
-        register("moar_speed", "ddqwaqeqa", HexDir.NORTH_WEST, MoarSpeedAction);
+        register("moar_speed", "ddqwaqeqa", HexDir.WEST, MoarSpeedAction);
         register("gib_dexterity", "aeaqqdeeeqewdwqwdwe", HexDir.WEST, GibDexterityAction);
-        register("fireyfists", "wwewdawdewqewedadad", HexDir.WEST, new EnchantFire());
-        register("lightningbending", "wewdawdewqewdqqeedqe", HexDir.WEST, new EnchantLightning());
+        register("check_attr", "wwwaqeeqawww", HexDir.NORTH_EAST, new CheckAttr());
+
+        register("fireyfists", "wwewdawdewqewedadad", HexDir.EAST, new EnchantFire());
+        register("lightningbending", "wewdawdewqewdqqeedqe", HexDir.EAST, new EnchantLightning());
+        register("falldmgres", "qqwwqqqadwewdeq", HexDir.SOUTH_WEST, new EnchantFallDmgRes());
+        register("longbreath", "wewdwewewewewdwew", HexDir.SOUTH_EAST, new EnchantLongBreath());
+        register("checkenchant", "aqawwqqwqqw", HexDir.SOUTH_EAST, new CheckEnchant());
     }
 
     private static void register(
