@@ -57,11 +57,13 @@ public class Patterns {
         );
         register("imbue_lap", "qadwawdaqqeae", HexDir.NORTH_EAST, new ImbueLap());
         register("swap_amel", "wqwawwqwaqeq", HexDir.EAST, new SwapAmel());
+        
         register("moar_health", "wqadaqwwawwwqwwawdwawwqwwwwa", HexDir.NORTH_EAST, MoarHealthAction);
         register("moar_attack", "qaqwweaeaqwww", HexDir.EAST, MoarAttackAction);
         register("moar_speed", "ddqwaqeqa", HexDir.WEST, MoarSpeedAction);
         register("gib_dexterity", "aeaqqdeeeqewdwqwdwe", HexDir.WEST, GibDexterityAction);
         register("check_attr", "wwwaqeeqawww", HexDir.NORTH_EAST, new CheckAttr());
+
         register("fireyfists", "wwewdawdewqewedadad", HexDir.EAST, new EnchantFire());
         register("lightningbending", "wewdawdewqewdqqeedqe", HexDir.EAST, new EnchantLightning());
         register("falldmgres", "qqwwqqqadwewdeq", HexDir.SOUTH_WEST, new EnchantFallDmgRes());

@@ -46,7 +46,7 @@ public class EnchantFallDmgRes implements SpellAction {
                 new MishapAlreadyHasEnchantment(
                     entity,
                     Text.translatable("lapisenchantments.lapisworks.falldmgres"),
-                    0,
+                    2,
                     2
                 )
             );

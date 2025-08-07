@@ -46,7 +46,7 @@ public class EnchantLongBreath implements SpellAction {
                 new MishapAlreadyHasEnchantment(
                     entity,
                     Text.translatable("lapisenchantments.lapisworks.longbreath"),
-                    0,
+                    3,
                     2
                 )
             );
