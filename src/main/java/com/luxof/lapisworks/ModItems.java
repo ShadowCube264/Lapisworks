@@ -1,5 +1,8 @@
 package com.luxof.lapisworks;
 
+import com.luxof.lapisworks.items.AmelStaff;
+import static com.luxof.lapisworks.Lapisworks.id;
+
 import java.util.List;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -18,16 +21,19 @@ public class ModItems {
     public static final Item AMEL_ITEM = new Item(new FabricItemSettings().maxCount(64));
     public static final Item AMEL2_ITEM = new Item(new FabricItemSettings().maxCount(64));
     public static final Item AMEL3_ITEM = new Item(new FabricItemSettings().maxCount(64));
+    public static final Item AMEL_STAFF = new AmelStaff(new FabricItemSettings().maxCount(1));
 
     private static final List<String> itemNames = List.of(
         "amel",
         "amel2",
-        "amel3"
+        "amel3",
+        "amel_staff"
     );
     private static final List<Item> items = List.of(
         AMEL_ITEM,
         AMEL2_ITEM,
-        AMEL3_ITEM
+        AMEL3_ITEM,
+        AMEL_STAFF
     );
 
     public static final List<Item> AMEL_MODELS = List.of(AMEL_ITEM, AMEL2_ITEM, AMEL3_ITEM);
@@ -36,9 +42,11 @@ public class ModItems {
         .icon(() -> new ItemStack(AMEL_ITEM))
         .displayName(Text.translatable("itemgroup.lapisworks.lapismagicshitgroup"))
         .entries((context, entries) -> {
-            for (int i = 0; i < items.size(); i++) {
-                entries.add(items.get(i));
-            }
+            items.forEach(
+                (Item item) -> {
+                    entries.add(item);
+                }
+            );
         })
         .build();
 
@@ -54,6 +62,6 @@ public class ModItems {
     }
 
     public static void register(String name, Item item) {
-        Registry.register(Registries.ITEM, new Identifier(Lapisworks.MOD_ID, name), item);
+        Registry.register(Registries.ITEM, id(name), item);
     }
 }

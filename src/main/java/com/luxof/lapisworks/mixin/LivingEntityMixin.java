@@ -76,28 +76,24 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 		}
 	}
 
-	@Shadow
-	public abstract Random getRandom();
-
 	@Inject(at = @At("HEAD"), method = "getNextAirUnderwater", cancellable = true)
 	public void getNextAirUnderwater(int air, CallbackInfoReturnable<Integer> cir) {
 		int i = EnchantmentHelper.getRespiration((LivingEntity)(Object)this); // this looks dangerous to me
 		cir.setReturnValue(
-			this.getRandom().nextInt(
+			// can't shadow getRandom() for whatever reason
+			((LivingEntity)(Object)this).getRandom().nextInt(
 				i + (this.checkLongBreath() * 2) + 1
 			) > 0 ? air : air - 1
 		);
 	}
-
-	@Shadow
-	public abstract int getMaxAir();
 
 	@Inject(at = @At("HEAD"), method = "getNextAirOnLand", cancellable = true)
 	public void getNextAirOnLand(int air, CallbackInfoReturnable<Integer> cir) {
 		cir.setReturnValue(
 			Math.min(
 				air + 4 + (2 * this.checkLongBreath()),
-				this.getMaxAir()
+				// can't shadow getMaxAir either but it's because it's in Entity not LivingEntity
+				((LivingEntity)(Object)this).getMaxAir()
 			)
 		);
 	}
