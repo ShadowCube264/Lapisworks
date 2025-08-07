@@ -1,6 +1,7 @@
 package com.luxof.lapisworks;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.util.Identifier;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,5 +21,9 @@ public class Lapisworks implements ModInitializer {
         LOGGER.info("Luxof's pet Lapisworks is getting a bit hyperactive.");
 		LOGGER.info("\"Lapisworks! Lapis Lapis!\"");
 		LOGGER.info("Feed it redstone.");
+	}
+
+	public static Identifier id(String string) {
+		return new Identifier(MOD_ID, string);
 	}
 }

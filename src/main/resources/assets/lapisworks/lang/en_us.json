@@ -3,6 +3,7 @@
     "item.lapisworks.amel": "Amethyst Lazuli",
     "item.lapisworks.amel2": "Amethyst Lazuli",
     "item.lapisworks.amel3": "Amethyst Lazuli",
+    "item.lapisworks.amel_staff": "Staff of Amethyst Lazuli",
 
 
     "advancements.lapisworks.gotlapis.name": "Lapisworks Research",
@@ -11,8 +12,8 @@
 
     "hexcasting.action.lapisworks:imbue_lap": "Imbue Lapis",
     "hexcasting.action.book.lapisworks:imbue_lap": "Imbue Lapis",
-    "hexcasting.action.lapisworks:swap_amel": "Change Amel Appearance",
-    "hexcasting.action.book.lapisworks:swap_amel": "Change Amel Appearance",
+    "hexcasting.action.lapisworks:swap_amel": "Mold Amel",
+    "hexcasting.action.book.lapisworks:swap_amel": "Mold Amel",
     "hexcasting.action.lapisworks:moar_health": "Enchant Skin",
     "hexcasting.action.book.lapisworks:moar_health": "Enchant Skin",
     "hexcasting.action.lapisworks:moar_attack": "Enchant Fists",
@@ -70,6 +71,7 @@
     "pages.lapisworks.lapisworks_patterns.moar_speed.summary": "Enchants the given entity's feet to increase their movement speed. Costs 1x Amel and 5x Amethyst Shards. Limit is 3x the norm. The norm for me is about 1.",
     "pages.lapisworks.lapisworks_patterns.gib_dexterity.summary": "Enchants the given $(o)player's$() arms, increasing their attack speed. Costs 1x Amel and 16x Amethyst Shards. Limit is 4 PLUS the norm.",
     "pages.lapisworks.lapisworks_patterns.check_attr.summary": "Gives you the amount the given entity has been enhanced in the given area (specified by number). The patterns before were sorted so 0 gives max health, 1 gives attack damage and so on. Negligible media cost.",
+    "pages.lapisworks.lapisworks_patterns.imbue_with_amel.explanation": "Interestingly enough, despite Lapisworks being very focused on enhancement of the user some people have used it to enhance their tools as well.",
 
     "pages.lapisworks.lapisworks_great.title": "ENCHANTMENTS",
     "pages.lapisworks.lapisworks_great.aahhhhelp": "I HAVE SEEN I HAVE SEEN I NEED IT I NEED MY SANITY BACK ENCHANT SKIN CAN I ENCHANT MIND PLEASE MUST NOT LOSE SELF TAKE FIVE MINTUE BREAK NO HAVE NO TIME MUST DOCUMENT BEFORE",

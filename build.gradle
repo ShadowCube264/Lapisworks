@@ -80,6 +80,7 @@ dependencies {
 }
 
 processResources {
+	duplicatesStrategy 'exclude'
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
