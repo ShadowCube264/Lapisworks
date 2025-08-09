@@ -22,6 +22,9 @@
 				"value": "com.luxof.lapisworks.MishapThrower"
 			}
 		],
+		"client": [
+			"com.luxof.lapisworks.LapisworksClient"
+		],
 		"fabric-datagen": [
 			"com.luxof.lapisworks.datagen.Advancements"
 		]

@@ -1,6 +1,12 @@
 package com.luxof.lapisworks;
 
+import at.petrak.hexcasting.common.items.ItemStaff;
+import at.petrak.hexcasting.common.lib.HexItems;
+
+import com.luxof.lapisworks.items.AmelRing;
 import com.luxof.lapisworks.items.AmelStaff;
+import com.luxof.lapisworks.items.CastingRing;
+import com.luxof.lapisworks.items.PartiallyAmelStaff;
 import static com.luxof.lapisworks.Lapisworks.id;
 
 import java.util.List;
@@ -14,29 +20,108 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
 
 public class ModItems {
-    // Short form of "Amethyst Lazuli"
-    public static final Item AMEL_ITEM = new Item(new FabricItemSettings().maxCount(64));
-    public static final Item AMEL2_ITEM = new Item(new FabricItemSettings().maxCount(64));
-    public static final Item AMEL3_ITEM = new Item(new FabricItemSettings().maxCount(64));
-    public static final Item AMEL_STAFF = new AmelStaff(new FabricItemSettings().maxCount(1));
+    public static FabricItemSettings fullStack = new FabricItemSettings().maxCount(64);
+    public static FabricItemSettings unstackable = new FabricItemSettings().maxCount(1);
+    public static FabricItemSettings partamel = new FabricItemSettings().maxCount(1).maxDamage(100);
+    
+    public static final Item AMEL_ITEM = new Item(fullStack);
+    public static final Item AMEL2_ITEM = new Item(fullStack);
+    public static final Item AMEL3_ITEM = new Item(fullStack);
+    public static final Item AMEL_STAFF = new AmelStaff(unstackable);
+    public static final PartiallyAmelStaff PARTAMEL_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_ACACIA_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_BAMBOO_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_BIRCH_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_CHERRY_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_CRIMSON_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_DARK_OAK_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_EDIFIED_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_JUNGLE_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_MANGROVE_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_MINDSPLICE_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_OAK_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_SPRUCE_STAFF = new PartiallyAmelStaff(partamel);
+    public static final PartiallyAmelStaff PARTAMEL_WARPED_STAFF = new PartiallyAmelStaff(partamel);
+    public static final CastingRing CASTING_RING = new CastingRing(unstackable);
+    public static final AmelRing AMEL_RING = new AmelRing(unstackable);
 
     private static final List<String> itemNames = List.of(
         "amel",
         "amel2",
         "amel3",
-        "amel_staff"
+        "staves/amel_staff",
+        "staves/incomplete/generic",
+        "staves/incomplete/acacia",
+        "staves/incomplete/bamboo",
+        "staves/incomplete/birch",
+        "staves/incomplete/cherry",
+        "staves/incomplete/crimson",
+        "staves/incomplete/dark_oak",
+        "staves/incomplete/edified",
+        "staves/incomplete/jungle",
+        "staves/incomplete/mangrove",
+        "staves/incomplete/mindsplice",
+        "staves/incomplete/oak",
+        "staves/incomplete/spruce",
+        "staves/incomplete/warped",
+        "staves/ring",
+        "staves/amel_ring"
     );
     private static final List<Item> items = List.of(
         AMEL_ITEM,
         AMEL2_ITEM,
         AMEL3_ITEM,
-        AMEL_STAFF
+        AMEL_STAFF,
+        PARTAMEL_STAFF,
+        PARTAMEL_ACACIA_STAFF,
+        PARTAMEL_BAMBOO_STAFF,
+        PARTAMEL_BIRCH_STAFF,
+        PARTAMEL_CHERRY_STAFF,
+        PARTAMEL_CRIMSON_STAFF,
+        PARTAMEL_DARK_OAK_STAFF,
+        PARTAMEL_EDIFIED_STAFF,
+        PARTAMEL_JUNGLE_STAFF,
+        PARTAMEL_MANGROVE_STAFF,
+        PARTAMEL_MINDSPLICE_STAFF,
+        PARTAMEL_OAK_STAFF,
+        PARTAMEL_SPRUCE_STAFF,
+        PARTAMEL_WARPED_STAFF,
+        CASTING_RING
     );
 
     public static final List<Item> AMEL_MODELS = List.of(AMEL_ITEM, AMEL2_ITEM, AMEL3_ITEM);
+    public static final List<ItemStaff> HEX_STAVES = List.of(
+        HexItems.STAFF_ACACIA,
+        HexItems.STAFF_BAMBOO,
+        HexItems.STAFF_BIRCH,
+        HexItems.STAFF_CHERRY,
+        HexItems.STAFF_CRIMSON,
+        HexItems.STAFF_DARK_OAK,
+        HexItems.STAFF_EDIFIED,
+        HexItems.STAFF_JUNGLE,
+        HexItems.STAFF_MANGROVE,
+        HexItems.STAFF_MINDSPLICE,
+        HexItems.STAFF_OAK,
+        HexItems.STAFF_SPRUCE,
+        HexItems.STAFF_WARPED
+    );
+    public static final List<PartiallyAmelStaff> PARTAMEL_STAVES = List.of(
+        PARTAMEL_ACACIA_STAFF,
+        PARTAMEL_BAMBOO_STAFF,
+        PARTAMEL_BIRCH_STAFF,
+        PARTAMEL_CHERRY_STAFF,
+        PARTAMEL_CRIMSON_STAFF,
+        PARTAMEL_DARK_OAK_STAFF,
+        PARTAMEL_EDIFIED_STAFF,
+        PARTAMEL_JUNGLE_STAFF,
+        PARTAMEL_MANGROVE_STAFF,
+        PARTAMEL_MINDSPLICE_STAFF,
+        PARTAMEL_OAK_STAFF,
+        PARTAMEL_SPRUCE_STAFF,
+        PARTAMEL_WARPED_STAFF
+    );
 
     public static final ItemGroup LapisMagicShitGroup = FabricItemGroup.builder()
         .icon(() -> new ItemStack(AMEL_ITEM))
@@ -53,7 +138,7 @@ public class ModItems {
     public static void init_shit() {
         Registry.register(
             Registries.ITEM_GROUP,
-            new Identifier(Lapisworks.MOD_ID, "lapismagicshitgroup"),
+            id("lapismagicshitgroup"),
             LapisMagicShitGroup
         );
         for (int i = 0; i < items.size(); i++) {

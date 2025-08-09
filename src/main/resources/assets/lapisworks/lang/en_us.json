@@ -3,11 +3,37 @@
     "item.lapisworks.amel": "Amethyst Lazuli",
     "item.lapisworks.amel2": "Amethyst Lazuli",
     "item.lapisworks.amel3": "Amethyst Lazuli",
-    "item.lapisworks.amel_staff": "Staff of Amethyst Lazuli",
+    
+    "item.lapisworks.staves.amel_staff": "Staff of Amethyst Lazuli",
+    "item.lapisworks.staves.incomplete.generic": "Incomplete Staff of Amethyst Lazuli",
+    "item.lapisworks.staves.incomplete.acacia": "Infused Acacia Staff",
+    "item.lapisworks.staves.incomplete.bamboo": "Infused Bamboo Staff",
+    "item.lapisworks.staves.incomplete.birch": "Infused Birch Staff",
+    "item.lapisworks.staves.incomplete.cherry": "Infused Cherry Staff",
+    "item.lapisworks.staves.incomplete.crimson": "Infused Crimson Staff",
+    "item.lapisworks.staves.incomplete.dark_oak": "Infused Dark Oak Staff",
+    "item.lapisworks.staves.incomplete.edified": "Infused Edified Staff",
+    "item.lapisworks.staves.incomplete.jungle": "Infused Jungle Staff",
+    "item.lapisworks.staves.incomplete.mangrove": "Infused Mangrove Staff",
+    "item.lapisworks.staves.incomplete.mindsplice": "Infused Mindsplice Staff",
+    "item.lapisworks.staves.incomplete.oak": "Infused Oak Staff",
+    "item.lapisworks.staves.incomplete.spruce": "Infused Spruce Staff",
+    "item.lapisworks.staves.incomplete.warped": "Infused Warped Staff",
+
+    "item.lapisworks.staves.ring": "Gold-Diamond Casting Ring",
+
+
+    "tooltips.lapisworks.generic.partamel1": "I can feel the state of the enchantment..",
+    "tooltips.lapisworks.generic.partamel2": "%d uses left until Amel consumed.",
+    "tooltips.lapisworks.generic.partamel3": "%d Amel infused.",
 
 
     "advancements.lapisworks.gotlapis.name": "Lapisworks Research",
     "advancements.lapisworks.gotlapis.description": "A deep blue, precious mineral. Just as they wrote..",
+
+
+    "key_category.lapisworks.lapisworks": "Lapisworks",
+    "keys.lapisworks.use_casting_ring": "Use Casting Ring",
 
 
     "hexcasting.action.lapisworks:imbue_lap": "Imbue Lapis",
@@ -35,6 +61,8 @@
     "hexcasting.action.book.lapisworks:falldmgres": "Envelop Feet in Amel",
     "hexcasting.action.lapisworks:longbreath": "Grant Amel Air Sacs",
     "hexcasting.action.book.lapisworks:longbreath": "Grant Amel Air Sacs",
+    "hexcasting.action.lapisworks:imbue_amel": "Imbue with Amel",
+    "hexcasting.action.book.lapisworks:imbue_amel": "Imbue with Amel",
 
 
     "lapisenchantments.lapisworks.fireyfists": "FireyFists",
@@ -48,6 +76,10 @@
 
     "mishaps.lapisworks.not_enough_offhand_items": "At least %dx %s required, but only %dx %s found in offhand.",
     "mishaps.lapisworks.already_enchanted": "Cannot enchant %s with %s, as it is already enchanted with the maximum level of %s it can have right now (%d).",
+    "mishaps.lapisworks.no_item.mainhand": "Expected %s in the main hand, but found nothing.",
+    "mishaps.lapisworks.bad_item.mainhand": "Expected %s in the main hand, but found %dx %s.",
+
+    "mishaps.lapisworks.bad_item.mainhand.imbueable": "any item imbueable with Amethyst Lazuli (e.g. a staff)",
 
 
     "categories.lapisworks.lapisworks": "Lapisworks",
@@ -71,7 +103,6 @@
     "pages.lapisworks.lapisworks_patterns.moar_speed.summary": "Enchants the given entity's feet to increase their movement speed. Costs 1x Amel and 5x Amethyst Shards. Limit is 3x the norm. The norm for me is about 1.",
     "pages.lapisworks.lapisworks_patterns.gib_dexterity.summary": "Enchants the given $(o)player's$() arms, increasing their attack speed. Costs 1x Amel and 16x Amethyst Shards. Limit is 4 PLUS the norm.",
     "pages.lapisworks.lapisworks_patterns.check_attr.summary": "Gives you the amount the given entity has been enhanced in the given area (specified by number). The patterns before were sorted so 0 gives max health, 1 gives attack damage and so on. Negligible media cost.",
-    "pages.lapisworks.lapisworks_patterns.imbue_with_amel.explanation": "Interestingly enough, despite Lapisworks being very focused on enhancement of the user some people have used it to enhance their tools as well.",
 
     "pages.lapisworks.lapisworks_great.title": "ENCHANTMENTS",
     "pages.lapisworks.lapisworks_great.aahhhhelp": "I HAVE SEEN I HAVE SEEN I NEED IT I NEED MY SANITY BACK ENCHANT SKIN CAN I ENCHANT MIND PLEASE MUST NOT LOSE SELF TAKE FIVE MINTUE BREAK NO HAVE NO TIME MUST DOCUMENT BEFORE",
@@ -88,5 +119,12 @@
     "pages.lapisworks.lapisworks_mishaps.notenoughamel.title": "Not Enough Items",
     "pages.lapisworks.lapisworks_mishaps.notenoughamel.summary": "I have the correct item in my offhand, but not enough of it. Brown particles. Upends my held items and throws them to the ground.",
     "pages.lapisworks.lapisworks_mishaps.leveltoohigh.title": "Already at Maximum Level",
-    "pages.lapisworks.lapisworks_mishaps.leveltoohigh.summary": "Perhaps real enchantments like those on my tools was what those empty pages were about? Anyway. This means the entity is already enchanted at the maximum level of this enchantment. Differing particles for each enchantment, and no punishment."
+    "pages.lapisworks.lapisworks_mishaps.leveltoohigh.summary": "Perhaps real enchantments like those on my tools was what those empty pages were about? Anyway. This means the entity is already enchanted at the maximum level of this enchantment. Differing particles for each enchantment, and no punishment.",
+    "pages.lapisworks.lapisworks_mishaps.badmainhand.title": "Incorrect Item (Main-hand)",
+    "pages.lapisworks.lapisworks_mishaps.badmainhand.summary": "This is for when I have an incorrect item in my MAIN-hand, usually caused by attempting to Imbue Amethyst Lazuli into a tool that can't be enchanted by Amethyst Lazuli. Drops my held items to the ground and causes brown particles to appear.",
+
+    "pages.lapisworks.lapisworks_imbuement.title": "Imbuement",
+    "pages.lapisworks.lapisworks_imbuement.intro": "Despite Lapisworks being primarily about enhancement of bodies some people have used it to enhance tools as well.$(br)The material a tool is made of's ability to channel Amel affects its strength when enhanced. Diamond and Amethysts are examples of good materials, due to their \"crystal structure being ideal for the media and enchantment energy to flow through\".",
+    "pages.lapisworks.lapisworks_imbuement.imbue_amel.summary": "Attempts to infuse the tool in my main hand with that much Amel. I believe a $(l:casting_rings)Casting Ring$() will allow me to imbue things like swords with Amel.",
+    "pages.lapisworks.lapisworks_imbuement.": ""
 }

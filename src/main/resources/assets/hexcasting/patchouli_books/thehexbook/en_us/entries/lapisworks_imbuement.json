@@ -1,0 +1,21 @@
+{
+    "name": "pages.lapisworks.lapisworks_imbuement.title",
+    "icon": "lapisworks:amel_staff",
+    "advancement": "lapisworks:got_lapis",
+    "category": "hexcasting:lapisworks",
+    "sortnum": 6,
+    "pages": [
+        {
+            "type": "patchouli:text",
+            "text": "pages.lapisworks.lapisworks_imbuement.intro"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:imbue_amel",
+            "anchor": "lapisworks:imbue_amel",
+            "input": "num",
+            "output": "",
+            "text": "pages.lapisworks.lapisworks_imbuement.imbue_amel.summary"
+        }
+    ]
+}

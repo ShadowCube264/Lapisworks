@@ -17,6 +17,7 @@ import at.petrak.hexcasting.api.misc.MediaConstants;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Hand;
 
@@ -41,6 +42,8 @@ public class ImbueLap implements SpellAction {
         ItemStack offHandItems = caster.getOffHandStack();
         if (offHandItems.isEmpty()) {
             //                              *shrug* i don't know why it's different either.
+            MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "lapis_lazuli"));
+        } else if (offHandItems.getItem() != Items.LAPIS_LAZULI) {
             MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "lapis_lazuli"));
         }
 

@@ -5,7 +5,10 @@
 	"mixins": [
 		"LivingEntityMixin",
 		"PlayerBasedCastEnvMixin",
-		"EntityMixin"
+		"EntityMixin",
+		"ItemMixin",
+		"ItemStaffMixin",
+		"GuiSpellcastingMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
