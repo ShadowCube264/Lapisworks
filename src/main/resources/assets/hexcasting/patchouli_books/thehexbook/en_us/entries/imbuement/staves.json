@@ -11,7 +11,7 @@
         },
         {
             "type": "patchouli:spotlight",
-            "item": "tag:lapisworks:incomplete_staves",
+            "item": "lapisworks:staves/incomplete/generic,lapisworks:staves/incomplete/acacia,lapisworks:staves/incomplete/bamboo,lapisworks:staves/incomplete/birch,lapisworks:staves/incomplete/cherry,lapisworks:staves/incomplete/crimson,lapisworks:staves/incomplete/dark_oak,lapisworks:staves/incomplete/edified,lapisworks:staves/incomplete/jungle,lapisworks:staves/incomplete/mangrove,lapisworks:staves/incomplete/mindsplice,lapisworks:staves/incomplete/oak,lapisworks:staves/incomplete/spruce,lapisworks:staves/incomplete/warped",
             "title": "pages.lapisworks.imbuement_staves.incomplete_staves.title",
             "text": "pages.lapisworks.imbuement_staves.incomplete_staves.text"
         },

@@ -125,9 +125,6 @@
     "pages.lapisworks.lapisworks_mishaps.badmainhand.title": "Incorrect Item (Main-hand)",
     "pages.lapisworks.lapisworks_mishaps.badmainhand.summary": "This is for when I have an incorrect item in my MAIN-hand, usually caused by attempting to Imbue Amethyst Lazuli into a tool that can't be enchanted by Amethyst Lazuli. Drops my held items to the ground and causes brown particles to appear.",
 
-    "pages.lapisworks.lapisworks_imbuement.imbue_amel.summary": "Attempts to infuse the tool in my main hand with that much Amel. I believe a $(l:casting_rings)Casting Ring$() will allow me to imbue things like swords with Amel.",
-    "pages.lapisworks.imbuement.": "",
-
 
     "categories.lapisworks.lapisworks.imbuement": "Imbuement",
     "categories.lapisworks.lapisworks.imbuement.desc": "Despite Lapisworks being primarily focused on the enhancement of the body, some people have found ways to use it to enhance tools as well. Apparently some of the materials of this world have differing interactions with media. Let's see..",
@@ -137,14 +134,14 @@
 
     "pages.lapisworks.imbuement_rings.title": "Casting Rings",
     "pages.lapisworks.imbuement_rings.lore": "One of the main limitations that has kept me from making a ring to cast with is that the ring would be much too small and perhaps even inefficient. However now that I'm reviewing these texts I can see workarounds that at least limit the ring's negative effects. Different materials apparently have different interactions with media.",
-    "pages.lapisworks.imbuement_rings.lore2": "Diamond is a good \"conductor\" of media that focuses it (due to its \"chemical structure\" (what is that?)) and Gold is completely inert. The \"Lapisworkers\" of old took these materials combined them to make many a great constructs, but all of those (due to ease of recreation) have been lost to time. However I can easily create my own.",
+    "pages.lapisworks.imbuement_rings.lore2": "Diamond is a good \"conductor\" of media that focuses it (due to its \"chemical structure\" (what is that?)) while Gold is somewhat of an insulator. The \"Lapisworkers\" of old took these materials and combined them to make many a great constructs, but all of those (due to ease of reaction or due to wanting to hide it in war, mayhaps) have been lost to time. However I can easily create my own.",
     "pages.lapisworks.imbuement_rings.recipe_title": "Casting Ring",
-    "pages.lapisworks.imbuement_rings.recipe_next_page": "Diamond around the Amethyst to focus the media, and Gold to make sure it only flows into the Diamond. While it is still not as good as an actual staff, it is definitely more ideal than a simple ring with Amethyst. Moreover the Amethyst slightly hinders any staves I try to use by attracting some media to itself.",
+    "pages.lapisworks.imbuement_rings.recipe_next_page": "Diamond around the Amethyst to focus the media, and Gold to make sure it only flows into the Diamond. While it is still not as good as an actual staff, it is definitely more ideal than a simple ring with Amethyst. Moreover the Amethyst slightly hinders any staves I try to use by attracting some media to itself. I can press $(k:keys.lapisworks.use_casting_ring) to open the casting grid when it is equipped.",
     "pages.lapisworks.imbuement_rings.amel_ring": "If I am dissatisfied with this ring, I can choose to imbue it with one piece of Amel. The Amel should stick to and seep inside the Gold part. It'll start focusing and attracting media from my reserves to moderate speed that can either be picked up by a staff in my hand or eventually come back to the ring.",
     "pages.lapisworks.imbuement_rings.amel_ring_pic_desc": "$(o)I can also use Mold Amel if I dislike the new appearance.$()",
 
     "pages.lapisworks.imbuement_staves.title": "Imbuing Staves",
-    "pages.lapisworks.imbuement_staves.lore": "The $(l:casting_rings#lapisworks:amel_ring)Amel Ring$() was created from Amel infusion into the stave-like $(l:casting_rings)Casting Ring$() better. Therefore it stands to reason that actual staves would stand to gain from Amel infusion. These staves (due to being larger) would need more Amel but would create a more precise staff. What of incomplete infusion, however?",
+    "pages.lapisworks.imbuement_staves.lore": "The $(l:imbuement/casting_rings#lapisworks:amel_ring)Amel Ring$() was created from Amel infusion into the stave-like $(l:imbuement/casting_rings)Casting Ring$() better. Therefore it stands to reason that actual staves would stand to gain from Amel infusion. These staves (due to being larger) would need more Amel but would create a more precise staff. What of incomplete infusion, however?",
     "pages.lapisworks.imbuement_staves.incomplete_staves.title": "Incomplete Staves",
     "pages.lapisworks.imbuement_staves.incomplete_staves.text": "Staves that did not have the amount of Amel required to fully transform have Amel deeply rooted in their structure but not enough to stand against the power draw of the Amel for very long. The product is inefficient, leaky (and thus not very long-lasting) but also more precise (bigger hex grid) than full infusion.",
     "pages.lapisworks.imbuement_staves.full_amel_staff.title": "Complete Staff",
