@@ -145,6 +145,8 @@
 
     "pages.lapisworks.imbuement_staves.title": "Imbuing Staves",
     "pages.lapisworks.imbuement_staves.lore": "The $(l:casting_rings#lapisworks:amel_ring)Amel Ring$() was created from Amel infusion into the stave-like $(l:casting_rings)Casting Ring$() better. Therefore it stands to reason that actual staves would stand to gain from Amel infusion. These staves (due to being larger) would need more Amel but would create a more precise staff. What of incomplete infusion, however?",
-    "pages.lapisworks.imbuement_staves.incomplete_staves": "Staves that did not have the amount of Amel required to fully transform have Amel deeply rooted in their structure but not enough to stand against the power draw of the Amel for very long. The product is inefficient, leaky (and thus not very long-lasting) but also more precise (bigger hex grid) than full infusion.",
-    "pages.lapisworks.imbuement_staves.full_amel_staff": "The fully infused staff is less precise than the incomplete ones (has a smaller hex grid boost) but actually lasts. I suppose there is some merit, then, to having an incomplete staff and constantly feeding it low amounts of Amel so it does not decay."
+    "pages.lapisworks.imbuement_staves.incomplete_staves.title": "Incomplete Staves",
+    "pages.lapisworks.imbuement_staves.incomplete_staves.text": "Staves that did not have the amount of Amel required to fully transform have Amel deeply rooted in their structure but not enough to stand against the power draw of the Amel for very long. The product is inefficient, leaky (and thus not very long-lasting) but also more precise (bigger hex grid) than full infusion.",
+    "pages.lapisworks.imbuement_staves.full_amel_staff.title": "Complete Staff",
+    "pages.lapisworks.imbuement_staves.full_amel_staff.text": "The fully infused staff is less precise than the incomplete ones (has a smaller hex grid boost) but actually lasts. I suppose there is some merit, then, to having an incomplete staff and constantly feeding it low amounts of Amel so it does not decay."
 }

@@ -7,21 +7,19 @@
     "pages": [
         {
             "type": "patchouli:text",
-            "text": "pages.lapisworks.imbuement_staves.lore1"
+            "text": "pages.lapisworks.imbuement_staves.lore"
         },
         {
             "type": "patchouli:spotlight",
-            "item": {
-                "tag": "lapisworks:incomplete_staves"
-            },
-            "text": "pages.lapisworks.imbuement_staves.incomplete_staves"
+            "item": "tag:lapisworks:incomplete_staves",
+            "title": "pages.lapisworks.imbuement_staves.incomplete_staves.title",
+            "text": "pages.lapisworks.imbuement_staves.incomplete_staves.text"
         },
         {
             "type": "patchouli:spotlight",
-            "item": {
-                "item": "lapisworks:staves/amel_staff"
-            },
-            "text": "pages.lapisworks.imbuement_staves.full_amel_staff"
+            "item": "lapisworks:staves/amel_staff",
+            "title": "pages.lapisworks.imbuement_staves.full_amel_staff.title",
+            "text": "pages.lapisworks.imbuement_staves.full_amel_staff.text"
         }
     ]
 }
