@@ -1,7 +1,5 @@
 package com.luxof.lapisworks.mixin;
 
-import static com.luxof.lapisworks.Lapisworks.LOGGER;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -13,6 +11,7 @@ import com.luxof.lapisworks.ModItems;
 import at.petrak.hexcasting.client.gui.GuiSpellcasting;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 
 @Mixin(GuiSpellcasting.class)
 public class GuiSpellcastingMixin {
@@ -22,7 +21,11 @@ public class GuiSpellcastingMixin {
         if (player == null) {
             ci.cancel();
         }
-        if (Lapisworks.trinketEquipped(player, ModItems.CASTING_RING)) {
+        if (
+            Lapisworks.trinketEquipped(player, ModItems.CASTING_RING) ||
+            Lapisworks.trinketEquipped(player, (Item)ModItems.AMEL_RING) ||
+            Lapisworks.trinketEquipped(player, (Item)ModItems.AMEL_RING2)
+        ) {
             // PROBABLY should add check for if player opened casting menu
             // but i'll let that be until it bites me in the ass
             ci.cancel();

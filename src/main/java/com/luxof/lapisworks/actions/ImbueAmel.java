@@ -19,7 +19,9 @@ import com.luxof.lapisworks.items.PartiallyAmelInterface;
 import com.luxof.lapisworks.mishaps.MishapBadMainhandItem;
 import com.luxof.lapisworks.mishaps.MishapNotEnoughOffhandItems;
 
+import static com.luxof.lapisworks.Lapisworks.getFullAmelFromNorm;
 import static com.luxof.lapisworks.Lapisworks.getPartAmelFromNorm;
+import static com.luxof.lapisworks.Lapisworks.getRequiredAmelToComplete;
 
 import java.util.List;
 import java.util.Optional;
@@ -65,25 +67,34 @@ public class ImbueAmel implements SpellAction {
             MishapThrowerJava.throwMishap(needImbueable);
         }
 
-        PartiallyAmelInterface partAmelItem = getPartAmelFromNorm(mainHandItems.getItem());
-        if (partAmelItem == null) {
+        Integer requiredAmelToComplete = getRequiredAmelToComplete(mainHandItems);
+        if (requiredAmelToComplete == null) {
             MishapThrowerJava.throwMishap(needImbueable);
         }
-        int requiredAmelToComplete = mainHandItems.getItem() instanceof PartiallyAmelInterface ?
-            (int)Math.ceil((mainHandItems.getMaxDamage() - mainHandItems.getDamage()) / partAmelItem.getAmelWorthInDurability()) :
-            (int)Math.ceil(partAmelItem.getMaxDurability() / partAmelItem.getAmelWorthInDurability());
+        infuseAmount = Math.min(infuseAmount, requiredAmelToComplete);
 
         if (offHandItems.getCount() < infuseAmount) {
             MishapThrowerJava.throwMishap(new MishapNotEnoughOffhandItems(offHandItems, infuseAmount));
         }
 
         ItemStack changeToItem;
-        if (infuseAmount >= requiredAmelToComplete) {
-            infuseAmount = requiredAmelToComplete;
-            changeToItem = new ItemStack(ModItems.AMEL_STAFF, 1);
-        } else {
+        if (infuseAmount == requiredAmelToComplete) {
+            changeToItem = new ItemStack((Item)getFullAmelFromNorm(mainHandItems.getItem()), 1);
+        } else if (infuseAmount > 0) { // don't fuck up my shit by trying to infuse 0 amel into a ring
+            PartiallyAmelInterface partAmelItem = getPartAmelFromNorm(mainHandItems.getItem());
             changeToItem = new ItemStack((Item)partAmelItem, 1);
-            changeToItem.setDamage(Math.max(partAmelItem.getMaxDurability() - partAmelItem.getAmelWorthInDurability() * infuseAmount, 0));
+            // no i won't explain my math
+            changeToItem.setDamage(
+                Math.max(
+                    partAmelItem.getMaxDurability() -
+                        partAmelItem.getAmelWorthInDurability() * infuseAmount -
+                        (mainHandItems.getItem() instanceof PartiallyAmelInterface ?
+                            mainHandItems.getDamage() : 0),
+                    0
+                )
+            );
+        } else {
+            changeToItem = mainHandItems;
         }
 
         return new SpellAction.Result(

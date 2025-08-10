@@ -12,7 +12,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 
-public class AmelStaff extends ItemStaff {
+public class AmelStaff extends ItemStaff implements FullyAmelInterface {
     public EntityAttributeModifier GRID_ZOOM = new EntityAttributeModifier(
         /* "What the fuck are you doing?"
          * Staves or something. You need to generate a random UUID once
@@ -39,4 +39,7 @@ public class AmelStaff extends ItemStaff {
         }
         return out;
     }
+    
+    @Override
+    public int getRequiredAmelToMakeFromBase() { return 1; }
 }

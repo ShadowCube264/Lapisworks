@@ -1,7 +1,6 @@
 {
     "replace": false,
     "values": [
-        "lapisworks:staves/amel_staff",
         "lapisworks:staves/incomplete/generic",
         "lapisworks:staves/incomplete/acacia",
         "lapisworks:staves/incomplete/bamboo",
@@ -15,9 +14,6 @@
         "lapisworks:staves/incomplete/mindsplice",
         "lapisworks:staves/incomplete/oak",
         "lapisworks:staves/incomplete/spruce",
-        "lapisworks:staves/incomplete/warped",
-        "lapisworks:staves/amel_ring",
-        "lapisworks:staves/amel_ring2",
-        "lapisworks:staves/ring"
+        "lapisworks:staves/incomplete/warped"
     ]
 }

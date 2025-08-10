@@ -6,6 +6,7 @@ import at.petrak.hexcasting.common.lib.HexItems;
 import com.luxof.lapisworks.items.AmelRing;
 import com.luxof.lapisworks.items.AmelStaff;
 import com.luxof.lapisworks.items.CastingRing;
+import com.luxof.lapisworks.items.FullyAmelInterface;
 import com.luxof.lapisworks.items.PartiallyAmelStaff;
 import static com.luxof.lapisworks.Lapisworks.id;
 
@@ -29,7 +30,7 @@ public class ModItems {
     public static final Item AMEL_ITEM = new Item(fullStack);
     public static final Item AMEL2_ITEM = new Item(fullStack);
     public static final Item AMEL3_ITEM = new Item(fullStack);
-    public static final Item AMEL_STAFF = new AmelStaff(unstackable);
+    public static final FullyAmelInterface AMEL_STAFF = new AmelStaff(unstackable);
     public static final PartiallyAmelStaff PARTAMEL_STAFF = new PartiallyAmelStaff(partamel);
     public static final PartiallyAmelStaff PARTAMEL_ACACIA_STAFF = new PartiallyAmelStaff(partamel);
     public static final PartiallyAmelStaff PARTAMEL_BAMBOO_STAFF = new PartiallyAmelStaff(partamel);
@@ -44,8 +45,12 @@ public class ModItems {
     public static final PartiallyAmelStaff PARTAMEL_OAK_STAFF = new PartiallyAmelStaff(partamel);
     public static final PartiallyAmelStaff PARTAMEL_SPRUCE_STAFF = new PartiallyAmelStaff(partamel);
     public static final PartiallyAmelStaff PARTAMEL_WARPED_STAFF = new PartiallyAmelStaff(partamel);
+    public static final FullyAmelInterface AMEL_RING = new AmelRing(unstackable);
+    public static final FullyAmelInterface AMEL_RING2 = new AmelRing(unstackable) {
+        @Override
+        public int whichOneAmI() { return 1; }
+    };
     public static final CastingRing CASTING_RING = new CastingRing(unstackable);
-    public static final AmelRing AMEL_RING = new AmelRing(unstackable);
 
     private static final List<String> itemNames = List.of(
         "amel",
@@ -66,14 +71,15 @@ public class ModItems {
         "staves/incomplete/oak",
         "staves/incomplete/spruce",
         "staves/incomplete/warped",
-        "staves/ring",
-        "staves/amel_ring"
+        "staves/amel_ring",
+        "staves/amel_ring2",
+        "staves/ring"
     );
     private static final List<Item> items = List.of(
         AMEL_ITEM,
         AMEL2_ITEM,
         AMEL3_ITEM,
-        AMEL_STAFF,
+        (Item)AMEL_STAFF,
         PARTAMEL_STAFF,
         PARTAMEL_ACACIA_STAFF,
         PARTAMEL_BAMBOO_STAFF,
@@ -88,6 +94,8 @@ public class ModItems {
         PARTAMEL_OAK_STAFF,
         PARTAMEL_SPRUCE_STAFF,
         PARTAMEL_WARPED_STAFF,
+        (Item)AMEL_RING,
+        (Item)AMEL_RING2,
         CASTING_RING
     );
 

@@ -14,7 +14,7 @@ import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.ItemStack;
 
-public class AmelRing extends ItemStaff implements HexBaubleItem {
+public class AmelRing extends ItemStaff implements HexBaubleItem, FullyAmelInterface {
     public EntityAttributeModifier GRID_ZOOM = new EntityAttributeModifier(
         UUID.fromString("a897e19e-b03f-43ee-970f-d0f657b88a49"),
         "Amel Ring Focus",
@@ -41,4 +41,9 @@ public class AmelRing extends ItemStaff implements HexBaubleItem {
         out.put(HexAttributes.GRID_ZOOM, GRID_ZOOM);
         return out;
     }
+
+    @Override
+    public int getRequiredAmelToMakeFromBase() { return 10; }
+
+    public int whichOneAmI() { return 0; }
 }
