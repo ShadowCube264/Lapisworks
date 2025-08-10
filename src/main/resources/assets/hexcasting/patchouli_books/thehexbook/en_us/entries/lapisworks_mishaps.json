@@ -18,6 +18,11 @@
             "type": "patchouli:text",
             "title": "pages.lapisworks.lapisworks_mishaps.leveltoohigh.title",
             "text": "pages.lapisworks.lapisworks_mishaps.leveltoohigh.summary"
+        },
+        {
+            "type": "patchouli:text",
+            "title": "pages.lapisworks.lapisworks_mishaps.badmainhand.title",
+            "text": "pages.lapisworks.lapisworks_mishaps.badmainhand.summary"
         }
     ]
 }

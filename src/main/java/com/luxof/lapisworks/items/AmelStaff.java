@@ -12,22 +12,23 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 
-public class AmelStaff extends ItemStaff {
+public class AmelStaff extends ItemStaff implements FullyAmelInterface {
     public EntityAttributeModifier GRID_ZOOM = new EntityAttributeModifier(
-        /* "Nani the fuck are you doing?"
-         * Staffs or something. You need to generate a random UUID once
-         * and use it for every attributemodifer.
+        /* "What the fuck are you doing?"
+         * Staves or something. You need to generate a random UUID once
+         * and use it for every EntityAttributeModifier.
          * "why??"
          * i don't know either.
          * "what the fuck."
-         * yeah.
+         * me too.
          */
-        UUID.fromString("a897e19e-b03f-43ee-970f-d0f657b88a49"),
+        UUID.fromString("a370ec84-ea18-4de6-8730-4271516dcf9c"),
         "Amel Staff Zoom",
-        0.5,
+        0.25,
         EntityAttributeModifier.Operation.MULTIPLY_BASE
     );
 
+    public AmelStaff() { super(new FabricItemSettings().maxCount(1)); }
     public AmelStaff(FabricItemSettings props) { super(props); }
 
     @Override
@@ -35,9 +36,10 @@ public class AmelStaff extends ItemStaff {
         HashMultimap<EntityAttribute, EntityAttributeModifier> out = HashMultimap.create(super.getAttributeModifiers(slot));
         if (slot == EquipmentSlot.MAINHAND || slot == EquipmentSlot.OFFHAND) {
             out.put(HexAttributes.GRID_ZOOM, GRID_ZOOM);
-        }// else if (slot == EquipmentSlot.OFFHAND) {
-        //    out.put(HexAttributes.GRID_ZOOM, GRID_ZOOM_OFFHAND);
-        //}
+        }
         return out;
     }
+    
+    @Override
+    public int getRequiredAmelToMakeFromBase() { return 1; }
 }

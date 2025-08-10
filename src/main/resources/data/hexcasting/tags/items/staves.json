@@ -1,6 +1,23 @@
 {
     "replace": false,
     "values": [
-        "lapisworks:amel_staff"
+        "lapisworks:staves/amel_staff",
+        "lapisworks:staves/incomplete/generic",
+        "lapisworks:staves/incomplete/acacia",
+        "lapisworks:staves/incomplete/bamboo",
+        "lapisworks:staves/incomplete/birch",
+        "lapisworks:staves/incomplete/cherry",
+        "lapisworks:staves/incomplete/crimson",
+        "lapisworks:staves/incomplete/dark_oak",
+        "lapisworks:staves/incomplete/edified",
+        "lapisworks:staves/incomplete/jungle",
+        "lapisworks:staves/incomplete/mangrove",
+        "lapisworks:staves/incomplete/mindsplice",
+        "lapisworks:staves/incomplete/oak",
+        "lapisworks:staves/incomplete/spruce",
+        "lapisworks:staves/incomplete/warped",
+        "lapisworks:staves/amel_ring",
+        "lapisworks:staves/amel_ring2",
+        "lapisworks:staves/ring"
     ]
 }

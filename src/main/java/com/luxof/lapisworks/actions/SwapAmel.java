@@ -22,6 +22,7 @@ import net.minecraft.util.Hand;
 
 import com.luxof.lapisworks.MishapThrowerJava;
 import com.luxof.lapisworks.ModItems;
+import com.luxof.lapisworks.items.AmelRing;
 
 public class SwapAmel implements SpellAction {
     public int getArgc() {
@@ -40,11 +41,18 @@ public class SwapAmel implements SpellAction {
             MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "amel"));
         }
 
-        int idx = ModItems.AMEL_MODELS.indexOf(offHandItems.getItem());
-        if (idx == -1) {
-            MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "amel"));
+        Item swapWith;
+        if (offHandItems.getItem() instanceof AmelRing) {
+            if (((AmelRing)offHandItems.getItem()).whichOneAmI() == 0) {
+                swapWith = (Item)ModItems.AMEL_RING2;
+            } else {
+                swapWith = (Item)ModItems.AMEL_RING;
+            }
+        } else {
+            int idx = ModItems.AMEL_MODELS.indexOf(offHandItems.getItem());
+            if (idx == -1) { MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "amel")); }
+            swapWith = ModItems.AMEL_MODELS.get(idx + 1);
         }
-        Item swapWith = ModItems.AMEL_MODELS.get(idx + 1);
         
         int count = offHandItems.getCount();
 
