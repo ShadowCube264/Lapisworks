@@ -10,15 +10,21 @@
             "text": "pages.lapisworks.imbuement_staves.lore"
         },
         {
-            "type": "patchouli:spotlight",
-            "item": "lapisworks:staves/incomplete/generic,lapisworks:staves/incomplete/acacia,lapisworks:staves/incomplete/bamboo,lapisworks:staves/incomplete/birch,lapisworks:staves/incomplete/cherry,lapisworks:staves/incomplete/crimson,lapisworks:staves/incomplete/dark_oak,lapisworks:staves/incomplete/edified,lapisworks:staves/incomplete/jungle,lapisworks:staves/incomplete/mangrove,lapisworks:staves/incomplete/mindsplice,lapisworks:staves/incomplete/oak,lapisworks:staves/incomplete/spruce,lapisworks:staves/incomplete/warped",
+            "type": "patchouli:image",
             "title": "pages.lapisworks.imbuement_staves.incomplete_staves.title",
+            "images": [
+                "lapisworks:textures/entries/staves.png"
+            ],
             "text": "pages.lapisworks.imbuement_staves.incomplete_staves.text"
         },
         {
+            "type": "patchouli:text",
+            "text": "pages.lapisworks.imbuement_staves.incomplete_staves.detail"
+        },
+        {
             "type": "patchouli:spotlight",
-            "item": "lapisworks:staves/amel_staff",
             "title": "pages.lapisworks.imbuement_staves.full_amel_staff.title",
+            "item": "lapisworks:staves/amel_staff",
             "text": "pages.lapisworks.imbuement_staves.full_amel_staff.text"
         }
     ]

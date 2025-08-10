@@ -15,16 +15,20 @@
         },
         {
             "type": "patchouli:crafting",
-            "recipe": "lapisworks:ring",
-            "title": "pages.lapisworks.imbuement_rings.recipe_title"
+            "title": "pages.lapisworks.imbuement_rings.recipe_title",
+            "recipe": "lapisworks:ring"
         },
         {
-            "type": "patchouli:text",
-            "text": "pages.lapisworks.imbuement_rings.recipe_next_page"
+            "type": "patchouli:spotlight",
+            "title": "pages.lapisworks.imbuement_rings.ring_spotlightpage.title",
+            "item": "lapisworks:staves/ring",
+            "text": "pages.lapisworks.imbuement_rings.ring_spotlightpage.desc"
         },
         {
-            "type": "patchouli:text",
-            "text": "pages.lapisworks.imbuement_rings.amel_ring",
+            "type": "patchouli:spotlight",
+            "title": "pages.lapisworks.imbuement_rings.amel_ring_spotlightpage.title",
+            "item": "lapisworks:staves/amel_ring",
+            "text": "pages.lapisworks.imbuement_rings.amel_ring_spotlightpage.desc",
             "anchor": "lapisworks:amel_ring"
         },
         {
