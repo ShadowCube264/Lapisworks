@@ -29,7 +29,7 @@
             "type": "patchouli:spotlight",
             "title": "pages.lapisworks.imbuement_swords.gold.title",
             "item": "lapisworks:amel_constructs/iron_sword",
-            "text": "pages.lapisworks.imbuement_sword.iron.desc"
+            "text": "pages.lapisworks.imbuement_swords.iron.desc"
         }
     ]
 }
