@@ -37,7 +37,9 @@ public class LapisworksClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        LOGGER.info("Hello everybody my name is LapisworksClient and today we are going to: register a keybind, networking, and Model Predicate Providers!");
+        // the eternal fucking grammar battle with this simple Markiplier ass log will drive me insane
+        // thankful i won't have to edit this file anymore
+        LOGGER.info("Hello everybody my name is LapisworksClient and today we are going to do is: register a keybind, networking, and Model Predicate Providers!");
         useCastingRing = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "keys.lapisworks.use_casting_ring",
             InputUtil.Type.KEYSYM,

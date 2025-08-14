@@ -27,21 +27,22 @@ public interface DamageSupportInterface {
 	) {
 		if (source.getAttacker() == null) { return true; }
 		else if (!(source.getAttacker() instanceof LivingEntity)) { return true; }
-		else if (!thisObject.isUsingItem()) { return true; }
 		Hand hand = thisObject.getActiveHand();
 		ItemStack stack = thisObject.getStackInHand(hand);
 		LivingEntity attacker = (LivingEntity)source.getAttacker();
 		ItemStack attackerStack = attacker.getStackInHand(attacker.getActiveHand());
 		boolean attackerHoldingAxe = attackerStack.getItem() instanceof AxeItem;
 		
-		if (stack.getItem() instanceof GoldSword) {
+		
+		if (attackerStack.getItem() instanceof GoldSword) {
 			thisObject.addStatusEffect(
-				new StatusEffectInstance(StatusEffects.POISON, 10)
+				new StatusEffectInstance(StatusEffects.POISON, 20 * 10)
 			);
 			stack.damage(9, thisObject, (any) -> {});
 			return true;
 		}
 		else if (!(stack.getItem() instanceof IronSword)) { return true; }
+		else if (!thisObject.isUsingItem()) { return true; }
 
 
 		if (thisObject.getItemUseTime() < 5) {
