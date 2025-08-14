@@ -13,10 +13,22 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.registry.tag.DamageTypeTags;
 
 @Mixin(Entity.class)
 public class EntityMixin {
+	@Inject(at = @At("HEAD"), method = "isInvulnerableTo", cancellable = true)
+	public void isInvulnerableTo(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir) {
+        if ((Object)this instanceof LivingEntity) {
+            if (damageSource.isIn(DamageTypeTags.IS_FIRE) &&
+                ((LapisworksInterface)this).checkFireResist() >= 1) {
+                cir.setReturnValue(true);
+            }
+        }
+	}
+
     @Inject(at = @At("HEAD"), method = "readNbt")
 	public void readNbt(NbtCompound nbt, CallbackInfo ci) {
         if ((Object)this instanceof LivingEntity) {

@@ -15,7 +15,8 @@ import at.petrak.hexcasting.api.misc.MediaConstants;
 
 import com.luxof.lapisworks.MishapThrowerJava;
 import com.luxof.lapisworks.ModItems;
-import com.luxof.lapisworks.items.PartiallyAmelInterface;
+import com.luxof.lapisworks.items.shit.FullyAmelInterface;
+import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
 import com.luxof.lapisworks.mishaps.MishapBadMainhandItem;
 import com.luxof.lapisworks.mishaps.MishapNotEnoughOffhandItems;
 
@@ -73,13 +74,17 @@ public class ImbueAmel implements SpellAction {
         }
         infuseAmount = Math.min(infuseAmount, requiredAmelToComplete);
 
+        FullyAmelInterface fullAmelItem = getFullAmelFromNorm(mainHandItems.getItem());
+
         if (offHandItems.getCount() < infuseAmount) {
             MishapThrowerJava.throwMishap(new MishapNotEnoughOffhandItems(offHandItems, infuseAmount));
+        } else if (infuseAmount < requiredAmelToComplete && fullAmelItem.noPartAmelPhase()) {
+            MishapThrowerJava.throwMishap(new MishapNotEnoughOffhandItems(offHandItems, requiredAmelToComplete));
         }
 
         ItemStack changeToItem;
         if (infuseAmount == requiredAmelToComplete) {
-            changeToItem = new ItemStack((Item)getFullAmelFromNorm(mainHandItems.getItem()), 1);
+            changeToItem = new ItemStack((Item)fullAmelItem, 1);
         } else if (infuseAmount > 0) { // don't fuck up my shit by trying to infuse 0 amel into a ring
             PartiallyAmelInterface partAmelItem = getPartAmelFromNorm(mainHandItems.getItem());
             changeToItem = new ItemStack((Item)partAmelItem, 1);

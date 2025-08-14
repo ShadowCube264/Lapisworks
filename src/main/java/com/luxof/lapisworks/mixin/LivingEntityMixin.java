@@ -1,5 +1,6 @@
 package com.luxof.lapisworks.mixin;
 
+import com.luxof.lapisworks.mixinsupport.DamageSupportInterface;
 import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
 
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -17,17 +18,15 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 import java.util.List;
-import java.util.Random;
 
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(LivingEntity.class)
-public abstract class LivingEntityMixin implements LapisworksInterface {
+public abstract class LivingEntityMixin implements LapisworksInterface, DamageSupportInterface {
 
 	public AttributeContainer juicedUpVals = new AttributeContainer(
 		DefaultAttributeContainer.builder()
@@ -41,14 +40,15 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 	public int lightningBending = 0;
 	public int fallDmgRes = 0;
 	public int longBreath = 0;
+	public int fireResist = 0;
 
-	@Inject(at = @At("HEAD"), method = "onDeath", cancellable = true)
+	@Inject(at = @At("HEAD"), method = "onDeath")
 	public void onDeath(DamageSource damageSource, CallbackInfo ci) {
 		this.setAllJuicedUpAttrsToZero();
 		this.setAllEnchantsToZero();
 	}
 
-	@Inject(at = @At("HEAD"), method = "onAttacking", cancellable = true)
+	@Inject(at = @At("HEAD"), method = "onAttacking")
 	public void onAttacking(Entity target, CallbackInfo ci) {
 		if (target instanceof LivingEntity) {
 			if (this.checkFireyFists() == 1) {
@@ -87,7 +87,7 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 		);
 	}
 
-	@Inject(at = @At("HEAD"), method = "getNextAirOnLand", cancellable = true)
+	@Inject(at = @At("HEAD"), method = "getNextAirOnLand")
 	public void getNextAirOnLand(int air, CallbackInfoReturnable<Integer> cir) {
 		cir.setReturnValue(
 			Math.min(
@@ -96,6 +96,13 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 				((LivingEntity)(Object)this).getMaxAir()
 			)
 		);
+	}
+
+	@Inject(at = @At("HEAD"), method = "damage", cancellable = true)
+	public void damage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+		if (!this.damageHelper(source, amount, (LivingEntity)(Object)this, this.getEnchantments())) {
+			cir.setReturnValue(false);
+		}
 	}
 
 	@Override
@@ -129,6 +136,9 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 	@Override public int checkLongBreath() { return this.longBreath; }
 	@Override public void setLongBreath(int level) { this.longBreath = level; }
 
+	@Override public int checkFireResist() { return this.fireResist; }
+	@Override public void setFireResist(int level) { this.fireResist = level; }
+
 	@Override
 	public AttributeContainer getLapisworksAttributes() { return this.juicedUpVals; }
 	@Override
@@ -140,7 +150,8 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 			this.checkFireyFists(),
 			this.checkLightningBending(),
 			this.checkFallDmgRes(),
-			this.checkLongBreath()
+			this.checkLongBreath(),
+			this.checkFireResist()
 		);
 	}
 
@@ -151,6 +162,7 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 		this.setLightningBending(size >= 2 ? levels[1] : 0);
 		this.setFallDmgRes(size >= 3 ? levels[2] : 0);
 		this.setLongBreath(size >= 4 ? levels[3] : 0);
+		this.setFireResist(size >= 5 ? levels[4] : 0);
 	}
 
 	@Override
@@ -159,5 +171,6 @@ public abstract class LivingEntityMixin implements LapisworksInterface {
 		this.setLightningBending(0);
 		this.setFallDmgRes(0);
 		this.setLongBreath(0);
+		this.setFireResist(0);
 	}
 }

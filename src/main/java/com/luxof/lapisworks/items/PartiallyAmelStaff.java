@@ -5,6 +5,7 @@ import at.petrak.hexcasting.common.lib.HexAttributes;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
 
 import java.util.UUID;
 

@@ -6,8 +6,13 @@ import at.petrak.hexcasting.common.lib.HexItems;
 import com.luxof.lapisworks.items.AmelRing;
 import com.luxof.lapisworks.items.AmelStaff;
 import com.luxof.lapisworks.items.CastingRing;
-import com.luxof.lapisworks.items.FullyAmelInterface;
+import com.luxof.lapisworks.items.DiamondSword;
+import com.luxof.lapisworks.items.GoldSword;
+import com.luxof.lapisworks.items.IronSword;
 import com.luxof.lapisworks.items.PartiallyAmelStaff;
+import com.luxof.lapisworks.items.shit.AmelSword;
+import com.luxof.lapisworks.items.shit.FullyAmelInterface;
+
 import static com.luxof.lapisworks.Lapisworks.id;
 
 import java.util.List;
@@ -51,6 +56,9 @@ public class ModItems {
         public int whichOneAmI() { return 1; }
     };
     public static final CastingRing CASTING_RING = new CastingRing(unstackable);
+    public static final AmelSword DIAMOND_SWORD = new DiamondSword();
+    public static final AmelSword IRON_SWORD = new IronSword();
+    public static final AmelSword GOLD_SWORD = new GoldSword();
 
     private static final List<String> itemNames = List.of(
         "amel",
@@ -73,7 +81,10 @@ public class ModItems {
         "staves/incomplete/warped",
         "staves/amel_ring",
         "staves/amel_ring2",
-        "staves/ring"
+        "staves/ring",
+        "amel_constructs/diamond_sword",
+        "amel_constructs/iron_sword",
+        "amel_constructs/gold_sword"
     );
     private static final List<Item> items = List.of(
         AMEL_ITEM,
@@ -96,7 +107,10 @@ public class ModItems {
         PARTAMEL_WARPED_STAFF,
         (Item)AMEL_RING,
         (Item)AMEL_RING2,
-        CASTING_RING
+        CASTING_RING,
+        DIAMOND_SWORD,
+        IRON_SWORD,
+        GOLD_SWORD
     );
 
     public static final List<Item> AMEL_MODELS = List.of(AMEL_ITEM, AMEL2_ITEM, AMEL3_ITEM);

@@ -5,7 +5,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import com.luxof.lapisworks.items.PartiallyAmelInterface;
+import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
 
 import at.petrak.hexcasting.common.items.ItemStaff;
 import net.minecraft.entity.player.PlayerEntity;

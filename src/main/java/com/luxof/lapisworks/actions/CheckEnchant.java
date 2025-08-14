@@ -22,7 +22,7 @@ public class CheckEnchant implements ConstMediaAction {
                 (
                     (LapisworksInterface)OperatorUtils.getLivingEntityButNotArmorStand(args, 1, getArgc())
                 ).getEnchantments().get(
-                    OperatorUtils.getIntBetween(args, 0, 0, 2, getArgc())
+                    OperatorUtils.getIntBetween(args, 0, 0, 4, getArgc())
                 )
             )
         );

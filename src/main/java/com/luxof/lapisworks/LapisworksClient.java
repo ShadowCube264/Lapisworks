@@ -1,8 +1,10 @@
 package com.luxof.lapisworks;
 
-import static com.luxof.lapisworks.LapisworksNetworking.OPEN_CASTING_GRID;
 import static com.luxof.lapisworks.Lapisworks.LOGGER;
 import static com.luxof.lapisworks.Lapisworks.trinketEquipped;
+import static com.luxof.lapisworks.Lapisworks.id;
+import static com.luxof.lapisworks.LapisworksNetworking.OPEN_CASTING_GRID;
+import static com.luxof.lapisworks.ModItems.IRON_SWORD;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -10,6 +12,7 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.item.ModelPredicateProviderRegistry;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.item.Item;
@@ -22,9 +25,19 @@ import at.petrak.hexcasting.common.lib.HexSounds;
 public class LapisworksClient implements ClientModInitializer {
     public static KeyBinding useCastingRing;
 
+    public void registerMPPs() {
+        ModelPredicateProviderRegistry.register(
+            IRON_SWORD,
+            id("blocking"), // first person doesn't work but WHATEVER
+            (stack, world, entity, seed) -> {
+                return entity != null && entity.isUsingItem() && entity.getActiveItem() == stack ? 1.0F : 0.0F;
+            }    
+        );
+    }
+
     @Override
     public void onInitializeClient() {
-        LOGGER.info("Hello everybody my name is LapisworksClient and today we are going to register some keybinds and doing some networking!");
+        LOGGER.info("Hello everybody my name is LapisworksClient and today we are going to: register a keybind, networking, and Model Predicate Providers!");
         useCastingRing = KeyBindingHelper.registerKeyBinding(new KeyBinding(
             "keys.lapisworks.use_casting_ring",
             InputUtil.Type.KEYSYM,

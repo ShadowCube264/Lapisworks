@@ -56,6 +56,14 @@
             "input": "entity",
             "output": "",
             "text": "pages.lapisworks.lapisworks_great.longbreath.summary"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:fireresist",
+            "anchor": "lapisworks:fireresist",
+            "input": "entity",
+            "output": "",
+            "text": "pages.lapisworks.lapisworks_great.fireresist.summary"
         }
     ]
 }

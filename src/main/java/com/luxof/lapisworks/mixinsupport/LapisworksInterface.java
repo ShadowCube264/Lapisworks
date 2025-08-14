@@ -25,6 +25,9 @@ public interface LapisworksInterface {
     int checkLongBreath();
     void setLongBreath(int level);
 
+    int checkFireResist();
+    void setFireResist(int level);
+
     void setEnchantmentLevel(int whatEnchant, int level);
     List<Integer> getEnchantments();
     void setEnchantments(int[] levels); // this is meant for nbt shit
