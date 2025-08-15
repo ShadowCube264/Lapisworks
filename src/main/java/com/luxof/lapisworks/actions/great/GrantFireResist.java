@@ -29,7 +29,7 @@ import com.luxof.lapisworks.mishaps.MishapAlreadyHasEnchantment;
 import com.luxof.lapisworks.mishaps.MishapNotEnoughOffhandItems;
 import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
 
-public class EnchantFire implements SpellAction {
+public class GrantFireResist implements SpellAction {
     public int getArgc() {
         return 1;
     }
@@ -41,11 +41,11 @@ public class EnchantFire implements SpellAction {
         }
         LivingEntity entity = OperatorUtils.getPlayer(args, 0, getArgc());
 
-        if (((LapisworksInterface)entity).checkFireyFists() >= 1) {
+        if (((LapisworksInterface)entity).checkFireResist() >= 1) {
             MishapThrowerJava.throwMishap(
                 new MishapAlreadyHasEnchantment(
                     entity,
-                    Text.translatable("lapisenchantments.lapisworks.fireyfists"),
+                    Text.translatable("lapisenchantments.lapisworks.fireresist"),
                     0,
                     1
                 )
@@ -87,7 +87,7 @@ public class EnchantFire implements SpellAction {
 		@Override
 		public void cast(CastingEnvironment ctx) {
             caster.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY);
-            ((LapisworksInterface)this.entity).setFireyFists(1);
+            ((LapisworksInterface)this.entity).setFireResist(1);
 		}
 
         @Override

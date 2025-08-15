@@ -4,6 +4,7 @@ import java.util.UUID;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
+import com.luxof.lapisworks.items.shit.FullyAmelInterface;
 
 import at.petrak.hexcasting.common.items.HexBaubleItem;
 import at.petrak.hexcasting.common.items.ItemStaff;

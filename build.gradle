@@ -70,8 +70,14 @@ dependencies {
 	implementation("ws.schild:jave-nativebin-win64:3.5.0")
 }
 
+tasks.withType(Jar).configureEach {
+    if (name == 'sourcesJar') {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
+}
+
 processResources {
-	duplicatesStrategy 'exclude'
+	duplicatesStrategy 'exclude' // arcane magic i dont understand
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {

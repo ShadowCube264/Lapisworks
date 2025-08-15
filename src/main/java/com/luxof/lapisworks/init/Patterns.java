@@ -18,6 +18,7 @@ import com.luxof.lapisworks.actions.great.EnchantFallDmgRes;
 import com.luxof.lapisworks.actions.great.EnchantFire;
 import com.luxof.lapisworks.actions.great.EnchantLightning;
 import com.luxof.lapisworks.actions.great.EnchantLongBreath;
+import com.luxof.lapisworks.actions.great.GrantFireResist;
 import com.luxof.lapisworks.actions.CheckEnchant;
 import com.luxof.lapisworks.actions.ImbueAmel;
 
@@ -69,6 +70,7 @@ public class Patterns {
         register("lightningbending", "wewdawdewqewdqqeedqe", HexDir.EAST, new EnchantLightning());
         register("falldmgres", "qqwwqqqadwewdeq", HexDir.SOUTH_WEST, new EnchantFallDmgRes());
         register("longbreath", "wewdwewewewewdwew", HexDir.SOUTH_EAST, new EnchantLongBreath());
+        register("fireresist", "wwqwqwadwawdawqwaeqqaqqe", HexDir.EAST, new GrantFireResist());
         register("checkenchant", "aqawwqqwqqw", HexDir.SOUTH_EAST, new CheckEnchant());
 
         register("imbue_amel", "wqwwawwqwwaqwewaawewa", HexDir.NORTH_EAST, new ImbueAmel());
