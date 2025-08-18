@@ -4,7 +4,7 @@ import static com.luxof.lapisworks.Lapisworks.LOGGER;
 import static com.luxof.lapisworks.Lapisworks.trinketEquipped;
 import static com.luxof.lapisworks.Lapisworks.id;
 import static com.luxof.lapisworks.LapisworksNetworking.OPEN_CASTING_GRID;
-import static com.luxof.lapisworks.ModItems.IRON_SWORD;
+import static com.luxof.lapisworks.init.ModItems.IRON_SWORD;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
@@ -19,6 +19,8 @@ import net.minecraft.item.Item;
 import net.minecraft.network.PacketByteBuf;
 
 import org.lwjgl.glfw.GLFW;
+
+import com.luxof.lapisworks.init.ModItems;
 
 import at.petrak.hexcasting.common.lib.HexSounds;
 

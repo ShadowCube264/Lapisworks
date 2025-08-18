@@ -14,7 +14,7 @@ import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 
 import com.luxof.lapisworks.MishapThrowerJava;
-import com.luxof.lapisworks.ModItems;
+import com.luxof.lapisworks.init.ModItems;
 import com.luxof.lapisworks.items.shit.FullyAmelInterface;
 import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
 import com.luxof.lapisworks.mishaps.MishapBadMainhandItem;

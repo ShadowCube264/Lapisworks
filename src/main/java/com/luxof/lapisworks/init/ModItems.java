@@ -1,4 +1,4 @@
-package com.luxof.lapisworks;
+package com.luxof.lapisworks.init;
 
 import at.petrak.hexcasting.common.items.ItemStaff;
 import at.petrak.hexcasting.common.lib.HexItems;

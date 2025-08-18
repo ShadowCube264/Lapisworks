@@ -38,7 +38,7 @@ public interface DamageSupportInterface {
 			thisObject.addStatusEffect(
 				new StatusEffectInstance(StatusEffects.POISON, 20 * 10)
 			);
-			stack.damage(9, thisObject, (any) -> {});
+			stack.damage(9, attacker, (any) -> {});
 			return true;
 		}
 		else if (!(stack.getItem() instanceof IronSword)) { return true; }

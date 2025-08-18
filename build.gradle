@@ -66,8 +66,6 @@ dependencies {
 	modImplementation("dev.emi:trinkets:${trinkets_version}")
 	modApi "me.shedaniel.cloth:cloth-config-fabric:11.1.136"
 	modLocalRuntime files("${rootProject.rootDir}\\libs\\serialization-hooks-0.4.99999.jar") // what even is this?
-	implementation("ws.schild:jave-core:3.5.0")
-	implementation("ws.schild:jave-nativebin-win64:3.5.0")
 }
 
 tasks.withType(Jar).configureEach {
@@ -128,8 +126,4 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 	}
-}
-
-fabricApi {
-    configureDataGeneration()
 }

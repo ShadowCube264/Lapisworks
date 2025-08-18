@@ -22,7 +22,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Hand;
 
 import com.luxof.lapisworks.MishapThrowerJava;
-import com.luxof.lapisworks.ModItems;
+import com.luxof.lapisworks.init.ModItems;
 
 public class ImbueLap implements SpellAction {
     public int getArgc() {

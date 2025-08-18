@@ -24,7 +24,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Hand;
 
 import com.luxof.lapisworks.MishapThrowerJava;
-import com.luxof.lapisworks.ModItems;
+import com.luxof.lapisworks.init.ModItems;
 import com.luxof.lapisworks.mishaps.MishapNotEnoughOffhandItems;
 import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
 

@@ -50,7 +50,7 @@ public abstract class LivingEntityMixin implements LapisworksInterface, DamageSu
 
 	@Inject(at = @At("HEAD"), method = "onAttacking")
 	public void onAttacking(Entity target, CallbackInfo ci) {
-		if (target instanceof LivingEntity) {
+		if (target instanceof LivingEntity && !target.getWorld().isClient) {
 			if (this.checkFireyFists() == 1) {
 				((LivingEntity)target).setOnFireFor(3);
 			}
@@ -63,7 +63,7 @@ public abstract class LivingEntityMixin implements LapisworksInterface, DamageSu
 				lightningbendingLevel == 3) {
 				LightningEntity lightning = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
 				lightning.setPos(targetPos.x, targetPos.y, targetPos.z);
-				// why?
+				// why? vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 				world.getServer().getWorld(world.getRegistryKey()).tryLoadEntity(lightning);
 			}
 		}
@@ -87,7 +87,7 @@ public abstract class LivingEntityMixin implements LapisworksInterface, DamageSu
 		);
 	}
 
-	@Inject(at = @At("HEAD"), method = "getNextAirOnLand")
+	@Inject(at = @At("HEAD"), method = "getNextAirOnLand", cancellable = true)
 	public void getNextAirOnLand(int air, CallbackInfoReturnable<Integer> cir) {
 		cir.setReturnValue(
 			Math.min(

@@ -8,8 +8,7 @@
 		"Luxof"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "https://github.com/Real-Luxof/Lapisworks"
 	},
 	"license": "CC0-1.0",
 	"icon": "assets/lapisworks/icon.png",
@@ -24,9 +23,6 @@
 		],
 		"client": [
 			"com.luxof.lapisworks.LapisworksClient"
-		],
-		"fabric-datagen": [
-			"com.luxof.lapisworks.datagen.Advancements"
 		]
 	},
 	"mixins": [
