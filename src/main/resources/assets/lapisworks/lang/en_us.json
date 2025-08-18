@@ -69,6 +69,12 @@
     "hexcasting.action.book.lapisworks:imbue_amel": "Imbue with Amel",
     "hexcasting.action.lapisworks:conjure_color": "Conjure Solid Color",
     "hexcasting.action.book.lapisworks:conjure_color": "Conjure Solid Color",
+    "hexcasting.action.lapisworks:spherical_dstl": "Spherical Distillation",
+    "hexcasting.action.book.lapisworks:spherical_dstl": "Spherical Distillation",
+    "hexcasting.action.lapisworks:cubic_exalt": "Cubic Exaltation",
+    "hexcasting.action.book.lapisworks.cubic_exalt": "Cubic Exaltation",
+    "hexcasting.action.lapisworks:visible_dstl": "Visible Distillation",
+    "hexcasting.action.book.lapisworks:visible_dstl": "Visible Distillation",
 
 
     "lapisenchantments.lapisworks.fireyfists": "FireyFists",
