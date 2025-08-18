@@ -8,8 +8,7 @@
 		"EntityMixin",
 		"ItemMixin",
 		"ItemStaffMixin",
-		"GuiSpellcastingMixin",
-		"RaycastContextMixin"
+		"GuiSpellcastingMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

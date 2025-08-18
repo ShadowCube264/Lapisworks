@@ -87,6 +87,30 @@
         {
             "type": "patchouli:text",
             "text": "pages.lapisworks.lapisworks_patterns.conjure_color.detail"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:spherical_dstl",
+            "anchor": "lapisworks:spherical_dstl",
+            "input": "vec, num",
+            "output": "[vec]",
+            "text": "pages.lapisworks.lapisworks_patterns.spherical_dstl.summary"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:cubic_exalt",
+            "anchor": "lapisworks:cubic_exalt",
+            "input": "vec, num, bool",
+            "output": "[vec]",
+            "text": "pages.lapisworks.lapisworks_patterns.cubic_exalt.summary"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:visible_dstl",
+            "anchor": "lapisworks:visible_dstl",
+            "input": "vec, num",
+            "output": "bool",
+            "text": "pages.lapisworks.lapisworks_patterns.visible_dstl.summary"
         }
     ]
 }
