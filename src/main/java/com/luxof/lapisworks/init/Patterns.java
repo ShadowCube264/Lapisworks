@@ -13,13 +13,17 @@ import com.luxof.lapisworks.Lapisworks;
 import com.luxof.lapisworks.actions.CheckAttr;
 import com.luxof.lapisworks.actions.ImbueLap;
 import com.luxof.lapisworks.actions.SwapAmel;
+import com.luxof.lapisworks.actions.VisibleDstl;
 import com.luxof.lapisworks.actions.MoarAttr;
+import com.luxof.lapisworks.actions.SphereDst;
 import com.luxof.lapisworks.actions.great.EnchantFallDmgRes;
 import com.luxof.lapisworks.actions.great.EnchantFire;
 import com.luxof.lapisworks.actions.great.EnchantLightning;
 import com.luxof.lapisworks.actions.great.EnchantLongBreath;
 import com.luxof.lapisworks.actions.great.GrantFireResist;
 import com.luxof.lapisworks.actions.CheckEnchant;
+import com.luxof.lapisworks.actions.ConjureColor;
+import com.luxof.lapisworks.actions.CubeExalt;
 import com.luxof.lapisworks.actions.ImbueAmel;
 
 public class Patterns {
@@ -74,6 +78,10 @@ public class Patterns {
         register("checkenchant", "aqawwqqwqqw", HexDir.SOUTH_EAST, new CheckEnchant());
 
         register("imbue_amel", "wqwwawwqwwaqwewaawewa", HexDir.NORTH_EAST, new ImbueAmel());
+        register("conjure_color", "qqaa", HexDir.NORTH_EAST, new ConjureColor());
+        register("spherical_dstl", "wqwqwqwqwqwaeaqaaeaqaa", HexDir.NORTH_WEST, new SphereDst());
+        register("cubic_exalt", "wqwawqwqqwqwq", HexDir.NORTH_WEST, new CubeExalt());
+        register("visible_dstl", "edeewadwewdwe", HexDir.SOUTH_EAST, new VisibleDstl());
     }
 
     private static void register(

@@ -26,10 +26,14 @@
             "text": "pages.lapisworks.imbuement_swords.iron.desc2"
         },
         {
+            "type": "patchouli:text",
+            "text": "pages.lapisworks.imbuement_swords.iron.desc3"
+        },
+        {
             "type": "patchouli:spotlight",
             "title": "pages.lapisworks.imbuement_swords.gold.title",
-            "item": "lapisworks:amel_constructs/iron_sword",
-            "text": "pages.lapisworks.imbuement_swords.iron.desc"
+            "item": "lapisworks:amel_constructs/gold_sword",
+            "text": "pages.lapisworks.imbuement_swords.gold.desc"
         }
     ]
 }

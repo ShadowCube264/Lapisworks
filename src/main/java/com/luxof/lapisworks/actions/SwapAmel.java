@@ -21,7 +21,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Hand;
 
 import com.luxof.lapisworks.MishapThrowerJava;
-import com.luxof.lapisworks.ModItems;
+import com.luxof.lapisworks.init.ModItems;
 import com.luxof.lapisworks.items.AmelRing;
 
 public class SwapAmel implements SpellAction {

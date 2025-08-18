@@ -6,7 +6,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.luxof.lapisworks.Lapisworks;
-import com.luxof.lapisworks.ModItems;
+import com.luxof.lapisworks.init.ModItems;
 
 import at.petrak.hexcasting.client.gui.GuiSpellcasting;
 import net.minecraft.client.MinecraftClient;

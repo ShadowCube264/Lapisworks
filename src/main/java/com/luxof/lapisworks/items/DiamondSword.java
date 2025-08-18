@@ -64,20 +64,20 @@ public class DiamondSword extends AmelSword {
             8f
         );
 
-        try {
-            ParticleSpray.burst(hitEntity.getPos(), 3, 25)
-                .sprayParticles(
-                    world.getServer().getWorld(world.getRegistryKey()),
-                    new FrozenPigment(
-                        // this will bite me in the ass later wont it
-                        new ItemStack(HexItems.DYE_PIGMENTS.get(DyeColor.BLUE)),
-                        Util.NIL_UUID
-                    )
-                );
-        } catch (Exception e) {
-            LOGGER.error("It DID bite me in the ass. If anyone's reading this, it's eithew Wuxof's fauww ow Hex Casting's fauww ow somethiwng OwO awd thwis is why youw swowd wasn't making pawtickwes! OwO UwU");
-            e.printStackTrace();
-        }
+        // a look at hex casting's source reveals some double exclamation marks somewhere around here
+        // that's why it must be in a try-catch block
+        // or at least, i think it should
+        if (world.isClient) { return ret; }
+        ParticleSpray.burst(hitEntity.getPos(), 3, 25)
+            .sprayParticles(
+                world.getServer().getWorld(world.getRegistryKey()),
+                new FrozenPigment(
+                    // this will bite me in the ass later wont it
+                    // double exclamation marks:
+                    new ItemStack(HexItems.DYE_PIGMENTS.get(DyeColor.BLUE)), // right on this line sir
+                    Util.NIL_UUID
+                )
+            );
 
         return ret;
     }
