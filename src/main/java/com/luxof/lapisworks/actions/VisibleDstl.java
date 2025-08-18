@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.BooleanIota;
 import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
+import at.petrak.hexcasting.api.casting.mishaps.MishapBadLocation;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 
 import static com.luxof.lapisworks.Lapisworks.clamp;
@@ -33,8 +34,12 @@ public class VisibleDstl implements ConstMediaAction {
         if (casterOp.isEmpty()) { MishapThrowerJava.throwMishap(new MishapBadCaster()); }
         Vec3d start = OperatorUtils.getVec3(args, 1, getArgc());
         Vec3d endPoint = OperatorUtils.getVec3(args, 0, getArgc());
-        ctx.assertVecInRange(start);
-        ctx.assertVecInRange(endPoint);
+        try {
+            ctx.assertVecInRange(start);
+            ctx.assertVecInRange(endPoint);
+        } catch (MishapBadLocation e) {
+            MishapThrowerJava.throwMishap(e);
+        }
         Vec3d temp = endPoint.subtract(start);
         // real end point must be 1 block before the chosen end point.
         // yeah, this'll mean pure diagonals are funky, but whatever.
