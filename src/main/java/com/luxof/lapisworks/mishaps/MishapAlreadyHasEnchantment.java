@@ -25,18 +25,14 @@ public class MishapAlreadyHasEnchantment extends Mishap {
 
     @Override
     public FrozenPigment accentColor(CastingEnvironment ctx, Context errorCtx) {
-        if (this.whatEnchant == 0) {
-            return dyeColor(DyeColor.RED); // fireyfists
-        } else if (this.whatEnchant == 1) {
-            return dyeColor(DyeColor.WHITE); // lightningbending
-        } else if (this.whatEnchant == 2) {
-            return dyeColor(DyeColor.GRAY); // falldmgres
-        } else if (this.whatEnchant == 3) {
-            return dyeColor(DyeColor.LIGHT_BLUE); // longbreath
-        } else {
-            // any other stuff (like from an addon-addon that hasn't mixined to this)
-            return dyeColor(DyeColor.BLACK);
-        }
+        return switch (this.whatEnchant) {
+            case 0 -> dyeColor(DyeColor.RED); // fireyfists
+            case 1 -> dyeColor(DyeColor.WHITE); // lightningbending
+            case 2 -> dyeColor(DyeColor.GRAY); // falldmgres
+            case 3 -> dyeColor(DyeColor.LIGHT_BLUE); // longbreath
+            case 4 -> dyeColor(DyeColor.PINK); // fireresist
+            default -> dyeColor(DyeColor.BLACK); // any other stuff (e.g. unimpl by another mod)
+        };
     }
 
     @Override

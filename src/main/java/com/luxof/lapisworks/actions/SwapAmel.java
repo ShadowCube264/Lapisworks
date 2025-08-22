@@ -51,7 +51,11 @@ public class SwapAmel implements SpellAction {
         } else {
             int idx = ModItems.AMEL_MODELS.indexOf(offHandItems.getItem());
             if (idx == -1) { MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "amel")); }
-            swapWith = ModItems.AMEL_MODELS.get(idx + 1);
+            if (idx + 1 == ModItems.AMEL_MODELS.size()) {
+                swapWith = ModItems.AMEL_ITEM;
+            } else {
+                swapWith = ModItems.AMEL_MODELS.get(idx + 1);
+            }
         }
         
         int count = offHandItems.getCount();

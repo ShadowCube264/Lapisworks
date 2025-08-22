@@ -35,6 +35,7 @@ public class ModItems {
     public static final Item AMEL_ITEM = new Item(fullStack);
     public static final Item AMEL2_ITEM = new Item(fullStack);
     public static final Item AMEL3_ITEM = new Item(fullStack);
+    public static final Item AMEL4_ITEM = new Item(fullStack);
     public static final FullyAmelInterface AMEL_STAFF = new AmelStaff(unstackable);
     public static final PartiallyAmelStaff PARTAMEL_STAFF = new PartiallyAmelStaff(partamel);
     public static final PartiallyAmelStaff PARTAMEL_ACACIA_STAFF = new PartiallyAmelStaff(partamel);
@@ -64,6 +65,7 @@ public class ModItems {
         "amel",
         "amel2",
         "amel3",
+        "amel4",
         "staves/amel_staff",
         "staves/incomplete/generic",
         "staves/incomplete/acacia",
@@ -90,6 +92,7 @@ public class ModItems {
         AMEL_ITEM,
         AMEL2_ITEM,
         AMEL3_ITEM,
+        AMEL4_ITEM,
         (Item)AMEL_STAFF,
         PARTAMEL_STAFF,
         PARTAMEL_ACACIA_STAFF,
@@ -113,7 +116,7 @@ public class ModItems {
         GOLD_SWORD
     );
 
-    public static final List<Item> AMEL_MODELS = List.of(AMEL_ITEM, AMEL2_ITEM, AMEL3_ITEM);
+    public static final List<Item> AMEL_MODELS = List.of(AMEL_ITEM, AMEL2_ITEM, AMEL3_ITEM, AMEL4_ITEM);
     public static final List<ItemStaff> HEX_STAVES = List.of(
         HexItems.STAFF_ACACIA,
         HexItems.STAFF_BAMBOO,

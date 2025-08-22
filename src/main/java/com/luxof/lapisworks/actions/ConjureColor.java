@@ -50,12 +50,6 @@ public class ConjureColor implements SpellAction {
             particles = List.of();
         }
 
-        // why the fuck does index 0 = index 1 of the stack
-        // maybe because ConjureColor(color, place)
-        // while stack is:
-        // place
-        // color
-        // maybe?
         int color = OperatorUtils.getIntBetween(args, 1, 0, 15, getArgc());
         BlockPos place = OperatorUtils.getBlockPos(args, 0, getArgc());
         try { ctx.assertPosInRangeForEditing(place); }
@@ -97,34 +91,33 @@ public class ConjureColor implements SpellAction {
 		public void cast(CastingEnvironment ctx) {
             // wtf are those ixplat and other checks in the og
             // im not doin allat
-            if (ctx.getWorld().canSetBlock(this.place)) {
-                // "2 standards is too fucking many!"
-                // "agreed, let's add one more and call it ParchmentMC!"
-                // "yes! and to make it extra better, let's make it difficult
-                //  to map to Yarn!"
-                // "oh my god, that's such a brilliant idea i could kiss you
-                //  you right now!"
-                // and then the sons of satan kissed
-                // /s
-                Item pigmentItem = ctx.getPigment().item().getItem();
-                DyeColor dye;
-                // could be ItemAmethystAndCopperPigment or something
-                if (!(pigmentItem instanceof ItemDyePigment)) {
-                    // well, fuck you too!
-                    dye = DyeColor.PURPLE;
-                } else {
-                    dye = ((ItemDyePigment)pigmentItem).getDyeColor();
-                }
-                BlockState state = ModBlocks.CONJURED_COLORABLE
-                    .getPlacementState(this.AIPC)
-                    .with(COLOR, this.color)
-                    .with(PIGMENT, (dye));
-                ctx.getWorld().setBlockState(
-                    this.place,
-                    state,
-                    Block.NOTIFY_ALL
-                );
+            if (!ctx.getWorld().canSetBlock(this.place)) { return; }
+            // "2 standards is too fucking many!"
+            // "agreed, let's add one more and call it ParchmentMC!"
+            // "yes! and to make it extra better, let's make it difficult
+            //  to map to Yarn!"
+            // "oh my god, that's such a brilliant idea i could kiss you
+            //  you right now!"
+            // and then the sons of satan kissed
+            // /s
+            Item pigmentItem = ctx.getPigment().item().getItem();
+            DyeColor dye;
+            // could be ItemAmethystAndCopperPigment or something
+            if (!(pigmentItem instanceof ItemDyePigment)) {
+                // well, fuck you too!
+                dye = DyeColor.PURPLE;
+            } else {
+                dye = ((ItemDyePigment)pigmentItem).getDyeColor();
             }
+            BlockState state = ModBlocks.CONJURED_COLORABLE
+                .getPlacementState(this.AIPC)
+                .with(COLOR, this.color)
+                .with(PIGMENT, (dye));
+            ctx.getWorld().setBlockState(
+                this.place,
+                state,
+                Block.NOTIFY_ALL
+            );
 		}
 
         @Override

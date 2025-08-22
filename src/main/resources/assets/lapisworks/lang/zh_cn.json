@@ -3,6 +3,7 @@
     "item.lapisworks.amel": "紫晶青金石",
     "item.lapisworks.amel2": "紫晶青金石",
     "item.lapisworks.amel3": "紫晶青金石",
+    "item.lapisworks.amel4": "紫晶青金石",
 
     "item.lapisworks.staves.amel_staff": "紫晶青金石法杖",
     "item.lapisworks.staves.incomplete.generic": "不完整的紫晶青金石法杖",
@@ -27,6 +28,9 @@
     "item.lapisworks.amel_constructs.diamond_sword": "紫金灌注钻石剑",
     "item.lapisworks.amel_constructs.iron_sword": "紫金灌注铁剑",
     "item.lapisworks.amel_constructs.gold_sword": "紫金灌注金剑",
+
+
+    "block.lapisworks.conjureable": "translation missing (hope this syncing stuff helps you translator guy)",
 
 
     "advancements.lapisworks.gotlapis.name": "青金工程研究",
@@ -75,6 +79,8 @@
     "hexcasting.action.book.lapisworks.cubic_exalt": "立方体之提整",
     "hexcasting.action.lapisworks:visible_dstl": "可视之馏化",
     "hexcasting.action.book.lapisworks:visible_dstl": "可视之馏化",
+    "hexcasting.action.lapisworks:empty_prfn": "translation missing",
+    "hexcasting.action.book.lapisworks:empty_prfn": "translation missing",
 
 
     "lapisenchantments.lapisworks.fireyfists": "火拳",
@@ -117,13 +123,6 @@
     "pages.lapisworks.lapisworks_patterns.gib_dexterity.summary": "为所给$(o)玩家$()的双臂附魔，提升其攻击速度。消耗 1 倍紫金石和 16 倍紫水晶碎片。上限为 4 与平常值的$(bold)和$()。",
     "pages.lapisworks.lapisworks_patterns.check_attr.summary": "返回所给实体在给定范畴（由数指定）内所获增强的量。前页的图案已经过排序，0 对应最大生命值，1 对应攻击伤害，以此类推。消耗极少量媒质。",
 
-    "pages.lapisworks.lapisworks_patterns.spells.intro": "这些古代文本记述了一名博学的老巫师，他在巫术的各个方面都造诣极深，但他对从前、现在，或者将来会存在的一切生物都抱有仇恨。传言称，他没有充足的媒质来源，还有很多人追杀他，他却依然成功活下来了。他为后人留下了一座知识的宝库（由许多好奇的冒险家汇总），这其中就由$(thing)紫金灌注图案$()。$(br)$(o)我能成功复现吗？$()",
-    "pages.lapisworks.lapisworks_patterns.conjure_color.summary": "那名巫师将紫金石灌注到了构筑方块里，随后他发现他可以借此为方块染色。消耗 2 个紫水晶粉，同时需指定染料对应的数。更多解释见后页。",
-    "pages.lapisworks.lapisworks_patterns.conjure_color.detail": "所给数代表染料的索引（0 起始），按字母顺序排列。对应关系是：$(br)0 - 黑色    1 - 蓝色    $(br)2 - 棕色    3 - 青色    $(br)4 - 灰色    5 - 绿色    $(br)6 - 淡蓝色  7 - 淡灰色  $(br)8 - 黄绿色  9 - 品红色  $(br)10 - 橙色   11 - 粉红色 $(br)12 - 紫色   13 - 红色   $(br)14 - 白色   15 - 黄色   $(br)如果不存在与数相应的染料，那么方块会发出混合紫色和我染色剂的$(o)颜色$()的光。",
-    "pages.lapisworks.lapisworks_patterns.spherical_dstl.summary": "假设存在以给定位置为中心、半径为所给数（限 1 到 64）的球，返回该球表面所有方块的坐标列表。消耗极少量媒质。",
-    "pages.lapisworks.lapisworks_patterns.cubic_exalt.summary": "假设存在从点 A 至点 B 的空心（传入 True）或实心（传入 False）立方体，返回组成该立方体所有方块的坐标列表。消耗极少量媒质。",
-    "pages.lapisworks.lapisworks_patterns.visible_dstl.summary": "消耗极少量媒质。返回下述问题的答案：“如果我站在给定位置，那么我可以直接看见目标位置吗？”两位置向量均需在我影响范围内。",
-
     "pages.lapisworks.lapisworks_great.title": "魔咒",
     "pages.lapisworks.lapisworks_great.aahhhhelp": "$(bold)我已见我已见我需要我需要保护我的理智附魔皮肤我可否附魔意识我不能失去自我歇息不不能歇息没有时间必须记录以免$()",
     "pages.lapisworks.lapisworks_great.explanation": "$(bold)空白的纸页。我眼角明灭的媒质汇聚。我能见我能见我必须阅读必须书写。若无说明，即消耗我副手中的 64 个紫金石，魔咒撑不过死亡的噩梦。$()",
@@ -134,6 +133,16 @@
     "pages.lapisworks.lapisworks_great.falldmgres.summary": "$(bold)用紫金石包裹双足，以此阻断距离在 10 格以下的摔落，每级阻断上限增加 10 格。不会降低伤害。共 2 级。每级 5 个充能紫水晶和 32 个紫金石。$()",
     "pages.lapisworks.lapisworks_great.longbreath.summary": "$(bold)增大我的肺容量，和水下呼吸魔咒类似，但此魔咒的效力是其两倍。共 2 级。每级 1 个充能紫水晶和 10 个紫金石。$()",
     "pages.lapisworks.lapisworks_great.fireresist.summary": "$(bold)掌控一整组紫金石和十块充能紫水晶的力量，让人变得犹如诞生自下界！$()",
+
+    "pages.lapisworks.lapisworks_misc.title": "translation missing",
+    "pages.lapisworks.lapisworks_misc.spells.intro": "这些古代文本记述了一名博学的老巫师，他在巫术的各个方面都造诣极深，但他对从前、现在，或者将来会存在的一切生物都抱有仇恨。传言称，他没有充足的媒质来源，还有很多人追杀他，他却依然成功活下来了。他为后人留下了一座知识的宝库（由许多好奇的冒险家汇总），这其中就由$(thing)紫金灌注图案$()。$(br)$(o)我能成功复现吗？$()",
+    "pages.lapisworks.lapisworks_misc.spells.intro2": "translation missing",
+    "pages.lapisworks.lapisworks_misc.conjure_color.summary": "那名巫师将紫金石灌注到了构筑方块里，随后他发现他可以借此为方块染色。消耗 2 个紫水晶粉，同时需指定染料对应的数。更多解释见后页。",
+    "pages.lapisworks.lapisworks_misc.conjure_color.detail": "所给数代表染料的索引（0 起始），按字母顺序排列。对应关系是：$(br)0 - 黑色    1 - 蓝色    $(br)2 - 棕色    3 - 青色    $(br)4 - 灰色    5 - 绿色    $(br)6 - 淡蓝色  7 - 淡灰色  $(br)8 - 黄绿色  9 - 品红色  $(br)10 - 橙色   11 - 粉红色 $(br)12 - 紫色   13 - 红色   $(br)14 - 白色   15 - 黄色   $(br)如果不存在与数相应的染料，那么方块会发出混合紫色和我染色剂的$(o)颜色$()的光。",
+    "pages.lapisworks.lapisworks_misc.spherical_dstl.summary": "假设存在以给定位置为中心、半径为所给数（限 1 到 64）的球，返回该球表面所有方块的坐标列表。消耗极少量媒质。",
+    "pages.lapisworks.lapisworks_misc.cubic_exalt.summary": "假设存在从点 A 至点 B 的空心（传入 True）或实心（传入 False）立方体，返回组成该立方体所有方块的坐标列表。消耗极少量媒质。",
+    "pages.lapisworks.lapisworks_misc.visible_dstl.summary": "消耗极少量媒质。返回下述问题的答案：“如果我站在给定位置，那么我可以直接看见目标位置吗？”两位置向量均需在我影响范围内。",
+    "pages.lapisworks.lapisworks_misc.empty_prfn.summary": "translation missing",
 
     "pages.lapisworks.lapisworks_mishaps.title": "青金工程事故",
     "pages.lapisworks.lapisworks_mishaps.summary": "咒法学的新分支也带来了新事故。我在此记录了它们。",

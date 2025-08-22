@@ -44,7 +44,7 @@ public class AmelRing extends ItemStaff implements HexBaubleItem, FullyAmelInter
     }
 
     @Override
-    public int getRequiredAmelToMakeFromBase() { return 10; }
+    public int getRequiredAmelToMakeFromBase() { return 1; }
 
     public int whichOneAmI() { return 0; }
 }

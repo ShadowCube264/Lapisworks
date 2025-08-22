@@ -22,7 +22,7 @@
 			}
 		],
 		"client": [
-			"com.luxof.lapisworks.LapisworksClient"
+			"com.luxof.lapisworks.client.LapisworksClient"
 		]
 	},
 	"mixins": [

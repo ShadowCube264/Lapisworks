@@ -42,5 +42,5 @@ public class AmelStaff extends ItemStaff implements FullyAmelInterface {
     }
     
     @Override
-    public int getRequiredAmelToMakeFromBase() { return 1; }
+    public int getRequiredAmelToMakeFromBase() { return 10; }
 }

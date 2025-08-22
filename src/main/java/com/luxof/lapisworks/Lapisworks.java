@@ -39,7 +39,7 @@ public class Lapisworks implements ModInitializer {
 		Items.GOLDEN_SWORD, (FullyAmelInterface)ModItems.GOLD_SWORD
 	);
 
-	// ahhh who cares let it error
+	// ahhh who cares let it error if it will
 	private static FrozenPigment BLACK_FP = new FrozenPigment(new ItemStack(HexItems.DYE_PIGMENTS.get(DyeColor.BLACK)), Util.NIL_UUID);
 	private static FrozenPigment BROWN_FP = new FrozenPigment(new ItemStack(HexItems.DYE_PIGMENTS.get(DyeColor.BROWN)), Util.NIL_UUID);
 	private static FrozenPigment BLUE_FP = new FrozenPigment(new ItemStack(HexItems.DYE_PIGMENTS.get(DyeColor.BLUE)), Util.NIL_UUID);
