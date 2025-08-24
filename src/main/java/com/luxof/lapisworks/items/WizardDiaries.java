@@ -1,0 +1,93 @@
+package com.luxof.lapisworks.items;
+
+import at.petrak.hexcasting.common.lib.HexSounds;
+
+import static com.luxof.lapisworks.Lapisworks.LOGGER;
+import static com.luxof.lapisworks.Lapisworks.id;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import net.minecraft.advancement.Advancement;
+import net.minecraft.advancement.criterion.Criteria;
+import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.stat.Stats;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.world.World;
+
+public class WizardDiaries extends Item {
+    // feel free to fuck with this if you want
+    public static List<Identifier> gainableAdvancements = new ArrayList<Identifier>(List.of(
+        id("rediscover_enchsent")
+    ));
+
+    public WizardDiaries(Settings settings) { super(settings); }
+    
+    @Override
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        user.playSound(HexSounds.READ_LORE_FRAGMENT, 1.0F, 1.0F);
+        ItemStack handStack = user.getStackInHand(hand);
+        if (!(user instanceof ServerPlayerEntity)) {
+            handStack.decrement(1);
+            return TypedActionResult.success(handStack);
+        }
+        ServerPlayerEntity suser = (ServerPlayerEntity)user;
+
+        List<Identifier> shuffled = new ArrayList<Identifier>(gainableAdvancements);
+        Advancement chosenAdvancement = null;
+        Collections.shuffle(shuffled);
+        for (int i = 0; i < shuffled.size(); i++) {
+            Identifier advId = shuffled.get(i);
+            Advancement adv = suser.getServer().getAdvancementLoader().get(advId);
+            if (adv == null) {
+                LOGGER.warn(advId.toString() + " isn't an advancement that exists right now!");
+                continue;
+            }
+            if (!suser.getAdvancementTracker().getProgress(adv).isDone()) {
+                chosenAdvancement = adv;
+                break;
+            }
+        }
+        if (chosenAdvancement == null) {
+            suser.sendMessage(
+                Text.translatable("notif.lapisworks.wizard_diaries.all_gotten"),
+                true
+            );
+            suser.addExperience(20);
+        } else {
+            // no clue if this'll work
+            suser.getAdvancementTracker().grantCriterion(chosenAdvancement, "grant");
+        }
+
+        Criteria.CONSUME_ITEM.trigger(suser, handStack);
+        suser.getStatHandler().increaseStat(suser, Stats.USED.getOrCreateStat(this), 1);
+        handStack.decrement(1);
+
+        return TypedActionResult.success(handStack);
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext ctx) {
+        tooltip.add(Text.translatable("tooltips.lapisworks.wizard_diaries.1").formatted(
+            Formatting.DARK_PURPLE
+        ));
+        tooltip.add(Text.translatable("tooltips.lapisworks.wizard_diaries.2").formatted(
+            Formatting.DARK_PURPLE
+        ));
+        tooltip.add(Text.translatable("tooltips.lapisworks.wizard_diaries.3").formatted(
+            Formatting.DARK_PURPLE
+        ));
+        tooltip.add(Text.translatable("tooltips.lapisworks.wizard_diaries.4").formatted(
+            Formatting.DARK_PURPLE
+        ));
+    }
+}

@@ -10,6 +10,7 @@ import com.luxof.lapisworks.items.DiamondSword;
 import com.luxof.lapisworks.items.GoldSword;
 import com.luxof.lapisworks.items.IronSword;
 import com.luxof.lapisworks.items.PartiallyAmelStaff;
+import com.luxof.lapisworks.items.WizardDiaries;
 import com.luxof.lapisworks.items.shit.AmelSword;
 import com.luxof.lapisworks.items.shit.FullyAmelInterface;
 
@@ -60,6 +61,7 @@ public class ModItems {
     public static final AmelSword DIAMOND_SWORD = new DiamondSword();
     public static final AmelSword IRON_SWORD = new IronSword();
     public static final AmelSword GOLD_SWORD = new GoldSword();
+    public static final Item WIZARD_DIARIES = new WizardDiaries(unstackable);
 
     private static final List<String> itemNames = List.of(
         "amel",
@@ -86,7 +88,8 @@ public class ModItems {
         "staves/ring",
         "amel_constructs/diamond_sword",
         "amel_constructs/iron_sword",
-        "amel_constructs/gold_sword"
+        "amel_constructs/gold_sword",
+        "wizard_diaries"
     );
     private static final List<Item> items = List.of(
         AMEL_ITEM,
@@ -113,7 +116,8 @@ public class ModItems {
         CASTING_RING,
         DIAMOND_SWORD,
         IRON_SWORD,
-        GOLD_SWORD
+        GOLD_SWORD,
+        WIZARD_DIARIES
     );
 
     public static final List<Item> AMEL_MODELS = List.of(AMEL_ITEM, AMEL2_ITEM, AMEL3_ITEM, AMEL4_ITEM);

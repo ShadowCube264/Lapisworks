@@ -10,13 +10,14 @@
     "description": {
       "translate": "advancements.lapisworks.gotlapis.description"
     },
+    "background": "hexcasting:textures/block/slate.png",
     "frame": "task",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false
   },
   "criteria": {
-    "get_diamond": {
+    "get_lapis": {
       "trigger": "minecraft:inventory_changed",
       "conditions": {
         "items": [

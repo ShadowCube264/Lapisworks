@@ -36,7 +36,7 @@ public interface DamageSupportInterface {
 		
 		if (attackerStack.getItem() instanceof GoldSword) {
 			thisObject.addStatusEffect(
-				new StatusEffectInstance(StatusEffects.POISON, 20 * 10)
+				new StatusEffectInstance(StatusEffects.POISON, 20 * 10) // 10 secs * 20 ticks (hehe secs)
 			);
 			stack.damage(9, attacker, (any) -> {});
 			return true;

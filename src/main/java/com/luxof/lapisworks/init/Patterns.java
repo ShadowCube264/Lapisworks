@@ -2,6 +2,7 @@ package com.luxof.lapisworks.init;
 
 import at.petrak.hexcasting.api.casting.math.HexDir;
 import at.petrak.hexcasting.api.casting.castables.Action;
+import at.petrak.hexcasting.api.casting.castables.SpellAction;
 import at.petrak.hexcasting.api.casting.math.HexPattern;
 import at.petrak.hexcasting.api.casting.ActionRegistryEntry;
 import at.petrak.hexcasting.common.lib.hex.HexActions;
@@ -16,6 +17,8 @@ import com.luxof.lapisworks.actions.SwapAmel;
 import com.luxof.lapisworks.actions.VisibleDstl;
 import com.luxof.lapisworks.actions.MoarAttr;
 import com.luxof.lapisworks.actions.SphereDst;
+import com.luxof.lapisworks.actions.great.BanishMySent;
+import com.luxof.lapisworks.actions.great.BanishOtherSent;
 import com.luxof.lapisworks.actions.great.CreateEnchSent;
 import com.luxof.lapisworks.actions.great.EnchantFallDmgRes;
 import com.luxof.lapisworks.actions.great.EnchantFire;
@@ -29,6 +32,17 @@ import com.luxof.lapisworks.actions.EmptyPrfn;
 import com.luxof.lapisworks.actions.ImbueAmel;
 
 public class Patterns {
+    public static String create_enchsent1pat = "aqaeawdwwwdwqwdwwwdweqqaqwedeewqded";
+    public static String create_enchsent2pat = "aqaeawdwwwdwqwdwwwdwewweaqa";
+    public static String create_enchsent3pat = "wdwewdwwwdwwwdwqwdwwwdw";
+    public static String create_enchsent4pat = "aqaeawdwwwdwqwdwwwdweqaawddeweaqa";
+    public static String create_enchsent5pat = "wdwwwdwqwdwwwdweqaawdde";
+    public static String create_enchsent6pat = "wdwwwdwqwdwwwdwweeeee";
+    public static String[] all_create_enchsent = {
+        create_enchsent1pat, create_enchsent2pat, create_enchsent3pat,
+        create_enchsent4pat, create_enchsent5pat, create_enchsent6pat
+    };
+
     public static void init() {
         MoarAttr MoarHealthAction = new MoarAttr(
             EntityAttributes.GENERIC_MAX_HEALTH,
@@ -86,7 +100,19 @@ public class Patterns {
         register("visible_dstl", "edeewadwewdwe", HexDir.SOUTH_EAST, new VisibleDstl());
         register("empty_prfn", "qqqqqwa", HexDir.NORTH_EAST, new EmptyPrfn());
 
-        register("create_enchsent", "aqaeawdwwwdwqwdwwwdweqqaqwedeewqded", HexDir.NORTH_EAST, new CreateEnchSent());
+        // hol up, let him cook
+        // i said LET HIM COOK
+        // LET. HIM. COOK :fire:
+        SpellAction createEnchSent = new CreateEnchSent();
+        register("create_enchsent1", create_enchsent1pat, HexDir.NORTH_WEST, createEnchSent);
+        register("create_enchsent2", create_enchsent2pat, HexDir.NORTH_WEST, createEnchSent);
+        register("create_enchsent3", create_enchsent3pat, HexDir.NORTH_EAST, createEnchSent);
+        register("create_enchsent4", create_enchsent4pat, HexDir.NORTH_WEST, createEnchSent);
+        register("create_enchsent5", create_enchsent5pat, HexDir.NORTH_WEST, createEnchSent);
+        register("create_enchsent6", create_enchsent6pat, HexDir.NORTH_WEST, createEnchSent);
+        
+        register("banish_my_enchsent", "wdwewdwdwqwawwwawewawwwaw", HexDir.NORTH_EAST, new BanishMySent());
+        register("banish_other_enchsent", "eeeeedwqwawwwawewawwwaw", HexDir.NORTH_EAST, new BanishOtherSent());
     }
 
     private static void register(

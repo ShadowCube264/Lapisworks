@@ -1,6 +1,6 @@
 {
   "name": "categories.lapisworks.lapisworks.great",
-  "icon": "lapisworks:staves/amel_staff",
+  "icon": "lapisworks:textures/entries/lmaoyouwillneverhavethis.png",
   "description": "categories.lapisworks.lapisworks.great.desc",
   "parent": "hexcasting:lapisworks",
   "sortnum": 1

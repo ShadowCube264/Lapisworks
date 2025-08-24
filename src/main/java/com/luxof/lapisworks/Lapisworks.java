@@ -62,6 +62,7 @@ public class Lapisworks implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		LapisworksEvents.init();
 		Patterns.init();
 		ModItems.init_shit();
 		LapisworksServer.lockIn();

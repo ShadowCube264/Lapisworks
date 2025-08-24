@@ -7,8 +7,6 @@ import at.petrak.hexcasting.common.lib.HexItems;
 
 import com.luxof.lapisworks.items.shit.AmelSword;
 
-import static com.luxof.lapisworks.Lapisworks.LOGGER;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -41,7 +39,6 @@ public class DiamondSword extends AmelSword {
         stack.damage(10, player, (LivingEntity entity) -> {});
         TypedActionResult<ItemStack> ret = TypedActionResult.consume(stack);
 
-        LOGGER.info("Raycasting!");
         Vec3d startPos = player.getEyePos();
         Vec3d endPos = startPos.add(player.getRotationVector().normalize().multiply(10));
 
@@ -56,7 +53,6 @@ public class DiamondSword extends AmelSword {
         );
 
         if (hitEntityResult == null) { return ret; }
-        LOGGER.info("Damaging entity!");
         Entity hitEntity = hitEntityResult.getEntity();
 
         hitEntity.damage(

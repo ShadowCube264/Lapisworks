@@ -1,10 +1,6 @@
 package com.luxof.lapisworks.mixin;
 
-import static com.luxof.lapisworks.Lapisworks.LOGGER;
-import static com.luxof.lapisworks.LapisworksNetworking.SEND_SENT;
-
 import org.jetbrains.annotations.Nullable;
-import org.joml.Vector3f;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -12,14 +8,9 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import com.luxof.lapisworks.mixinsupport.EnchSentInterface;
 
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -36,24 +27,6 @@ public abstract class PlayerEntityMixin extends LivingEntity implements EnchSent
     @Override @Nullable public Double getEnchantedSentinelAmbit() { return this.sentRange; }
     @Override
     public void setEnchantedSentinel(Vec3d pos, Double ambit) {
-        this.enchSentPos = pos;
-        this.sentRange = ambit;
-        LOGGER.info("i scream i scream i scream sentRange is " + sentRange);
-        
-        // can you tell i don't know what i'm doing?
-        if (!((Object)this instanceof ClientPlayerEntity)) {
-            PacketByteBuf buf = PacketByteBufs.create();
-            if (this.enchSentPos != null) {
-                Vec3d temp = this.enchSentPos;
-                buf.writeVector3f(new Vector3f((float)temp.x, (float)temp.y, (float)temp.z));
-                buf.writeDouble(this.sentRange);
-            }
-            ServerPlayNetworking.send((ServerPlayerEntity)(Object)this, SEND_SENT, buf);
-        }
-    }
-
-    @Override
-    public void setEnchantedSentinelNoSync(Vec3d pos, Double ambit) {
         this.enchSentPos = pos;
         this.sentRange = ambit;
     }

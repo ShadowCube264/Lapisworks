@@ -9,7 +9,9 @@
 		"ItemMixin",
 		"ItemStaffMixin",
 		"GuiSpellcastingMixin",
-		"PlayerEntityMixin"
+		"PlayerEntityMixin",
+		"ServerPlayerEntityMixin",
+		"PatternRegistryManifestMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

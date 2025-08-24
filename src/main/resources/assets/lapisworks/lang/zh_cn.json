@@ -4,6 +4,7 @@
     "item.lapisworks.amel2": "紫晶青金石",
     "item.lapisworks.amel3": "紫晶青金石",
     "item.lapisworks.amel4": "紫晶青金石",
+    "item.lapisworks.wizard_diaries": "Ancient Tome",
 
     "item.lapisworks.staves.amel_staff": "紫晶青金石法杖",
     "item.lapisworks.staves.incomplete.generic": "不完整的紫晶青金石法杖",
@@ -30,11 +31,19 @@
     "item.lapisworks.amel_constructs.gold_sword": "紫金灌注金剑",
 
 
-    "block.lapisworks.conjureable": "translation missing (hope this syncing stuff helps you translator guy)",
+    "tooltips.lapisworks.wizard_diaries.1": "An Ancient Tome that was last owned by the maniac wizard,",
+    "tooltips.lapisworks.wizard_diaries.2": "then some adventurer and/or intellectual. Most of the pages",
+    "tooltips.lapisworks.wizard_diaries.3": "are charred black, but there must be SOMETHING left to divine",
+    "tooltips.lapisworks.wizard_diaries.4": "from.",
+
+
+    "block.lapisworks.conjureable": "Conjured Solid Color",
 
 
     "advancements.lapisworks.gotlapis.name": "青金工程研究",
     "advancements.lapisworks.gotlapis.description": "珍贵的深蓝色矿物。如其所称。",
+    "advancements.lapisworks.rediscover_enchsent.name": "Enchanted Sentinel",
+    "advancements.lapisworks.rediscover_enchsent.description": "A Great Spell forcefully and violently changed and twisted into something else.",
 
 
     "key_category.lapisworks.lapisworks": "青金工程",
@@ -79,8 +88,25 @@
     "hexcasting.action.book.lapisworks.cubic_exalt": "立方体之提整",
     "hexcasting.action.lapisworks:visible_dstl": "可视之馏化",
     "hexcasting.action.book.lapisworks:visible_dstl": "可视之馏化",
-    "hexcasting.action.lapisworks:empty_prfn": "translation missing",
-    "hexcasting.action.book.lapisworks:empty_prfn": "translation missing",
+    "hexcasting.action.lapisworks:empty_prfn": "Empty Purification",
+    "hexcasting.action.book.lapisworks:empty_prfn": "Empty Prfn.",
+
+    "hexcasting.action.lapisworks:create_enchsent1": "Summon Enchanted Sentinel",
+    "hexcasting.action.book.lapisworks:create_enchsent1": "Summon",
+    "hexcasting.action.lapisworks:create_enchsent2": "Summon Enchanted Sentinel",
+    "hexcasting.action.book.lapisworks:create_enchsent2": "Summon",
+    "hexcasting.action.lapisworks:create_enchsent3": "Summon Enchanted Sentinel",
+    "hexcasting.action.book.lapisworks:create_enchsent3": "Summon",
+    "hexcasting.action.lapisworks:create_enchsent4": "Summon Enchanted Sentinel",
+    "hexcasting.action.book.lapisworks:create_enchsent4": "Summon",
+    "hexcasting.action.lapisworks:create_enchsent5": "Summon Enchanted Sentinel",
+    "hexcasting.action.book.lapisworks:create_enchsent5": "Summon",
+    "hexcasting.action.lapisworks:create_enchsent6": "Summon Enchanted Sentinel",
+    "hexcasting.action.book.lapisworks:create_enchsent6": "Summon",
+    "hexcasting.action.lapisworks:banish_my_enchsent": "Banish Own Enchanted Sentinel",
+    "hexcasting.action.book.lapisworks:banish_my_enchsent": "Banish Own",
+    "hexcasting.action.lapisworks:banish_other_enchsent": "Banish Other's Enchanted Sentinel",
+    "hexcasting.action.book.lapisworks:banish_other_enchsent": "Banish Other's",
 
 
     "lapisenchantments.lapisworks.fireyfists": "火拳",
@@ -99,6 +125,9 @@
     "mishaps.lapisworks.bad_item.mainhand": "本应在主手中持有%s，而实际有%d个%s。",
 
     "mishaps.lapisworks.bad_item.mainhand.imbueable": "任意可灌注紫晶青金石的物品（如法杖）",
+
+
+    "notif.lapisworks.wizard_diaries.all_gotten": "It seems I have rediscovered all the surviving ancient tomes.",
 
 
     "categories.lapisworks.lapisworks": "青金工程",
@@ -134,15 +163,15 @@
     "pages.lapisworks.lapisworks_great.longbreath.summary": "$(bold)增大我的肺容量，和水下呼吸魔咒类似，但此魔咒的效力是其两倍。共 2 级。每级 1 个充能紫水晶和 10 个紫金石。$()",
     "pages.lapisworks.lapisworks_great.fireresist.summary": "$(bold)掌控一整组紫金石和十块充能紫水晶的力量，让人变得犹如诞生自下界！$()",
 
-    "pages.lapisworks.lapisworks_misc.title": "translation missing",
+    "pages.lapisworks.lapisworks_misc.title": "Enchanted Patterns",
     "pages.lapisworks.lapisworks_misc.spells.intro": "这些古代文本记述了一名博学的老巫师，他在巫术的各个方面都造诣极深，但他对从前、现在，或者将来会存在的一切生物都抱有仇恨。传言称，他没有充足的媒质来源，还有很多人追杀他，他却依然成功活下来了。他为后人留下了一座知识的宝库（由许多好奇的冒险家汇总），这其中就由$(thing)紫金灌注图案$()。$(br)$(o)我能成功复现吗？$()",
-    "pages.lapisworks.lapisworks_misc.spells.intro2": "translation missing",
+    "pages.lapisworks.lapisworks_misc.intro2": "Frustratingly enough, the wizard attempted to burn most of them and was extremely successful, leaving only a few that were recovered by the heroes that defeated him. Among these few are enhanced forms of $(l:patterns/spells/blockworks#hexcasting:conjure_block)Conjure Block$(), $(l:patterns/consts#hexcasting:const/vec/0)some Vector patterns$(), $(l:patterns/basics#hexcasting:raycast)Archer's Distillation$(), among some others.",
     "pages.lapisworks.lapisworks_misc.conjure_color.summary": "那名巫师将紫金石灌注到了构筑方块里，随后他发现他可以借此为方块染色。消耗 2 个紫水晶粉，同时需指定染料对应的数。更多解释见后页。",
     "pages.lapisworks.lapisworks_misc.conjure_color.detail": "所给数代表染料的索引（0 起始），按字母顺序排列。对应关系是：$(br)0 - 黑色    1 - 蓝色    $(br)2 - 棕色    3 - 青色    $(br)4 - 灰色    5 - 绿色    $(br)6 - 淡蓝色  7 - 淡灰色  $(br)8 - 黄绿色  9 - 品红色  $(br)10 - 橙色   11 - 粉红色 $(br)12 - 紫色   13 - 红色   $(br)14 - 白色   15 - 黄色   $(br)如果不存在与数相应的染料，那么方块会发出混合紫色和我染色剂的$(o)颜色$()的光。",
     "pages.lapisworks.lapisworks_misc.spherical_dstl.summary": "假设存在以给定位置为中心、半径为所给数（限 1 到 64）的球，返回该球表面所有方块的坐标列表。消耗极少量媒质。",
     "pages.lapisworks.lapisworks_misc.cubic_exalt.summary": "假设存在从点 A 至点 B 的空心（传入 True）或实心（传入 False）立方体，返回组成该立方体所有方块的坐标列表。消耗极少量媒质。",
     "pages.lapisworks.lapisworks_misc.visible_dstl.summary": "消耗极少量媒质。返回下述问题的答案：“如果我站在给定位置，那么我可以直接看见目标位置吗？”两位置向量均需在我影响范围内。",
-    "pages.lapisworks.lapisworks_misc.empty_prfn.summary": "translation missing",
+    "pages.lapisworks.lapisworks_misc.empty_prfn.summary": "Answers the question, \"is there only air there?\" for negligible media cost. Vector must be in my ambit.",
 
     "pages.lapisworks.lapisworks_mishaps.title": "青金工程事故",
     "pages.lapisworks.lapisworks_mishaps.summary": "咒法学的新分支也带来了新事故。我在此记录了它们。",
@@ -187,5 +216,17 @@
     "pages.lapisworks.imbuement_swords.iron.desc2": "紫金石的斩击会以攻击者为目标，且会吸收对方武器掉出的碎屑，获得 20“点”耐久度。这种斩击的攻击力是剑直接攻击的一半（但同时会将攻击者击飞）。如果用于攻击的工具损毁了，那铁剑就会吸收所有残屑，恢复 100“点”耐久度而非 20 点。而且，敌人会认为手中的工具受到了强烈的冲击，以至于几乎每次都要暂停一两秒检查工具的状况。",
     "pages.lapisworks.imbuement_swords.iron.desc3": "紫金石蕴含着充沛的能量，甚至能抵挡住斧的一击，同时直接损伤其手柄，对其造成 100“点”耐久度损耗而非 20 点。不过，如果我没能成功招架斧，那么$(o)我$()的工具会受到 20“点”损伤，同时$(o)我$()会被击飞。我剑上的紫金石在没做任何准备的情况下受到大量上海，因此其在一秒内无法再次使用。",
     "pages.lapisworks.imbuement_swords.gold.title": "金",
-    "pages.lapisworks.imbuement_swords.gold.desc": "金是媒质的绝缘体，因此金剑不太能接受紫金石灌注。不过，紫金石对大多数生物都有毒。从这几点出发，将紫金石倒在金剑上再尝试灌注，应该就能避免两者脱离了。用灌注后的金剑攻击实体会令紫金石放出斩击（但剑本身会受到相对严重的损害），让实体中毒约 10 秒。要我说，这可真是尊漂亮的玻璃大炮啊。"
+    "pages.lapisworks.imbuement_swords.gold.desc": "金是媒质的绝缘体，因此金剑不太能接受紫金石灌注。不过，紫金石对大多数生物都有毒。从这几点出发，将紫金石倒在金剑上再尝试灌注，应该就能避免两者脱离了。用灌注后的金剑攻击实体会令紫金石放出斩击（但剑本身会受到相对严重的损害），让实体中毒约 10 秒。要我说，这可真是尊漂亮的玻璃大炮啊。",
+
+
+    "categories.lapisworks.lapisworks.great": "The Wizard's Spells",
+    "categories.lapisworks.lapisworks.great.desc": "Gods bless those unknown saints who saved that diabolical wizard's knowledge.",
+
+    "pages.lapisworks.great_enchsent.title": "Enchanted Sentinel",
+    "pages.lapisworks.great.enchsent_lore": "Whilst being hunted by a particularly strong group of 30-40 people consisting of professional hitmen or assassins, bounty hunters, and other mages looking to vanquish him, the mage had escaped into a castle. He needed a way to be able to deal with all of them from a huge distance or from a few floors up. Greater Sentinel's range was much too small, they would be aware it was a small trap. So out of desperation, he looked to his Amel to \"enchant\" the pattern.",
+    "pages.lapisworks.great.create_enchsent.summary": "Summons an enchanted version of the Greater Sentinel at the given position (which must be within 32 blocks around me) and the given ambit (which can be from 1-64). Costs 5 amethyst dust to summon.",
+    "pages.lapisworks.great.create_enchsent.detail": "This Enchanted Sentinel has much more media than a Greater Sentinel, but has chains imposed on it that make its existence dependent on me. It must always be in MY ambit (a Greater Sentinel's ambit is much too weak) or else it falls apart. It's still intangible, but it emanates particles visible to everyone. I perceive the particles as well as a media-dense being which looks like some dark purple, unnaturally twisting geometric shape.",
+    "pages.lapisworks.great.create_enchsent.lore": "The wizard wrote it was created by forcing Amethyst Lazuli into the original pattern and molding it violently, shaping the media within to his will. The result is a \"4-dimensional spinning hypercube projected as a tesseract!\" (what does that even mean??) which has some form of feeling and awareness. It knows it's chained to it's user, forced to follow their whims due to being dependent on their media. He writes of it fondly, as if he likes it.",
+    "pages.lapisworks.great.banish_my_enchsent.summary": "Peacefully put my Enchanted Sentinel to rest for a negligible amount of media, letting it rest for a time. Perhaps the ethical option, considering \"falling apart\" may not be the most painless.",
+    "pages.lapisworks.great.banish_other_enchsent.summary": "Banish another's Enchanted Sentinel if it's at that block for "
 }

@@ -6,7 +6,6 @@ public interface EnchSentInterface {
     Vec3d getEnchantedSentinel();
     Double getEnchantedSentinelAmbit();
     void setEnchantedSentinel(Vec3d pos, Double ambit);
-    void setEnchantedSentinelNoSync(Vec3d pos, Double ambit);
     boolean shouldBreakSent();
     void breakSent();
 }

@@ -17,13 +17,20 @@ import at.petrak.hexcasting.api.misc.MediaConstants;
 import com.luxof.lapisworks.MishapThrowerJava;
 import com.luxof.lapisworks.mixinsupport.EnchSentInterface;
 
+import static com.luxof.lapisworks.LapisworksNetworking.SEND_SENT;
+
 import java.util.List;
 import java.util.Optional;
 
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.World;
 
 public class CreateEnchSent implements SpellAction {
     public int getArgc() {
@@ -73,6 +80,14 @@ public class CreateEnchSent implements SpellAction {
 		@Override
 		public void cast(CastingEnvironment ctx) {
             ((EnchSentInterface)this.caster).setEnchantedSentinel(this.pos, this.ambit);
+            // can you tell i have no clue what the fuck i'm doing?
+            PacketByteBuf buf = PacketByteBufs.create();
+            buf.writeBoolean(false);
+            buf.writeVector3f(this.pos.toVector3f());
+            buf.writeDouble(this.ambit);
+            // "this code runs on the server, so the caster must be a ServerPlayerEntity"
+            //   -my dumbass praying this code doesn't explode in my face
+            ServerPlayNetworking.send((ServerPlayerEntity)this.caster, SEND_SENT, buf);
 		}
 
         @Override
