@@ -104,12 +104,13 @@ public class Patterns {
         // i said LET HIM COOK
         // LET. HIM. COOK :fire:
         SpellAction createEnchSent = new CreateEnchSent();
-        register("create_enchsent1", create_enchsent1pat, HexDir.NORTH_WEST, createEnchSent);
-        register("create_enchsent2", create_enchsent2pat, HexDir.NORTH_WEST, createEnchSent);
-        register("create_enchsent3", create_enchsent3pat, HexDir.NORTH_EAST, createEnchSent);
-        register("create_enchsent4", create_enchsent4pat, HexDir.NORTH_WEST, createEnchSent);
-        register("create_enchsent5", create_enchsent5pat, HexDir.NORTH_WEST, createEnchSent);
-        register("create_enchsent6", create_enchsent6pat, HexDir.NORTH_WEST, createEnchSent);
+        // hell naw i will not learn to speak regex
+        register("create_enchsent1", "aqaeawdwwwdwqwdwwwdweqqaqwedeewqded", HexDir.NORTH_WEST, createEnchSent);
+        register("create_enchsent2", "aqaeawdwwwdwqwdwwwdwewweaqa", HexDir.NORTH_WEST, createEnchSent);
+        register("create_enchsent3", "wdwewdwwwdwwwdwqwdwwwdw", HexDir.NORTH_EAST, createEnchSent);
+        register("create_enchsent4", "aqaeawdwwwdwqwdwwwdweqaawddeweaqa", HexDir.NORTH_WEST, createEnchSent);
+        register("create_enchsent5", "wdwwwdwqwdwwwdweqaawdde", HexDir.NORTH_WEST, createEnchSent);
+        register("create_enchsent6", "wdwwwdwqwdwwwdwweeeee", HexDir.NORTH_WEST, createEnchSent);
         
         register("banish_my_enchsent", "wdwewdwdwqwawwwawewawwwaw", HexDir.NORTH_EAST, new BanishMySent());
         register("banish_other_enchsent", "eeeeedwqwawwwawewawwwaw", HexDir.NORTH_EAST, new BanishOtherSent());
