@@ -1,6 +1,7 @@
 package com.luxof.lapisworks;
 
 import static com.luxof.lapisworks.Lapisworks.LOGGER;
+import static com.luxof.lapisworks.Lapisworks.pickAndSetEnchSentConfigFlag;
 
 import com.luxof.lapisworks.init.ThemConfigFlags;
 import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
@@ -54,17 +55,10 @@ public class LapisworksEvents {
         );
 
         ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
-            int picked = Math.abs((int)(server.getOverworld().getSeed() % 6));
-            LOGGER.info("Seed was " + server.getOverworld().getSeed());
-            LOGGER.info("We picked " + server.getOverworld().getSeed() % 6 + ", so that's " + picked);
-            LOGGER.info("Btw just casted to int no absing that's " + (int)(server.getOverworld().getSeed() % 6));
-            PatchouliAPI.get().setConfigFlag(ThemConfigFlags.allEnchSentFlags[picked], true);
-            ThemConfigFlags.chosenEnchSent = picked;
+            pickAndSetEnchSentConfigFlag(server.getOverworld().getSeed(), true);
         });
         ServerLifecycleEvents.SERVER_STOPPING.register((server) -> {
-            int picked = Math.abs((int)(server.getOverworld().getSeed() % 6));
-            PatchouliAPI.get().setConfigFlag(ThemConfigFlags.allEnchSentFlags[picked], false);
-            ThemConfigFlags.chosenEnchSent = null;
+            pickAndSetEnchSentConfigFlag(server.getOverworld().getSeed(), false);
         });
     }
 }

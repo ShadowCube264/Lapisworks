@@ -8,7 +8,9 @@ import com.luxof.lapisworks.mixinsupport.EnchSentInterface;
 import static com.luxof.lapisworks.Lapisworks.LOGGER;
 import static com.luxof.lapisworks.Lapisworks.trinketEquipped;
 import static com.luxof.lapisworks.Lapisworks.id;
+import static com.luxof.lapisworks.Lapisworks.justSetEnchSentConfigFlag;
 import static com.luxof.lapisworks.LapisworksNetworking.OPEN_CASTING_GRID;
+import static com.luxof.lapisworks.LapisworksNetworking.SEND_PICKED_PATTERN;
 import static com.luxof.lapisworks.LapisworksNetworking.SEND_SENT;
 import static com.luxof.lapisworks.init.ModItems.IRON_SWORD;
 
@@ -37,6 +39,7 @@ public class LapisworksClient implements ClientModInitializer {
     public Vec3d bufferSentinelPos = null;
     public Double bufferSentinelAmbit = null;
     public boolean playerHasJoined = false;
+    public Integer chosenEnchSent = null;
 
     public static void registerMPPs() {
         ModelPredicateProviderRegistry.register(
@@ -125,6 +128,18 @@ public class LapisworksClient implements ClientModInitializer {
                 }
             }
         );
+        ClientPlayNetworking.registerGlobalReceiver(
+            SEND_PICKED_PATTERN,
+            (
+                client,
+                handler,
+                buf,
+                responseSender
+            ) -> {
+                this.chosenEnchSent = buf.readInt();
+                justSetEnchSentConfigFlag(this.chosenEnchSent, true);
+            }
+        );
 
         ClientPlayConnectionEvents.JOIN.register((
             handler,
@@ -151,6 +166,12 @@ public class LapisworksClient implements ClientModInitializer {
             this.playerHasJoined = false;
             this.bufferSentinelPos = null;
             this.bufferSentinelAmbit = null;
+            if (this.chosenEnchSent != null) {
+                justSetEnchSentConfigFlag(this.chosenEnchSent, playerHasJoined);
+                this.chosenEnchSent = null;
+            } else {
+                LOGGER.warn("By the way, why didn't the server tell us the chosen enchanted sentinel?");
+            }
             if (client.player != null) {
                 // i don't know, okay? just in case or something
                 ((EnchSentInterface)client.player).setEnchantedSentinel(null, null);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.luxof.lapisworks.mixinsupport.EnchSentInterface;
 
+import static com.luxof.lapisworks.LapisworksNetworking.SEND_PICKED_PATTERN;
 import static com.luxof.lapisworks.LapisworksNetworking.SEND_SENT;
 
 import at.petrak.hexcasting.api.casting.eval.ResolvedPattern;
@@ -81,6 +82,10 @@ public class LapisworksServer {
             buf.writeVector3f(sentPos.toVector3f());
             buf.writeDouble(sentAmbit);
             ServerPlayNetworking.send(player, SEND_SENT, buf);
+
+            PacketByteBuf enchSentBuf = PacketByteBufs.create();
+            enchSentBuf.writeInt(Math.abs((int)(server.getOverworld().getSeed() % 6)));
+            ServerPlayNetworking.send(player, SEND_PICKED_PATTERN, enchSentBuf);
         });
     }
 }

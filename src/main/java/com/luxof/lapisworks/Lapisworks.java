@@ -12,6 +12,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
+import vazkii.patchouli.api.PatchouliAPI;
 
 import java.util.Map;
 import java.util.Optional;
@@ -21,6 +22,7 @@ import dev.emi.trinkets.api.TrinketsApi;
 
 import com.luxof.lapisworks.init.ModItems;
 import com.luxof.lapisworks.init.Patterns;
+import com.luxof.lapisworks.init.ThemConfigFlags;
 import com.luxof.lapisworks.init.ModBlocks;
 import com.luxof.lapisworks.items.PartiallyAmelStaff;
 import com.luxof.lapisworks.items.shit.FullyAmelInterface;
@@ -183,4 +185,19 @@ public class Lapisworks implements ModInitializer {
 
 	public static double clamp(double num, double min, double max) { return Math.min(Math.max(num, min), max); }
 	public static float clamp(float num, float min, float max) { return Math.min(Math.max(num, min), max); }
+
+	/** combines the two functions. */
+	public static void pickAndSetEnchSentConfigFlag(long seed, boolean value) {
+		justSetEnchSentConfigFlag(pickEnchSentConfigFlag(seed), value);
+	}
+	/** Computes the chosen enchanted sentinel summon pattern. */
+	public static int pickEnchSentConfigFlag(long seed) { return Math.abs((int)(seed % 6)); }
+	/** Also sets every other config flag to false to client-proof that shit. */
+	public static void justSetEnchSentConfigFlag(int picked, boolean value) {
+		PatchouliAPI.IPatchouliAPI api = PatchouliAPI.get();
+		for (int i = 0; i < ThemConfigFlags.allEnchSentFlags.length; i++) {
+			api.setConfigFlag(ThemConfigFlags.allEnchSentFlags[i], i == picked ? value : false);
+		}
+		ThemConfigFlags.chosenEnchSent = value ? picked : null;
+	}
 }
