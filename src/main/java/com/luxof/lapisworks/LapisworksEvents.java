@@ -1,11 +1,5 @@
 package com.luxof.lapisworks;
 
-import static com.luxof.lapisworks.Lapisworks.nullConfigFlags;
-import static com.luxof.lapisworks.Lapisworks.pickConfigFlags;
-import static com.luxof.lapisworks.Lapisworks.pickUsingSeed;
-
-import org.joml.Random;
-
 import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
 
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
