@@ -6,9 +6,6 @@ import at.petrak.hexcasting.api.casting.castables.SpellAction;
 import at.petrak.hexcasting.api.casting.math.HexPattern;
 import at.petrak.hexcasting.api.casting.ActionRegistryEntry;
 import at.petrak.hexcasting.common.lib.hex.HexActions;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.registry.Registry;
-import net.minecraft.util.Identifier;
 
 import com.luxof.lapisworks.Lapisworks;
 import com.luxof.lapisworks.actions.CheckAttr;
@@ -31,18 +28,11 @@ import com.luxof.lapisworks.actions.CubeExalt;
 import com.luxof.lapisworks.actions.EmptyPrfn;
 import com.luxof.lapisworks.actions.ImbueAmel;
 
-public class Patterns {
-    public static String create_enchsent1pat = "aqaeawdwwwdwqwdwwwdweqqaqwedeewqded";
-    public static String create_enchsent2pat = "aqaeawdwwwdwqwdwwwdwewweaqa";
-    public static String create_enchsent3pat = "wdwewdwwwdwwwdwqwdwwwdw";
-    public static String create_enchsent4pat = "aqaeawdwwwdwqwdwwwdweqaawddeweaqa";
-    public static String create_enchsent5pat = "wdwwwdwqwdwwwdweqaawdde";
-    public static String create_enchsent6pat = "wdwwwdwqwdwwwdwweeeee";
-    public static String[] all_create_enchsent = {
-        create_enchsent1pat, create_enchsent2pat, create_enchsent3pat,
-        create_enchsent4pat, create_enchsent5pat, create_enchsent6pat
-    };
+import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
 
+public class Patterns {
     public static void init() {
         MoarAttr MoarHealthAction = new MoarAttr(
             EntityAttributes.GENERIC_MAX_HEALTH,

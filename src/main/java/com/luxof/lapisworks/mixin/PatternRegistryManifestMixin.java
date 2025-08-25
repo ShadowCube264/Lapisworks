@@ -5,10 +5,9 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import at.petrak.hexcasting.api.casting.math.HexPattern;
 import at.petrak.hexcasting.common.casting.PatternRegistryManifest;
 
-import com.luxof.lapisworks.init.Patterns;
-import com.luxof.lapisworks.init.ThemConfigFlags;
-
 import static com.luxof.lapisworks.Lapisworks.LOGGER;
+import static com.luxof.lapisworks.init.ThemConfigFlags.chosenFlags;
+import static com.luxof.lapisworks.init.ThemConfigFlags.allPerWorldShapePatterns;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,16 +26,18 @@ public abstract class PatternRegistryManifestMixin {
     ) {
         // i only have to invalidate the ones that aren't chosen
         // because hex will automatically validate the one that is chosen if this is it.
-        if (ThemConfigFlags.chosenEnchSent != null) {
+        if (chosenFlags.indexOf(null) == -1 || chosenFlags.size() == 0) {
             String sig = pat.anglesSignature();
-            for (int i = 0; i < 6; i++) {
-                if (i == ThemConfigFlags.chosenEnchSent) { continue; }
-                else if (sig == Patterns.all_create_enchsent[i]) {
+            for (int patternIdx = 0; patternIdx < chosenFlags.size(); patternIdx++) {
+                int idx = allPerWorldShapePatterns.get(patternIdx).indexOf(sig);
+                if (idx == -1) { continue; }
+                else if (idx != chosenFlags.get(patternIdx)) {
                     cir.setReturnValue(new PatternShapeMatch.Nothing());
-                }
+                    break;
+                } else { break; } // approved pattern, let it through
             }
         } else {
-            LOGGER.warn("Why the fuck has an enchanted sentinel pattern not been chosen yet?!");
+            LOGGER.error("Why the fuck have the flags not been chosen yet?!");
         }
     }
 }
