@@ -62,7 +62,7 @@ public class WizardDiaries extends Item {
                 Text.translatable("notif.lapisworks.wizard_diaries.all_gotten"),
                 true
             );
-            suser.addExperience(20);
+            suser.addExperience(100);
         } else {
             // no clue if this'll work
             suser.getAdvancementTracker().grantCriterion(chosenAdvancement, "grant");

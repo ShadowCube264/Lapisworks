@@ -222,11 +222,15 @@
     "categories.lapisworks.lapisworks.great": "The Wizard's Spells",
     "categories.lapisworks.lapisworks.great.desc": "Some intellectuals and/or adventurers saved the old wizard's diaries. I've begun to divine some of the wizard's knowledge from these ancient tomes.",
 
+    "pages.lapisworks.great.go_get_treasure.title": "The Ancient Wizard",
+    "pages.lapisworks.great.go_get_treasure.1": "I have found rumour of an old, knowledgeable wizard that has done much evil and staved off the hordes of vigilantism, yet always had low media reserves. While he attempted to burn most of his scriptures near his demise, I've read tale of adventurers and intellectuals that had managed to save some of them from the grand fire.",
+    "pages.lapisworks.great.go_get_treasure.2": "Based off of this information I predict they may have buried the knowledge away or put it in the strongholds I've read of, such as pyramids in the desert, brick structures underground, etcetera.",
+
     "pages.lapisworks.great_enchsent.title": "Enchanted Sentinel",
     "pages.lapisworks.great.enchsent_lore": "Whilst being hunted by a particularly strong group of 30-40 people consisting of professional hitmen or assassins, bounty hunters, and other mages looking to vanquish him, the mage had escaped into a castle. He needed a way to be able to deal with all of them from a huge distance or from a few floors up. Greater Sentinel's range was much too small, they would be aware it was a small trap. So out of desperation, he looked to his Amel to \"enchant\" the pattern.",
     "pages.lapisworks.great.create_enchsent.summary": "Summons an enchanted version of the Greater Sentinel at the given position (which must be within 32 blocks around me) and the given ambit (which can be from 1-64). Costs 5 amethyst dust to summon.",
     "pages.lapisworks.great.create_enchsent.detail": "This Enchanted Sentinel has much more media than a Greater Sentinel, but has chains imposed on it that make its existence dependent on me. It must always be in MY ambit (a Greater Sentinel's ambit is much too weak) or else it falls apart. It's still intangible, but it emanates particles visible to everyone. I perceive the particles as well as a media-dense being which looks like some dark purple, unnaturally twisting geometric shape.",
     "pages.lapisworks.great.create_enchsent.lore": "The wizard wrote it was created by forcing Amethyst Lazuli into the original pattern and molding it violently, shaping the media within to his will. The result is a \"4-dimensional spinning hypercube projected as a tesseract!\" (what does that even mean??) which has some form of feeling and awareness. It knows it's chained to it's user, forced to follow their whims due to being dependent on their media. He writes of it fondly, as if he likes it.",
     "pages.lapisworks.great.banish_my_enchsent.summary": "Peacefully put my Enchanted Sentinel to rest for a negligible amount of media, letting it rest for a time. Perhaps the ethical option, considering \"falling apart\" may not be the most painless.",
-    "pages.lapisworks.great.banish_other_enchsent.summary": "Banish another's Enchanted Sentinel if it's at that block for "
+    "pages.lapisworks.great.banish_other_enchsent.summary": "Banish another's Enchanted Sentinel if it's at that block for 5 dust."
 }

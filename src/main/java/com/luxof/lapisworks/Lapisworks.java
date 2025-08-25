@@ -32,7 +32,6 @@ import net.minecraft.item.Items;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
-import vazkii.patchouli.api.PatchouliAPI;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -40,6 +39,8 @@ import org.joml.Random;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import vazkii.patchouli.api.PatchouliAPI;
 
 // why is this project actually big?
 public class Lapisworks implements ModInitializer {
@@ -77,6 +78,7 @@ public class Lapisworks implements ModInitializer {
 		ModItems.init_shit();
 		LapisworksServer.lockIn();
 		ModBlocks.wearASkirt();
+		LapisworksLoot.gibLootexclamationmark();
 
         LOGGER.info("Luxof's pet Lapisworks is getting a bit hyperactive.");
 		LOGGER.info("\"Lapisworks! Lapis Lapis!\"");

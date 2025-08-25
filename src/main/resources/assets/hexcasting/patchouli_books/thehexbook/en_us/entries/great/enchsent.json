@@ -3,7 +3,7 @@
     "icon": "lapisworks:textures/entries/3dblock.png",
     "advancement": "lapisworks:rediscover_enchsent",
     "category": "hexcasting:lapisworks/great",
-    "sortnum": 1,
+    "sortnum": 2,
     "pages": [
         {
             "type": "patchouli:text",
