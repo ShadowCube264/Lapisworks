@@ -8,9 +8,10 @@ import com.luxof.lapisworks.mixinsupport.EnchSentInterface;
 import static com.luxof.lapisworks.Lapisworks.LOGGER;
 import static com.luxof.lapisworks.Lapisworks.trinketEquipped;
 import static com.luxof.lapisworks.Lapisworks.id;
-import static com.luxof.lapisworks.Lapisworks.justSetEnchSentConfigFlag;
+import static com.luxof.lapisworks.Lapisworks.nullConfigFlags;
+import static com.luxof.lapisworks.Lapisworks.pickConfigFlags;
 import static com.luxof.lapisworks.LapisworksNetworking.OPEN_CASTING_GRID;
-import static com.luxof.lapisworks.LapisworksNetworking.SEND_PICKED_PATTERN;
+import static com.luxof.lapisworks.LapisworksNetworking.SEND_RNG_SEED;
 import static com.luxof.lapisworks.LapisworksNetworking.SEND_SENT;
 import static com.luxof.lapisworks.init.ModItems.IRON_SWORD;
 
@@ -32,6 +33,7 @@ import net.minecraft.item.Item;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.util.math.Vec3d;
 
+import org.joml.Random;
 import org.lwjgl.glfw.GLFW;
 
 public class LapisworksClient implements ClientModInitializer {
@@ -39,7 +41,8 @@ public class LapisworksClient implements ClientModInitializer {
     public Vec3d bufferSentinelPos = null;
     public Double bufferSentinelAmbit = null;
     public boolean playerHasJoined = false;
-    public Integer chosenEnchSent = null;
+    // no checks for null enforced on this; if this is not sent the error is deserved.
+    public Random rng = null;
 
     public static void registerMPPs() {
         ModelPredicateProviderRegistry.register(
@@ -129,15 +132,15 @@ public class LapisworksClient implements ClientModInitializer {
             }
         );
         ClientPlayNetworking.registerGlobalReceiver(
-            SEND_PICKED_PATTERN,
+            SEND_RNG_SEED,
             (
                 client,
                 handler,
                 buf,
                 responseSender
             ) -> {
-                this.chosenEnchSent = buf.readInt();
-                justSetEnchSentConfigFlag(this.chosenEnchSent, true);
+                this.rng = new Random(buf.readLong());
+                pickConfigFlags(this.rng);
             }
         );
 
@@ -166,12 +169,7 @@ public class LapisworksClient implements ClientModInitializer {
             this.playerHasJoined = false;
             this.bufferSentinelPos = null;
             this.bufferSentinelAmbit = null;
-            if (this.chosenEnchSent != null) {
-                justSetEnchSentConfigFlag(this.chosenEnchSent, playerHasJoined);
-                this.chosenEnchSent = null;
-            } else {
-                LOGGER.warn("By the way, why didn't the server tell us the chosen enchanted sentinel?");
-            }
+            nullConfigFlags();
             if (client.player != null) {
                 // i don't know, okay? just in case or something
                 ((EnchSentInterface)client.player).setEnchantedSentinel(null, null);

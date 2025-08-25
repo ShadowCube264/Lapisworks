@@ -1,10 +1,30 @@
 package com.luxof.lapisworks;
 
-import org.jetbrains.annotations.Nullable;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import at.petrak.hexcasting.api.pigment.FrozenPigment;
+import at.petrak.hexcasting.common.items.ItemStaff;
+import at.petrak.hexcasting.common.lib.HexItems;
+
+import com.luxof.lapisworks.init.ModItems;
+import com.luxof.lapisworks.init.Patterns;
+import com.luxof.lapisworks.init.ModBlocks;
+import com.luxof.lapisworks.init.ThemConfigFlags;
+import com.luxof.lapisworks.items.PartiallyAmelStaff;
+import com.luxof.lapisworks.items.shit.FullyAmelInterface;
+import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
+import com.luxof.lapisworks.items.CastingRing;
+
+import static com.luxof.lapisworks.init.ThemConfigFlags.allConfigFlags;
+import static com.luxof.lapisworks.init.ThemConfigFlags.chosenFlags;
+
+import dev.emi.trinkets.api.TrinketComponent;
+import dev.emi.trinkets.api.TrinketsApi;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 import net.fabricmc.api.ModInitializer;
+
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,24 +34,12 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 import vazkii.patchouli.api.PatchouliAPI;
 
-import java.util.Map;
-import java.util.Optional;
+import org.jetbrains.annotations.Nullable;
 
-import dev.emi.trinkets.api.TrinketComponent;
-import dev.emi.trinkets.api.TrinketsApi;
+import org.joml.Random;
 
-import com.luxof.lapisworks.init.ModItems;
-import com.luxof.lapisworks.init.Patterns;
-import com.luxof.lapisworks.init.ThemConfigFlags;
-import com.luxof.lapisworks.init.ModBlocks;
-import com.luxof.lapisworks.items.PartiallyAmelStaff;
-import com.luxof.lapisworks.items.shit.FullyAmelInterface;
-import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
-import com.luxof.lapisworks.items.CastingRing;
-
-import at.petrak.hexcasting.api.pigment.FrozenPigment;
-import at.petrak.hexcasting.common.items.ItemStaff;
-import at.petrak.hexcasting.common.lib.HexItems;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 // why is this project actually big?
 public class Lapisworks implements ModInitializer {
@@ -41,7 +49,6 @@ public class Lapisworks implements ModInitializer {
 		Items.GOLDEN_SWORD, (FullyAmelInterface)ModItems.GOLD_SWORD
 	);
 
-	// ahhh who cares let it error if it will
 	private static FrozenPigment BLACK_FP = new FrozenPigment(new ItemStack(HexItems.DYE_PIGMENTS.get(DyeColor.BLACK)), Util.NIL_UUID);
 	private static FrozenPigment BROWN_FP = new FrozenPigment(new ItemStack(HexItems.DYE_PIGMENTS.get(DyeColor.BROWN)), Util.NIL_UUID);
 	private static FrozenPigment BLUE_FP = new FrozenPigment(new ItemStack(HexItems.DYE_PIGMENTS.get(DyeColor.BLUE)), Util.NIL_UUID);
@@ -64,6 +71,7 @@ public class Lapisworks implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ThemConfigFlags.declareEm();
 		LapisworksEvents.init();
 		Patterns.init();
 		ModItems.init_shit();
@@ -125,8 +133,6 @@ public class Lapisworks implements ModInitializer {
 	public static <T extends Item> FullyAmelInterface getFullAmelFromNorm(T item) {
 		if (item instanceof CastingRing) { return ModItems.AMEL_RING; }
 		else if (item instanceof ItemStaff) { return ModItems.AMEL_STAFF; }
-		// i dunno what would happen if i casted null to FullyAmelInterface
-		// so
 		else { return swordToAmelMap.get(item); }
 	}
 
@@ -157,8 +163,8 @@ public class Lapisworks implements ModInitializer {
 			case RED: return RED_FP;
 			case WHITE: return WHITE_FP;
 			case YELLOW: return YELLOW_FP;
+			default: return null;
 		}
-		return null;
 	}
 
 	@Nullable
@@ -186,18 +192,39 @@ public class Lapisworks implements ModInitializer {
 	public static double clamp(double num, double min, double max) { return Math.min(Math.max(num, min), max); }
 	public static float clamp(float num, float min, float max) { return Math.min(Math.max(num, min), max); }
 
-	/** combines the two functions. */
-	public static void pickAndSetEnchSentConfigFlag(long seed, boolean value) {
-		justSetEnchSentConfigFlag(pickEnchSentConfigFlag(seed), value);
-	}
-	/** Computes the chosen enchanted sentinel summon pattern. */
-	public static int pickEnchSentConfigFlag(long seed) { return Math.abs((int)(seed % 6)); }
-	/** Also sets every other config flag to false to client-proof that shit. */
-	public static void justSetEnchSentConfigFlag(int picked, boolean value) {
-		PatchouliAPI.IPatchouliAPI api = PatchouliAPI.get();
-		for (int i = 0; i < ThemConfigFlags.allEnchSentFlags.length; i++) {
-			api.setConfigFlag(ThemConfigFlags.allEnchSentFlags[i], i == picked ? value : false);
+	/** Computes the seed that will be used to compute per-world pattern shapes from a world seed. */
+	public static int pickUsingSeed(long seed) {
+		// i'm trusting that org.joml.Random won't change and that java.util.Random will across Java versions
+		// (should probably homebrew my own atp)
+		Random rng = new Random(seed);
+		int sendThisSeed = 0;
+		for (int i = -1; i < seed % 13; i++) { // so they can't easily predict world seed
+			sendThisSeed = rng.nextInt(32767); // wonder if i should use newSeed() instead
 		}
-		ThemConfigFlags.chosenEnchSent = value ? picked : null;
+		return sendThisSeed;
+	}
+
+	/** Computes the config flags and selects them for you. ASSUMES THIS IS A FRESHLY-MADE RNG!! */
+	public static void pickConfigFlags(Random rng) {
+		for (int i = 0; i < allConfigFlags.size(); i++) {
+			List<String> list = allConfigFlags.get(i);
+			int chosen = rng.nextInt(list.size());
+			PatchouliAPI.get().setConfigFlag(
+				allConfigFlags.get(i).get(chosen),
+				true
+			);
+			chosenFlags.set(i, chosen);
+		}
+	}
+
+	/** Nulls the config flags for you. */
+	public static void nullConfigFlags() {
+		for (int i = 0; i < chosenFlags.size(); i++) {
+			PatchouliAPI.get().setConfigFlag(
+				allConfigFlags.get(i).get(chosenFlags.get(i)),
+				false
+			);
+			chosenFlags.set(i, null);
+		}
 	}
 }

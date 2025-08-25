@@ -1,22 +1,31 @@
 package com.luxof.lapisworks;
 
-import java.util.List;
-
-import com.luxof.lapisworks.mixinsupport.EnchSentInterface;
-
-import static com.luxof.lapisworks.LapisworksNetworking.SEND_PICKED_PATTERN;
-import static com.luxof.lapisworks.LapisworksNetworking.SEND_SENT;
-
 import at.petrak.hexcasting.api.casting.eval.ResolvedPattern;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingVM;
 import at.petrak.hexcasting.common.msgs.MsgClearSpiralPatternsS2C;
 import at.petrak.hexcasting.common.msgs.MsgOpenSpellGuiS2C;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
+
+import com.luxof.lapisworks.mixinsupport.EnchSentInterface;
+
+import static com.luxof.lapisworks.Lapisworks.pickUsingSeed;
+import static com.luxof.lapisworks.Lapisworks.pickConfigFlags;
+import static com.luxof.lapisworks.Lapisworks.nullConfigFlags;
+import static com.luxof.lapisworks.LapisworksNetworking.SEND_RNG_SEED;
+import static com.luxof.lapisworks.LapisworksNetworking.SEND_SENT;
+
+import java.util.List;
+
+import org.joml.Random;
+
 import kotlin.Pair;
+
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.MinecraftServer;
@@ -83,9 +92,15 @@ public class LapisworksServer {
             buf.writeDouble(sentAmbit);
             ServerPlayNetworking.send(player, SEND_SENT, buf);
 
-            PacketByteBuf enchSentBuf = PacketByteBufs.create();
-            enchSentBuf.writeInt(Math.abs((int)(server.getOverworld().getSeed() % 6)));
-            ServerPlayNetworking.send(player, SEND_PICKED_PATTERN, enchSentBuf);
+            // it can't be THAT expensive to recompute this every time a player joins
+            long seed = (long)pickUsingSeed(server.getOverworld().getSeed());
+            PacketByteBuf seedBuf = PacketByteBufs.create();
+            seedBuf.writeLong(seed);
+            ServerPlayNetworking.send(player, SEND_RNG_SEED, seedBuf);
         });
+        ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
+            pickConfigFlags(new Random(pickUsingSeed(server.getOverworld().getSeed())));
+        });
+        ServerLifecycleEvents.SERVER_STOPPING.register((server) -> { nullConfigFlags(); });
     }
 }
