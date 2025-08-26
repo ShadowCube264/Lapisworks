@@ -1,6 +1,7 @@
 package com.luxof.lapisworks.mixin;
 
 import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
+import com.luxof.lapisworks.mixinsupport.LapisworksInterface.AllEnchantments;
 
 import static com.luxof.lapisworks.Lapisworks.LOGGER;
 
@@ -25,7 +26,7 @@ public class EntityMixin {
 	public void isInvulnerableTo(DamageSource damageSource, CallbackInfoReturnable<Boolean> cir) {
         if ((Object)this instanceof LivingEntity) {
             if (damageSource.isIn(DamageTypeTags.IS_FIRE) &&
-                ((LapisworksInterface)this).checkFireResist() >= 1) {
+                ((LapisworksInterface)this).getEnchant(AllEnchantments.fireResist) > 0) {
                 cir.setReturnValue(true);
             }
         }

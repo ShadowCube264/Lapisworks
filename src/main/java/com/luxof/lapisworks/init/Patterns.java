@@ -7,6 +7,8 @@ import at.petrak.hexcasting.api.casting.math.HexPattern;
 import at.petrak.hexcasting.api.casting.ActionRegistryEntry;
 import at.petrak.hexcasting.common.lib.hex.HexActions;
 
+import static at.petrak.hexcasting.api.misc.MediaConstants.CRYSTAL_UNIT;
+
 import com.luxof.lapisworks.Lapisworks;
 import com.luxof.lapisworks.actions.CheckAttr;
 import com.luxof.lapisworks.actions.ImbueLap;
@@ -17,11 +19,7 @@ import com.luxof.lapisworks.actions.SphereDst;
 import com.luxof.lapisworks.actions.great.BanishMySent;
 import com.luxof.lapisworks.actions.great.BanishOtherSent;
 import com.luxof.lapisworks.actions.great.CreateEnchSent;
-import com.luxof.lapisworks.actions.great.EnchantFallDmgRes;
-import com.luxof.lapisworks.actions.great.EnchantFire;
-import com.luxof.lapisworks.actions.great.EnchantLightning;
-import com.luxof.lapisworks.actions.great.EnchantLongBreath;
-import com.luxof.lapisworks.actions.great.GrantFireResist;
+import com.luxof.lapisworks.actions.great.GenericEnchant;
 import com.luxof.lapisworks.actions.CheckEnchant;
 import com.luxof.lapisworks.actions.ConjureColor;
 import com.luxof.lapisworks.actions.CubeExalt;
@@ -76,11 +74,16 @@ public class Patterns {
         register("gib_dexterity", "aeaqqdeeeqewdwqwdwe", HexDir.WEST, GibDexterityAction);
         register("check_attr", "wwwaqeeqawww", HexDir.NORTH_EAST, new CheckAttr());
 
-        register("fireyfists", "wwewdawdewqewedadad", HexDir.EAST, new EnchantFire());
-        register("lightningbending", "wewdawdewqewdqqeedqe", HexDir.EAST, new EnchantLightning());
-        register("falldmgres", "qqwwqqqadwewdeq", HexDir.SOUTH_WEST, new EnchantFallDmgRes());
-        register("longbreath", "wewdwewewewewdwew", HexDir.SOUTH_EAST, new EnchantLongBreath());
-        register("fireresist", "wwqwqwadwawdawqwaeqqaqqe", HexDir.EAST, new GrantFireResist());
+        GenericEnchant fireyFists       = new GenericEnchant(1, 64, CRYSTAL_UNIT * 10, "lapisenchantments.lapisworks.fireyfists");
+        GenericEnchant lightningBending = new GenericEnchant(3, 64, CRYSTAL_UNIT * 20, "lapisenchantments.lapisworks.lightningbending");
+        GenericEnchant fallDmgRes       = new GenericEnchant(2, 32, CRYSTAL_UNIT * 5, "lapisenchantments.lapisworks.falldmgres");
+        GenericEnchant longBreath       = new GenericEnchant(2, 10, CRYSTAL_UNIT, "lapisenchantments.lapisworks.longbreath");
+        GenericEnchant fireResist       = new GenericEnchant(1, 64, CRYSTAL_UNIT * 10, "lapisenchantments.lapisworks.fireresist");
+        register("fireyfists", "wwewdawdewqewedadad", HexDir.EAST, fireyFists);
+        register("lightningbending", "wewdawdewqewdqqeedqe", HexDir.EAST, lightningBending);
+        register("falldmgres", "qqwwqqqadwewdeq", HexDir.SOUTH_WEST, fallDmgRes);
+        register("longbreath", "wewdwewewewewdwew", HexDir.SOUTH_EAST, longBreath);
+        register("fireresist", "wwqwqwadwawdawqwaeqqaqqe", HexDir.EAST, fireResist);
         register("checkenchant", "aqawwqqwqqw", HexDir.SOUTH_EAST, new CheckEnchant());
 
         register("imbue_amel", "wqwwawwqwwaqwewaawewa", HexDir.NORTH_EAST, new ImbueAmel());

@@ -1,8 +1,5 @@
 package com.luxof.lapisworks.actions.great;
 
-import java.util.List;
-import java.util.Optional;
-
 import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.ParticleSpray;
 import at.petrak.hexcasting.api.casting.RenderedSpell;
@@ -15,7 +12,16 @@ import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem;
 import at.petrak.hexcasting.api.casting.mishaps.MishapUnenlightened;
-import at.petrak.hexcasting.api.misc.MediaConstants;
+
+import com.luxof.lapisworks.MishapThrowerJava;
+import com.luxof.lapisworks.init.EnchantCountKeeper;
+import com.luxof.lapisworks.init.ModItems;
+import com.luxof.lapisworks.mishaps.MishapAlreadyHasEnchantment;
+import com.luxof.lapisworks.mishaps.MishapNotEnoughOffhandItems;
+import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
+
+import java.util.List;
+import java.util.Optional;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -23,13 +29,39 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 
-import com.luxof.lapisworks.MishapThrowerJava;
-import com.luxof.lapisworks.init.ModItems;
-import com.luxof.lapisworks.mishaps.MishapAlreadyHasEnchantment;
-import com.luxof.lapisworks.mishaps.MishapNotEnoughOffhandItems;
-import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
+/** responsibility of mixin to make enchantment do something falls on the user of this. */
+public class GenericEnchant implements SpellAction {
+    public final int enchantmentIdx;
+    public final int maxLevel;
+    public final int requiredAmel;
+    public final long requiredMedia;
+    public final Text enchantmentLangKey;
 
-public class EnchantLongBreath implements SpellAction {
+    public GenericEnchant(
+        int maxLevel,
+        int requiredAmel,
+        long requiredMedia,
+        String enchantmentLangKey
+    ) {
+        this.enchantmentIdx = EnchantCountKeeper.registerMyEnchantment();
+        this.maxLevel = maxLevel;
+        this.requiredAmel = requiredAmel;
+        this.requiredMedia = requiredMedia;
+        this.enchantmentLangKey = Text.translatable(enchantmentLangKey);
+    }
+    public GenericEnchant(
+        int maxLevel,
+        int requiredAmel,
+        long requiredMedia,
+        Text enchantmentLangKey
+    ) {
+        this.enchantmentIdx = EnchantCountKeeper.registerMyEnchantment();
+        this.maxLevel = maxLevel;
+        this.requiredAmel = requiredAmel;
+        this.requiredMedia = requiredMedia;
+        this.enchantmentLangKey = enchantmentLangKey;
+    }
+
     public int getArgc() {
         return 1;
     }
@@ -41,13 +73,13 @@ public class EnchantLongBreath implements SpellAction {
         }
         LivingEntity entity = OperatorUtils.getPlayer(args, 0, getArgc());
 
-        if (((LapisworksInterface)entity).checkLongBreath() == 2) {
+        if (((LapisworksInterface)entity).getEnchant(this.enchantmentIdx) >= this.maxLevel) {
             MishapThrowerJava.throwMishap(
                 new MishapAlreadyHasEnchantment(
                     entity,
-                    Text.translatable("lapisenchantments.lapisworks.longbreath"),
-                    3,
-                    2
+                    this.enchantmentLangKey,
+                    this.enchantmentIdx,
+                    this.maxLevel
                 )
             );
         }
@@ -64,12 +96,12 @@ public class EnchantLongBreath implements SpellAction {
         } else if (ModItems.AMEL_MODELS.indexOf(offHandItems.getItem()) == -1) {
             MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "amel"));
         } else if (offHandItems.getCount() < 10) {
-            MishapThrowerJava.throwMishap(new MishapNotEnoughOffhandItems(offHandItems, 32));
+            MishapThrowerJava.throwMishap(new MishapNotEnoughOffhandItems(offHandItems, this.requiredAmel));
         }
 
         return new SpellAction.Result(
             new Spell(entity, caster),
-            MediaConstants.CRYSTAL_UNIT,
+            this.requiredMedia,
             List.of(ParticleSpray.burst(entity.getPos(), 3, 25)),
             1
         );
@@ -86,18 +118,16 @@ public class EnchantLongBreath implements SpellAction {
 
 		@Override
 		public void cast(CastingEnvironment ctx) {
-            caster.setStackInHand(
+            this.caster.setStackInHand(
                 Hand.OFF_HAND,
-                caster.getOffHandStack().getCount() == 10 ?
+                caster.getOffHandStack().getCount() == requiredAmel ?
                     ItemStack.EMPTY :
                     new ItemStack(
                         caster.getOffHandStack().getItem(),
-                        caster.getOffHandStack().getCount() - 10
+                        caster.getOffHandStack().getCount() - requiredAmel
                     )
             );
-            ((LapisworksInterface)this.entity).setLongBreath(
-                ((LapisworksInterface)this.entity).checkLongBreath() + 1
-            );
+            ((LapisworksInterface)this.entity).incrementEnchant(enchantmentIdx);
 		}
 
         @Override

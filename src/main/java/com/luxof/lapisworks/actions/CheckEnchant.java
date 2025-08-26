@@ -17,12 +17,15 @@ import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
 public class CheckEnchant implements ConstMediaAction {
     @Override
     public List<Iota> execute(List<? extends Iota> args, CastingEnvironment ctx) {
+        LapisworksInterface ent = (LapisworksInterface)OperatorUtils.getLivingEntityButNotArmorStand(
+            args,
+            1,
+            getArgc()
+        );
         return List.of(
             new DoubleIota(
-                (
-                    (LapisworksInterface)OperatorUtils.getLivingEntityButNotArmorStand(args, 1, getArgc())
-                ).getEnchantments().get(
-                    OperatorUtils.getIntBetween(args, 0, 0, 4, getArgc())
+                (ent).getEnchantments().get(
+                    OperatorUtils.getIntBetween(args, 0, 0, ent.getEnchantments().size() - 1, getArgc())
                 )
             )
         );
