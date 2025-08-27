@@ -38,7 +38,7 @@
             "op_id": "lapisworks:cubic_exalt",
             "anchor": "lapisworks:cubic_exalt",
             "input": "[pattern], vec, num, bool",
-            "output": "[vec]",
+            "output": "",
             "text": "pages.lapisworks.lapisworks_misc.cubic_exalt.summary"
         },
         {
