@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 public class LapisworksEvents {
     public static void init() {
         /*
-        THIS CRASHES THE FUCKING GAME IF YOU MISS AN ENTITY LMFAOOOOO
+        //THIS CRASHES THE FUCKING GAME IF YOU MISS AN ENTITY LMFAOOOOO
         AttackEntityCallback.EVENT.register(
             (PlayerEntity player, World world, Hand hand, Entity entity, EntityHitResult hitResult) -> {
                 Item item = player.getStackInHand(hand).getItem();

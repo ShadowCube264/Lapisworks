@@ -125,6 +125,8 @@
     "mishaps.lapisworks.bad_item.mainhand": "Expected %s in the main hand, but found %dx %s.",
 
     "mishaps.lapisworks.bad_item.mainhand.imbueable": "any item imbueable with Amethyst Lazuli (e.g. a staff)",
+    "mishaps.lapisworks.bad_item.mainhand.readable": "a readable Iota holder (e.g. a Focus or a Thought-knot)",
+    "mishaps.lapisworks.bad_item.mainhand.writeable": "a writeable Iota holder (e.g. a Focus)",
 
 
     "notif.lapisworks.wizard_diaries.all_gotten": "It seems I have rediscovered all the surviving ancient tomes.",

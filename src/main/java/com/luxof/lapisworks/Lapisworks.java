@@ -221,12 +221,25 @@ public class Lapisworks implements ModInitializer {
 
 	/** Nulls the config flags for you. */
 	public static void nullConfigFlags() {
-		for (int i = 0; i < chosenFlags.size(); i++) {
-			PatchouliAPI.get().setConfigFlag(
-				allConfigFlags.get(i).get(chosenFlags.get(i)),
-				false
-			);
-			chosenFlags.set(i, null);
+		LOGGER.info("Nulling config flags.");
+		try {
+			for (int i = 0; i < chosenFlags.size(); i++) {
+				PatchouliAPI.get().setConfigFlag(
+					allConfigFlags.get(i).get(chosenFlags.get(i)),
+					false
+				);
+				chosenFlags.set(i, null);
+			}
+		} catch (Exception e) {
+			LOGGER.error("Huh, got an error nulling config flags.");
+			e.printStackTrace();
+			try {
+				LOGGER.error("Here, have this:\nchosen: " + chosenFlags.toString() + "\nall: " + allConfigFlags.toString());
+			} catch (Exception e2) {
+				LOGGER.error("We can't even display the variables.");
+				e2.printStackTrace();
+			}
+			LOGGER.error("This shouldn't be a big concern. Probably. At least, I don't think it is.");
 		}
 	}
 }

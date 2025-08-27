@@ -13,14 +13,22 @@ import net.minecraft.util.DyeColor;
 
 public class MishapBadMainhandItem extends Mishap {
     public final ItemStack item;
+    public final Text itemText;
     public final Text wanted;
 
+    public MishapBadMainhandItem(Text itemText, Text wanted) {
+        this.item = null;
+        this.itemText = itemText;
+        this.wanted = wanted;
+    }
     public MishapBadMainhandItem(ItemStack item, Text wanted) {
         this.item = item;
+        this.itemText = null;
         this.wanted = wanted;
     }
     public MishapBadMainhandItem(ItemStack item, Item wanted) {
         this.item = item;
+        this.itemText = null;
         this.wanted = wanted.getName();
     }
 
@@ -31,6 +39,13 @@ public class MishapBadMainhandItem extends Mishap {
 
     @Override
     protected Text errorMessage(CastingEnvironment ctx, Context errorCtx) {
+        if (this.item == null) {
+            return Text.translatable(
+                "mishaps.lapisworks.bad_general_item.mainhand",
+                this.wanted,
+                this.itemText
+            );
+        }
         if (this.item.isEmpty()) {
             return Text.translatable(
                 "mishaps.lapisworks.no_item.mainhand",
