@@ -89,7 +89,15 @@
     "hexcasting.action.lapisworks:visible_dstl": "可视之馏化",
     "hexcasting.action.book.lapisworks:visible_dstl": "可视之馏化",
     "hexcasting.action.lapisworks:empty_prfn": "Empty Purification",
-    "hexcasting.action.book.lapisworks:empty_prfn": "Empty Prfn.",
+    "hexcasting.action.book.lapisworks:empty_prfn": "Empty Purification",
+    "hexcasting.action.lapisworks:read_mainhand": "Secretary's Reflection",
+    "hexcasting.action.book.lapisworks:read_mainhand": "Secretary's Reflection",
+    "hexcasting.action.lapisworks:readable_mainhand": "Reviewer's Reflection",
+    "hexcasting.action.book.lapisworks:readable_mainhand": "Reviewer's Reflection",
+    "hexcasting.action.lapisworks:write_mainhand": "Amanuensis' Gambit",
+    "hexcasting.action.book.lapisworks:write_mainhand": "Amanuensis' Gambit",
+    "hexcasting.action.lapisworks:writable_mainhand": "Sanctioner's Reflection",
+    "hexcasting.action.book.lapisworks:writable_mainhand": "Sanctioner's Reflection",
 
     "hexcasting.action.lapisworks:create_enchsent1": "Summon Enchanted Sentinel",
     "hexcasting.action.book.lapisworks:create_enchsent1": "Summon",
@@ -125,6 +133,10 @@
     "mishaps.lapisworks.bad_item.mainhand": "本应在主手中持有%s，而实际有%d个%s。",
 
     "mishaps.lapisworks.bad_item.mainhand.imbueable": "任意可灌注紫晶青金石的物品（如法杖）",
+    "mishaps.lapisworks.bad_item.mainhand.readable": "a readable Iota holder (e.g. a Focus or a Thought-knot)",
+    "mishaps.lapisworks.bad_item.mainhand.writeable": "a writeable Iota holder (e.g. a Focus)",
+    "mishaps.lapisworks.bad_item.mainhand.noniotaholder": ". (not an Iota holder)",
+    "mishaps.lapisworks.bad_item.mainhand.readonly": ". (a read-only Iota holder)",
 
 
     "notif.lapisworks.wizard_diaries.all_gotten": "It seems I have rediscovered all the surviving ancient tomes.",

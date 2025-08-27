@@ -9,6 +9,7 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
+import at.petrak.hexcasting.api.casting.mishaps.MishapOthersName;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 
 import com.luxof.lapisworks.MishapThrowerJava;
@@ -18,6 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 
@@ -30,14 +32,25 @@ public class WriteMainHand implements SpellAction {
         if (casterOp.isEmpty()) { MishapThrowerJava.throwMishap(new MishapBadCaster()); }
         LivingEntity caster = casterOp.get();
         ADIotaHolder iotaHolder = IXplatAbstractions.INSTANCE.findDataHolder(caster.getMainHandStack());
-        // "let's make the error message more helpful"
-        // my dumbass' honest reaction to that information:
-        if (iotaHolder == null || iotaHolder.writeIota(iota, true)) {
+        // "let's make the error message more helpful!"
+        // :thumbsup:
+        if (iotaHolder == null) { 
             MishapThrowerJava.throwMishap(new MishapBadMainhandItem(
                 caster.getMainHandStack(),
-                Text.translatable("mishaps.lapisworks.bad_item.mainhand.writeable")
+                Text.translatable("mishaps.lapisworks.bad_item.mainhand.writeable"),
+                Text.translatable("mishaps.lapisworks.bad_item.mainhand.noniotaholder")
+            ));
+        } else if (!iotaHolder.writeIota(iota, true)) {
+            MishapThrowerJava.throwMishap(new MishapBadMainhandItem(
+                caster.getMainHandStack(),
+                Text.translatable("mishaps.lapisworks.bad_item.mainhand.writeable"),
+                Text.translatable("mishaps.lapisworks.bad_item.mainhand.readonly")
             ));
         }
+        PlayerEntity truename = MishapOthersName
+            .getTrueNameFromDatum(iota, caster instanceof PlayerEntity ? (PlayerEntity)caster : null);
+        if (truename != null) { MishapThrowerJava.throwMishap(new MishapOthersName(truename)); }
+
         return new SpellAction.Result(
             new Spell(iota, iotaHolder),
             0,
@@ -67,7 +80,7 @@ public class WriteMainHand implements SpellAction {
 
     @Override
     public int getArgc() {
-        return 0;
+        return 1;
     }
 
     @Override

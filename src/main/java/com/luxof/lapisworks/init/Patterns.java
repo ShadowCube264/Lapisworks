@@ -21,8 +21,12 @@ import com.luxof.lapisworks.actions.great.GenericEnchant;
 import com.luxof.lapisworks.actions.misc.ConjureColor;
 import com.luxof.lapisworks.actions.misc.CubeExalt;
 import com.luxof.lapisworks.actions.misc.EmptyPrfn;
+import com.luxof.lapisworks.actions.misc.ReadMainHand;
+import com.luxof.lapisworks.actions.misc.ReadableMainHand;
 import com.luxof.lapisworks.actions.misc.SphereDst;
 import com.luxof.lapisworks.actions.misc.VisibleDstl;
+import com.luxof.lapisworks.actions.misc.WritableMainHand;
+import com.luxof.lapisworks.actions.misc.WriteMainHand;
 import com.luxof.lapisworks.actions.CheckEnchant;
 import com.luxof.lapisworks.actions.ImbueAmel;
 
@@ -92,6 +96,10 @@ public class Patterns {
         register("cubic_exalt", "wqwawqwqqwqwq", HexDir.NORTH_WEST, new CubeExalt());
         register("visible_dstl", "edeewadwewdwe", HexDir.SOUTH_EAST, new VisibleDstl());
         register("empty_prfn", "qqqqqwa", HexDir.NORTH_EAST, new EmptyPrfn());
+        register("read_mainhand", "aqqqqa", HexDir.EAST, new ReadMainHand());
+        register("readable_mainhand", "qqqqadww", HexDir.NORTH_WEST, new ReadableMainHand());
+        register("write_mainhand", "deeeed", HexDir.EAST, new WriteMainHand());
+        register("writable_mainhand", "eeeedaww", HexDir.SOUTH_WEST, new WritableMainHand());
 
         // hol up, let him cook
         // i said LET HIM COOK

@@ -25,11 +25,11 @@ public class ReadableMainHand implements ConstMediaAction {
         if (casterOp.isEmpty()) { MishapThrowerJava.throwMishap(new MishapBadCaster()); }
         LivingEntity caster = casterOp.get();
         ADIotaHolder iotaHolder = IXplatAbstractions.INSTANCE.findDataHolder(caster.getMainHandStack());
-        if (iotaHolder == null || iotaHolder.readIota(ctx.getWorld()) == null || iotaHolder.emptyIota() != null) {
-            return List.of(new BooleanIota(false));
-        } else {
-            return List.of(new BooleanIota(true));
-        }
+        return List.of(new BooleanIota(
+            iotaHolder != null && (
+                iotaHolder.readIota(ctx.getWorld()) != null || iotaHolder.emptyIota() != null
+            )
+        ));
     }
 
     @Override

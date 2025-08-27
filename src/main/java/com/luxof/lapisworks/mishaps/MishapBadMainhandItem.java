@@ -13,23 +13,22 @@ import net.minecraft.util.DyeColor;
 
 public class MishapBadMainhandItem extends Mishap {
     public final ItemStack item;
-    public final Text itemText;
     public final Text wanted;
+    public Text gotItemDesc;
 
-    public MishapBadMainhandItem(Text itemText, Text wanted) {
-        this.item = null;
-        this.itemText = itemText;
-        this.wanted = wanted;
-    }
     public MishapBadMainhandItem(ItemStack item, Text wanted) {
         this.item = item;
-        this.itemText = null;
         this.wanted = wanted;
     }
     public MishapBadMainhandItem(ItemStack item, Item wanted) {
         this.item = item;
-        this.itemText = null;
         this.wanted = wanted.getName();
+    }
+    /** Replaces the period usually at the end of bad_item (not no_item) with gotItemDesc. */
+    public MishapBadMainhandItem(ItemStack item, Text wanted, Text gotItemDesc) {
+        this.item = item;
+        this.wanted = wanted;
+        this.gotItemDesc = gotItemDesc;
     }
 
     @Override
@@ -39,24 +38,18 @@ public class MishapBadMainhandItem extends Mishap {
 
     @Override
     protected Text errorMessage(CastingEnvironment ctx, Context errorCtx) {
-        if (this.item == null) {
-            return Text.translatable(
-                "mishaps.lapisworks.bad_general_item.mainhand",
-                this.wanted,
-                this.itemText
-            );
-        }
         if (this.item.isEmpty()) {
             return Text.translatable(
                 "mishaps.lapisworks.no_item.mainhand",
-                this.wanted,
-                this.item.getName(),
-                this.item.getCount()
+                this.wanted
             );
         } else {
             return Text.translatable(
                 "mishaps.lapisworks.bad_item.mainhand",
-                this.wanted
+                this.wanted,
+                this.item.getCount(),
+                this.item.getName(),
+                this.gotItemDesc == null ? "." : this.gotItemDesc
             );
         }
     }

@@ -48,6 +48,42 @@
             "input": "vec, num",
             "output": "bool",
             "text": "pages.lapisworks.lapisworks_misc.visible_dstl.summary"
+        },
+        {
+            "type": "patchouli:text",
+            "text": "pages.lapisworks.lapisworks_misc.rwpatternsheadsup"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:read_mainhand",
+            "anchor": "lapisworks:read_mainhand",
+            "input": "",
+            "output": "any",
+            "text": "pages.lapisworks.lapisworks_misc.read_mainhand.summary"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:readable_mainhand",
+            "anchor": "lapisworks:readable_mainhand",
+            "input": "",
+            "output": "bool",
+            "text": "pages.lapisworks.lapisworks_misc.readable_mainhand.summary"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:write_mainhand",
+            "anchor": "lapisworks:write_mainhand",
+            "input": "any",
+            "output": "",
+            "text": "pages.lapisworks.lapisworks_misc.write_mainhand.summary"
+        },
+        {
+            "type": "hexcasting:pattern",
+            "op_id": "lapisworks:writable_mainhand",
+            "anchor": "lapisworks:writable_mainhand",
+            "input": "",
+            "output": "bool",
+            "text": "pages.lapisworks.lapisworks_misc.writable_mainhand.summary"
         }
     ]
 }

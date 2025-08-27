@@ -90,6 +90,14 @@
     "hexcasting.action.book.lapisworks:visible_dstl": "Visible Distillation",
     "hexcasting.action.lapisworks:empty_prfn": "Empty Purification",
     "hexcasting.action.book.lapisworks:empty_prfn": "Empty Prfn.",
+    "hexcasting.action.lapisworks:read_mainhand": "Secretary's Reflection",
+    "hexcasting.action.book.lapisworks:read_mainhand": "Secretary's Reflection",
+    "hexcasting.action.lapisworks:readable_mainhand": "Reviewer's Reflection",
+    "hexcasting.action.book.lapisworks:readable_mainhand": "Reviewer's Reflection",
+    "hexcasting.action.lapisworks:write_mainhand": "Amanuensis' Gambit",
+    "hexcasting.action.book.lapisworks:write_mainhand": "Amanuensis' Gambit",
+    "hexcasting.action.lapisworks:writable_mainhand": "Sanctioner's Reflection",
+    "hexcasting.action.book.lapisworks:writable_mainhand": "Sanctioner's Reflection",
 
     "hexcasting.action.lapisworks:create_enchsent1": "Summon Enchanted Sentinel",
     "hexcasting.action.book.lapisworks:create_enchsent1": "Summon",
@@ -122,11 +130,13 @@
     "mishaps.lapisworks.not_enough_offhand_items": "At least %dx %s required, but only %dx %s found in offhand.",
     "mishaps.lapisworks.already_enchanted": "Cannot enchant %s with %s, as it is already enchanted with the maximum level of %s it can have right now (%d).",
     "mishaps.lapisworks.no_item.mainhand": "Expected %s in the main hand, but found nothing.",
-    "mishaps.lapisworks.bad_item.mainhand": "Expected %s in the main hand, but found %dx %s.",
+    "mishaps.lapisworks.bad_item.mainhand": "Expected %s in the main hand, but found %dx %s%s",
 
     "mishaps.lapisworks.bad_item.mainhand.imbueable": "any item imbueable with Amethyst Lazuli (e.g. a staff)",
     "mishaps.lapisworks.bad_item.mainhand.readable": "a readable Iota holder (e.g. a Focus or a Thought-knot)",
     "mishaps.lapisworks.bad_item.mainhand.writeable": "a writeable Iota holder (e.g. a Focus)",
+    "mishaps.lapisworks.bad_item.mainhand.noniotaholder": ". (not an Iota holder)",
+    "mishaps.lapisworks.bad_item.mainhand.readonly": ". (a read-only Iota holder)",
 
 
     "notif.lapisworks.wizard_diaries.all_gotten": "It seems I have rediscovered all the surviving ancient tomes.",
@@ -174,6 +184,11 @@
     "pages.lapisworks.lapisworks_misc.cubic_exalt.summary": "Evaluates (exactly like Thoth's Gambit) the given pattern list over a (hollow if given True) cube-ish area from the given points A to B.",
     "pages.lapisworks.lapisworks_misc.visible_dstl.summary": "Negligible cost. Answers the question, \"is there nothing there or between this place and there?\". Both vectors must be in my ambit. Requires a player to cast it.",
     "pages.lapisworks.lapisworks_misc.empty_prfn.summary": "Answers the question, \"is there only air there?\" for negligible media cost. Vector must be in my ambit.",
+    "pages.lapisworks.lapisworks_misc.rwpatternsheadsup": "The next four patterns pertain to reading and writing or checking exclusively my main hand and no other hand. This is also a good time to note that $(thing)Enchanted Patterns$() aren't always \"better\" than the original.",
+    "pages.lapisworks.lapisworks_misc.read_mainhand.summary": "Main hand version of Scribe's Reflection. Pushes the Iota stored in the Iota holder in my main hand to the stack.",
+    "pages.lapisworks.lapisworks_misc.readable_mainhand.summary": "Main hand version of Auditor's Reflection. Pushes whether the item in my main hand can be read from or not.",
+    "pages.lapisworks.lapisworks_misc.write_mainhand.summary": "Main hand version of Scribe's Gambit. Writes the given Iota to the Iota holder in my main hand.",
+    "pages.lapisworks.lapisworks_misc.writable_mainhand.summary": "Main hand version of Assessor's Reflection. Pusher whether the item in my main hand can be written to or not.",
 
     "pages.lapisworks.lapisworks_mishaps.title": "Lapisworks Mishaps",
     "pages.lapisworks.lapisworks_mishaps.summary": "With a new branch of Hex Casting comes new mishaps. I've documented them here.",
