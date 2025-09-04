@@ -7,6 +7,8 @@ from pydantic import ValidationInfo, model_validator
 
 # Look mom, I'm here. Very top of Arasaka tower.
 class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape"):
+    idx_in_flags: int | None = None
+
     @property
     def patterns(self) -> list[PatternInfo]:
         return self._patterns
