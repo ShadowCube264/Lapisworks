@@ -14,7 +14,7 @@
         },
         {
             "type": "patchouli:custom",
-            "class": "com.luxof.hexcasting.interop.patchouli.LapisworksPattern",
+            "class": "com.luxof.lapisworks.interop.patchouli.PerWorldShapePattern",
             "x": 58,
             "y": 50,
             "op_id": "#op_id",

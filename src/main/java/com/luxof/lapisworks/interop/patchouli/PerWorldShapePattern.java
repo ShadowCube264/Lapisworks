@@ -6,7 +6,8 @@ import at.petrak.hexcasting.interop.patchouli.AbstractPatternComponent;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 
 import com.google.gson.annotations.SerializedName;
-import com.luxof.lapisworks.init.ThemConfigFlags;
+
+import static com.luxof.lapisworks.init.ThemConfigFlags.chosenFlags;
 
 import java.util.List;
 import java.util.function.UnaryOperator;
@@ -16,11 +17,11 @@ import net.minecraft.util.Identifier;
 
 import vazkii.patchouli.api.IVariable;
 
-public class LapisworksPattern extends AbstractPatternComponent {
+public class PerWorldShapePattern extends AbstractPatternComponent {
     @SerializedName("op_id")
     public String opNameRaw;
     @SerializedName("idx_in_flags")
-    public Number configFlagIdxRaw;
+    public String configFlagIdxRaw;
     public Identifier opName;
     public int configFlagIdx;
 
@@ -30,7 +31,7 @@ public class LapisworksPattern extends AbstractPatternComponent {
             IXplatAbstractions.INSTANCE.getActionRegistry().getKey(),
             new Identifier(
                 this.opName.getNamespace(),
-                this.opName.getPath() + ThemConfigFlags.chosenFlags.get(this.configFlagIdx)
+                this.opName.getPath() + String.valueOf(chosenFlags.get(this.configFlagIdx) + 1)
             )
         );
         ActionRegistryEntry entry = IXplatAbstractions.INSTANCE.getActionRegistry().get(key);
@@ -44,7 +45,8 @@ public class LapisworksPattern extends AbstractPatternComponent {
     public void onVariablesAvailable(UnaryOperator<IVariable> lookup) {
         String opName = lookup.apply(IVariable.wrap(this.opNameRaw)).asString();
         this.opName = Identifier.tryParse(opName);
-        this.configFlagIdx = lookup.apply(IVariable.wrap(configFlagIdxRaw)).asNumber().intValue();
+        // NO clue how to get it to be a num and get it to work in data
+        this.configFlagIdx = Integer.parseInt(lookup.apply(IVariable.wrap(configFlagIdxRaw)).asString());
 
         super.onVariablesAvailable(lookup);
     }
