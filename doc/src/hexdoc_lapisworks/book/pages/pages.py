@@ -17,7 +17,7 @@ class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape")
     @model_validator(mode="after")
     def _post_root_lookup(self, info: ValidationInfo):
         #hex_ctx = HexContext.of(info)
-        self._patterns = [PatternInfo(id=ResourceLocation("lapisworks", "tmp"), startdir=Direction.NORTH_WEST, signature="aqaeawdwwwdwqwdwwwdweqaaaqaqwdddedeewqded", is_per_world=True)]
+        self._patterns = [PatternInfo(id=ResourceLocation("lapisworks", "tmp"), startdir=Direction.NORTH_WEST, signature="aqaeawdwwwdwqwdwwwdweqaaaqaqwdddedeewqdedqewawawaw", is_per_world=True)]
         return self
     
     @model_validator(mode="after")
