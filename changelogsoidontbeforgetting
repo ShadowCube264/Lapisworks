@@ -1,0 +1,8 @@
+1.5.1
+- Updated Cubic Exaltation and Spherical Exaltation's out-of-date names
+- Updated Cubic Exaltation's arguments to be `[pattern], vec, vec, bool` instead of `[pattern], vec, num, bool`
+- Fixed bug where Cubic Exaltation wouldn't clear the arguments after use
+- Added the Simple Mind Container (and its scrying lens info overlay)
+- Added Thought Sieving
+- Added Mind Liquefaction
+- Added Cognition Purification

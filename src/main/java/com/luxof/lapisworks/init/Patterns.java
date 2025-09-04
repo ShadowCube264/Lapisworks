@@ -12,6 +12,7 @@ import static at.petrak.hexcasting.api.misc.MediaConstants.CRYSTAL_UNIT;
 import com.luxof.lapisworks.Lapisworks;
 import com.luxof.lapisworks.actions.CheckAttr;
 import com.luxof.lapisworks.actions.ImbueLap;
+import com.luxof.lapisworks.actions.MindLiquefaction;
 import com.luxof.lapisworks.actions.SwapAmel;
 import com.luxof.lapisworks.actions.MoarAttr;
 import com.luxof.lapisworks.actions.great.BanishMySent;
@@ -28,6 +29,8 @@ import com.luxof.lapisworks.actions.misc.VisibleDstl;
 import com.luxof.lapisworks.actions.misc.WritableMainHand;
 import com.luxof.lapisworks.actions.misc.WriteMainHand;
 import com.luxof.lapisworks.actions.CheckEnchant;
+import com.luxof.lapisworks.actions.CognitionPrfn;
+import com.luxof.lapisworks.actions.HexResearchYoink;
 import com.luxof.lapisworks.actions.ImbueAmel;
 
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -100,6 +103,10 @@ public class Patterns {
         register("readable_mainhand", "qqqqadww", HexDir.NORTH_WEST, new ReadableMainHand());
         register("write_mainhand", "deeeed", HexDir.EAST, new WriteMainHand());
         register("writable_mainhand", "eeeedaww", HexDir.SOUTH_WEST, new WritableMainHand());
+
+        register("thought_sieve", "qadaadadqaqdadqaq", HexDir.WEST, new HexResearchYoink());
+        register("absorb_mind", "aawqqwqqqaede", HexDir.WEST, new MindLiquefaction());
+        register("check_mind", "aawqqwqqq", HexDir.WEST, new CognitionPrfn());
 
         // hol up, let him cook
         // i said LET HIM COOK

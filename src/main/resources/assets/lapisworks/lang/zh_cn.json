@@ -137,6 +137,9 @@
     "mishaps.lapisworks.bad_item.mainhand.writeable": "a writeable Iota holder (e.g. a Focus)",
     "mishaps.lapisworks.bad_item.mainhand.noniotaholder": ". (not an Iota holder)",
     "mishaps.lapisworks.bad_item.mainhand.readonly": ". (a read-only Iota holder)",
+    "mishaps.lapisworks.bad_item.offhand.scrolls": "a scroll",
+    "mishaps.lapisworks.bad_item.offhand.scroll_with_pattern": "a scroll with a pattern iota",
+    "mishaps.lapisworks.bad_item.offhand.scroll_with_great_spell": "a scroll with a pattern on it that resembles a Great Spell but does not necessarily have the correct stroke order",
 
 
     "notif.lapisworks.wizard_diaries.all_gotten": "It seems I have rediscovered all the surviving ancient tomes.",

@@ -1,5 +1,7 @@
 package com.luxof.lapisworks;
 
+import at.petrak.hexcasting.api.casting.math.HexCoord;
+import at.petrak.hexcasting.api.casting.math.HexPattern;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
 import at.petrak.hexcasting.common.items.ItemStaff;
 import at.petrak.hexcasting.common.lib.HexItems;
@@ -19,9 +21,11 @@ import static com.luxof.lapisworks.init.ThemConfigFlags.chosenFlags;
 import dev.emi.trinkets.api.TrinketComponent;
 import dev.emi.trinkets.api.TrinketsApi;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import net.fabricmc.api.ModInitializer;
 
@@ -29,6 +33,8 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
@@ -143,7 +149,8 @@ public class Lapisworks implements ModInitializer {
 		return trinkCompOp.isEmpty() ? false : trinkCompOp.get().isEquipped(item);
 	}
 
-	public static boolean isAmel(Item item) { return ModItems.AMEL_MODELS.indexOf(item) != -1; }
+	public static boolean isAmel(ItemStack itemStack) { return itemStack.isIn(TagKey.of(RegistryKeys.ITEM, id("amel"))); }
+	public static boolean isAmel(Item item) { return isAmel(new ItemStack(item)); }
 
 	@Nullable
 	public static FrozenPigment getPigmentFromDye(DyeColor dye) {
@@ -242,4 +249,49 @@ public class Lapisworks implements ModInitializer {
 			LOGGER.error("This shouldn't be a big concern. Probably. At least, I don't think it is.");
 		}
 	}
+
+	/** removes everything after the first two digits after the dot. */
+	public static String prettifyFloat(float value) {
+		// val % 0.01 flickers sometimes
+		return String.valueOf(Math.floor((double)value * 100.0) / 100.0);
+	}
+	public static double prettifyDouble(double value) {
+		return Math.floor(value * 100.0) / 100.0;
+	}
+
+	public static boolean matchShape(HexPattern pat1, HexPattern p2) {
+		// i think i read somewhere by some guy that if you record how many times
+		// a position is drawn over then it's fine
+		// he wasn't too sure though, but i pray he's right
+		// because nothing else i've done has worked
+		return equalsButUnordered(setTopLeftOrigin(pat1.positions()), setTopLeftOrigin(p2.positions()));
+	}
+	public static List<HexCoord> setTopLeftOrigin(List<HexCoord> pat) {
+		HexCoord runningTopLeft = new HexCoord(0, 0);
+		for (HexCoord coord : pat) {
+			if (coord.getQ() < runningTopLeft.getQ() && coord.getR() <= runningTopLeft.getR()) {
+				runningTopLeft = new HexCoord(coord.getQ(), coord.getR());
+			} else if (coord.getR() < runningTopLeft.getR()) {
+				runningTopLeft = new HexCoord(coord.getQ(), coord.getR());
+			}
+		}
+        LOGGER.info("top left!: " + runningTopLeft.toString());
+		// "must be final" my ass
+		HexCoord topLeft = new HexCoord(runningTopLeft.getQ(), runningTopLeft.getR());
+        return pat.stream().map((coord) -> {
+            return new HexCoord(coord.getQ() - topLeft.getQ(), coord.getR() - topLeft.getR());
+        }).collect(Collectors.toList());
+	}
+    /** Checks if two lists are equal, but does not check if their elements are ordered the same way. */
+    public static <T extends Object> boolean equalsButUnordered(List<T> list1, List<T> list2) {
+        if (list1.size() != list2.size()) { return false; }
+        else if (list1.size() == 0) { return true; }
+        List<T> l2 = new ArrayList<T>(list2);
+        for (T thing : list1) {
+            int idx = l2.indexOf(thing);
+            if (idx == -1) { return false; }
+            l2.remove(idx);
+        }
+        return true;
+    }
 }
