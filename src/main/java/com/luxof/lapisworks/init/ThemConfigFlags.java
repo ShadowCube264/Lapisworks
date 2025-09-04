@@ -24,10 +24,9 @@ public class ThemConfigFlags {
     public static List<List<String>> allConfigFlags = new ArrayList<List<String>>(List.of(
         allEnchSentFlags
     ));
-    // this makes sense as well as Patterns.java, but I'd rather people not have 5000 editor tabs open
+    // this makes sense as well in Patterns.java, but I'd rather people not have 5000 editor tabs open
     public static List<List<String>> allPerWorldShapePatterns = new ArrayList<List<String>>(List.of(
         List.of(
-            // if you really want to add to this, just make your own shapes and append to this big list
             "aqaeawdwwwdwqwdwwwdweqqaqwedeewqded",
             "aqaeawdwwwdwqwdwwwdwewweaqa",
             "wdwewdwwwdwwwdwqwdwwwdw",

@@ -61,11 +61,6 @@ public class MindLiquefaction implements SpellAction {
             .getBlockEntity(mindPos, ModBlocks.MIND_ENTITY_TYPE);
         if (blockEntityOpt.isEmpty()) { MishapThrowerJava.throwMishap(needMind); }
         MindEntity blockEntity = (MindEntity)blockEntityOpt.get();
-        if (blockEntity.mindCompletion < 100f) {
-            MishapThrowerJava.throwMishap(
-                new MishapBadBlock(mindPos, Text.translatable("mishaps.lapisworks.bad_block.full_mind"))
-            );
-        }
 
 
         Mishap needRechargeable = MishapBadOffhandItem.of(ItemStack.EMPTY.copy(), "rechargeable");

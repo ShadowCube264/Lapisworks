@@ -41,6 +41,8 @@ public class VillagerEntityMixin implements ArtMindInterface {
         } else {
             this.incMindBeingUsedTicks(-1);
         }
-        this.incDontUseAgainTicks(-1);
+        if (this.getDontUseAgainTicks() > 0) {
+            this.incDontUseAgainTicks(-1);
+        }
     }
 }

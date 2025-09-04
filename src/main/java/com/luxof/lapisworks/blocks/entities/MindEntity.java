@@ -6,6 +6,8 @@ import com.luxof.lapisworks.blocks.Mind;
 import com.luxof.lapisworks.init.ModBlocks;
 import com.luxof.lapisworks.mixinsupport.ArtMindInterface;
 
+import static com.luxof.lapisworks.Lapisworks.LOGGER;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +61,7 @@ public class MindEntity extends BlockEntity {
             new Box(topLeftBack, bottomRightFront),
             (villager) -> {
                 return ((ArtMindInterface)villager).getUsedMindPercentage() < 100.0f &&
-                       ((ArtMindInterface)villager).getDontUseAgainTicks() == 0;
+                       ((ArtMindInterface)villager).getDontUseAgainTicks() <= 0;
             }
         ));
         int usedVillagersCount = 0;
@@ -69,7 +71,7 @@ public class MindEntity extends BlockEntity {
             if (villager.isSleeping() && usedVillagersCount == 0) {
                 blockEntity.mindCompletion += 15.0f;
                 ((ArtMindInterface)villager).setDontUseAgainTicks(sleepingVillagerUseAgainCD);
-                return;
+                break;
             }
             usedVillagersCount += 1;
             villagersNear.remove(idx);
