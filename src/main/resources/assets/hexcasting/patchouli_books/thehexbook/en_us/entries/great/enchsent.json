@@ -16,7 +16,15 @@
             "idx_in_flags": 0,
             "input": "vec, num",
             "output": "",
-            "text": "pages.lapisworks.great.create_enchsent.summary"
+            "text": "pages.lapisworks.great.create_enchsent.summary",
+            "origins": [
+                {"q": 0, "r": 0},
+                {"q": 0, "r": 0},
+                {"q": 1, "r": 0},
+                {"q": 1, "r": 0},
+                {"q": 1, "r": 0},
+                {"q": 0, "r": 0}
+            ]
         },
         {
             "type": "patchouli:text",

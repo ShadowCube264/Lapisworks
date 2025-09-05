@@ -1,3 +1,7 @@
+# pyright: reportUnknownArgumentType=information
+# pyright: reportUnknownMemberType=information
+# pyright: reportUnknownVariableType=information
+
 from __future__ import annotations
 
 import itertools
