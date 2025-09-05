@@ -27,9 +27,9 @@ author = "Real-Luxof"
 show_landing_text = false
 
 [textures.override]
-"lapisworks:diamond_sword" = { texture = "lapisworks:textures/item/amel_dsword_noanim.png" }
-"lapisworks:iron_sword" = { texture = "lapisworks:textures/item/amel_isword_noanim.png" }
-"lapisworks:gold_sword" = { texture = "lapisworks:textures/item/amel_gsword_noanim.png" }
+"lapisworks:amel_constructs/diamond_sword" = { texture = "lapisworks:textures/item/amel_dsword_noanim.png" }
+"lapisworks:amel_constructs/iron_sword" = { texture = "lapisworks:textures/item/amel_isword_noanim.png" }
+"lapisworks:amel_constructs/gold_sword" = { texture = "lapisworks:textures/item/amel_gsword_noanim.png" }
 
 [extra.hexcasting]
 # thank you hierophantics lmao
