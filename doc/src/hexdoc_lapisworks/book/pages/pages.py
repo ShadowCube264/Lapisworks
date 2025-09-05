@@ -11,6 +11,7 @@ from .. import merge_pattern
 
 # Look mom, I'm here. Very top of Arasaka tower.
 class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape"):
+    idx_in_flags: int | None = None # temp until i refactor ThemConfigFlags
     origins: list[dict[str, int]] | None = None
 
     @property
