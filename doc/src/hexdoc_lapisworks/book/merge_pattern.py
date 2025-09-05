@@ -63,15 +63,14 @@ ANGLES = "wedsaq"
 
 def overlay_patterns(
     op_id: ResourceLocation,
-    patterns: list[tuple[int, PatternInfo]],
-    origins: dict[int, HexCoord],
+    patterns: list[tuple[PatternInfo, HexCoord]],
 ) -> PatternInfo:
     # construct a graph G overlaying all patterns
 
     G = nx.Graph()
 
-    for i, pattern in patterns:
-        cursor = origins.get(i, HexCoord(q=0, r=0))
+    for pattern, origin in patterns:
+        cursor = origin
         compass = pattern.startdir
 
         for angle in pattern.signature:
