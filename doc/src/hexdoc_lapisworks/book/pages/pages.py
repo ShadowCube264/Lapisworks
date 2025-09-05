@@ -32,11 +32,15 @@ class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape")
             patterns.append((i, pat))
             i += 1
             
-            coord: dict[str, int] = self.origins[i - 1]
-            q: int = coord["q"]
-            r: int = coord["r"]
-            if q == 0 and r == 0: continue
-            origins[i] = merge_pattern.HexCoord(q=q, r=r)
+            try:
+                coord: dict[str, int] = self.origins[i - 1]
+                q: int = coord["q"]
+                r: int = coord["r"]
+                if q == 0 and r == 0: continue
+                origins[i] = merge_pattern.HexCoord(q=q, r=r)
+            except Exception:
+                # lmao fuck that
+                pass
         self._patterns = [merge_pattern.overlay_patterns(self.op_id, patterns, origins)]
         return self
     
