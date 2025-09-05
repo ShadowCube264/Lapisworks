@@ -1,3 +1,5 @@
+# creds: Object-object for basically this entire thing
+# https://gist.github.com/object-Object/8fd4e05c5a63f60d4a31e5f301af5abc
 # pyright: reportUnknownArgumentType=information
 # pyright: reportUnknownMemberType=information
 # pyright: reportUnknownVariableType=information
@@ -78,7 +80,7 @@ def overlay_patterns(
             G.add_edge(cursor, next_cursor)
             cursor = next_cursor
             compass = Direction((compass.value + ANGLES.find(angle)) % len(Direction))
-
+    
     # find a path that visits each edge at least once
     # https://en.wikipedia.org/wiki/Chinese_postman_problem#Undirected_solution_and_T-joins
 
@@ -104,11 +106,11 @@ def overlay_patterns(
 
     # find a minimum weight perfect matching in G2
     # the edges of this matching represent paths in G which form the T-join
-    matching = nx.bipartite.minimum_weight_full_matching(G2)
+    matching = nx.min_weight_matching(G2)
 
     # find the T-join by taking the union of all paths in the matching
     t_join = set()
-    for u, v in matching.items():
+    for u, v in matching:
         for pair in itertools.pairwise(paths[u][v]):
             t_join.add(frozenset(pair))
 

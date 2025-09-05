@@ -15,7 +15,7 @@ import com.luxof.lapisworks.items.shit.FullyAmelInterface;
 import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
 import com.luxof.lapisworks.items.CastingRing;
 
-import static com.luxof.lapisworks.init.ThemConfigFlags.allConfigFlags;
+import static com.luxof.lapisworks.init.ThemConfigFlags.allPerWorldShapePatterns;
 import static com.luxof.lapisworks.init.ThemConfigFlags.chosenFlags;
 
 import dev.emi.trinkets.api.TrinketComponent;
@@ -215,38 +215,27 @@ public class Lapisworks implements ModInitializer {
 
 	/** Computes the config flags and selects them for you. ASSUMES THIS IS A FRESHLY-MADE RNG!! */
 	public static void pickConfigFlags(Random rng) {
-		for (int i = 0; i < allConfigFlags.size(); i++) {
-			List<String> list = allConfigFlags.get(i);
-			int chosen = rng.nextInt(list.size());
+		for (String patId : allPerWorldShapePatterns.keySet()) {
+			int chosen = rng.nextInt(allPerWorldShapePatterns.get(patId).size());
 			PatchouliAPI.get().setConfigFlag(
-				allConfigFlags.get(i).get(chosen),
-				true
+				patId + String.valueOf(chosen),
+				false
 			);
-			chosenFlags.set(i, chosen);
+			chosenFlags.put(patId, chosen);
 		}
 	}
 
 	/** Nulls the config flags for you. */
 	public static void nullConfigFlags() {
 		LOGGER.info("Nulling config flags.");
-		try {
-			for (int i = 0; i < chosenFlags.size(); i++) {
+		for (String patId : allPerWorldShapePatterns.keySet()) {
+			for (int i = 0; i < allPerWorldShapePatterns.get(patId).size(); i++) {
 				PatchouliAPI.get().setConfigFlag(
-					allConfigFlags.get(i).get(chosenFlags.get(i)),
+					patId + String.valueOf(i),
 					false
 				);
-				chosenFlags.set(i, null);
 			}
-		} catch (Exception e) {
-			LOGGER.error("Huh, got an error nulling config flags.");
-			e.printStackTrace();
-			try {
-				LOGGER.error("Here, have this:\nchosen: " + chosenFlags.toString() + "\nall: " + allConfigFlags.toString());
-			} catch (Exception e2) {
-				LOGGER.error("We can't even display the variables.");
-				e2.printStackTrace();
-			}
-			LOGGER.error("This shouldn't be a big concern. Probably. At least, I don't think it is.");
+			chosenFlags.put(patId, null);
 		}
 	}
 

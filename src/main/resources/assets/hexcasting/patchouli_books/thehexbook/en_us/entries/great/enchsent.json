@@ -13,7 +13,6 @@
             "type": "hexcasting:lapisworks/pwshape",
             "op_id": "lapisworks:create_enchsent",
             "anchor": "lapisworks:create_enchsent",
-            "idx_in_flags": 0,
             "input": "vec, num",
             "output": "",
             "text": "pages.lapisworks.great.create_enchsent.summary",

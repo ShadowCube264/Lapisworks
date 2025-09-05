@@ -4,14 +4,12 @@ from typing import Self
 
 from hexdoc_hexcasting.book.page.abstract_pages import PageWithOpPattern # pyright: ignore[reportMissingTypeStubs]
 from hexdoc_hexcasting.metadata import HexContext
-from hexdoc_hexcasting.utils.pattern import PatternInfo, Direction
-from hexdoc.core.resource import ResourceLocation
+from hexdoc_hexcasting.utils.pattern import PatternInfo
 from pydantic import ValidationInfo, model_validator
 from ..merge_pattern import HexCoord, overlay_patterns
 
 # Look mom, I'm here. Very top of Arasaka tower.
 class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape"):
-    idx_in_flags: int | None = None # temp until i refactor ThemConfigFlags
     origins: list[HexCoord] | None = None
 
     @property
@@ -23,9 +21,9 @@ class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape")
         if self.origins == None: raise TypeError("No origins provided for " + str(self.op_id))
         hex_ctx = HexContext.of(info)
         patterns: list[tuple[PatternInfo, HexCoord]] = []
-        i = 1
+        i = 0
         while pattern := hex_ctx.patterns.get(self.op_id + str(i)):
-            patterns.append((pattern, self.origins[i - 1]))
+            patterns.append((pattern, self.origins[i]))
             i += 1
 
         self._patterns = [overlay_patterns(self.op_id, patterns)]

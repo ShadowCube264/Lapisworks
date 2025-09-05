@@ -20,10 +20,7 @@ import vazkii.patchouli.api.IVariable;
 public class PerWorldShapePattern extends AbstractPatternComponent {
     @SerializedName("op_id")
     public String opNameRaw;
-    @SerializedName("idx_in_flags")
-    public String configFlagIdxRaw;
     public Identifier opName;
-    public int configFlagIdx;
 
     @Override
     public List<HexPattern> getPatterns(UnaryOperator<IVariable> lookup) {
@@ -31,7 +28,7 @@ public class PerWorldShapePattern extends AbstractPatternComponent {
             IXplatAbstractions.INSTANCE.getActionRegistry().getKey(),
             new Identifier(
                 this.opName.getNamespace(),
-                this.opName.getPath() + String.valueOf(chosenFlags.get(this.configFlagIdx) + 1)
+                this.opName.getPath() + String.valueOf(chosenFlags.get(this.opName.toString()))
             )
         );
         ActionRegistryEntry entry = IXplatAbstractions.INSTANCE.getActionRegistry().get(key);
@@ -45,8 +42,6 @@ public class PerWorldShapePattern extends AbstractPatternComponent {
     public void onVariablesAvailable(UnaryOperator<IVariable> lookup) {
         String opName = lookup.apply(IVariable.wrap(this.opNameRaw)).asString();
         this.opName = Identifier.tryParse(opName);
-        // NO clue how to get it to be a num and get it to work in data
-        this.configFlagIdx = Integer.parseInt(lookup.apply(IVariable.wrap(configFlagIdxRaw)).asString());
 
         super.onVariablesAvailable(lookup);
     }

@@ -12,11 +12,11 @@ import static com.luxof.lapisworks.Lapisworks.LOGGER;
 import static com.luxof.lapisworks.Lapisworks.clamp;
 import static com.luxof.lapisworks.Lapisworks.id;
 import static com.luxof.lapisworks.Lapisworks.nullConfigFlags;
-import static com.luxof.lapisworks.Lapisworks.pickConfigFlags;
 import static com.luxof.lapisworks.Lapisworks.prettifyFloat;
-import static com.luxof.lapisworks.LapisworksNetworking.SEND_RNG_SEED;
+import static com.luxof.lapisworks.LapisworksNetworking.SEND_PWSHAPE_PATS;
 import static com.luxof.lapisworks.LapisworksNetworking.SEND_SENT;
 import static com.luxof.lapisworks.init.ModItems.IRON_SWORD;
+import static com.luxof.lapisworks.init.ThemConfigFlags.chosenFlags;
 
 import java.util.Optional;
 
@@ -33,6 +33,7 @@ import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.Vec3d;
@@ -132,15 +133,10 @@ public class LapisworksClient implements ClientModInitializer {
             }
         );
         ClientPlayNetworking.registerGlobalReceiver(
-            SEND_RNG_SEED,
-            (
-                client,
-                handler,
-                buf,
-                responseSender
-            ) -> {
-                this.rng = new Random(buf.readLong());
-                pickConfigFlags(this.rng);
+            SEND_PWSHAPE_PATS,
+            (client, handler, buf, responseSender) -> {
+                NbtCompound nbt = buf.readNbt();
+                for (String flag : chosenFlags.keySet()) { chosenFlags.put(flag, nbt.getInt(flag)); }
             }
         );
 
