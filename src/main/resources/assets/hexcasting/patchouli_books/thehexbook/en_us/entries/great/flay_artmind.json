@@ -25,7 +25,8 @@
             ],
             "allowed": [
                 0, 2
-            ]
+            ],
+            "forbidden": []
         },
         {
             "type": "patchouli:spotlight",

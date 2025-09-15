@@ -11,8 +11,8 @@ from ..merge_pattern import HexCoord, overlay_patterns
 # Look mom, I'm here. Very top of Arasaka tower.
 class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape"):
     origins: list[HexCoord]
-    allowed: list[int] = []
-    forbidden: list[int] = []
+    allowed: list[int]
+    forbidden: list[int]
 
     @property
     def patterns(self) -> list[PatternInfo]:
