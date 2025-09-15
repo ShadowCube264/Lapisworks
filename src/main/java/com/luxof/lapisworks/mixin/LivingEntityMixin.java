@@ -13,6 +13,7 @@ import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
+import net.minecraft.entity.attribute.DefaultAttributeRegistry;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeInstance;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -37,6 +38,7 @@ public abstract class LivingEntityMixin implements LapisworksInterface, DamageSu
 			.build()
 	);
 	public List<Integer> enchantments = new ArrayList<Integer>(List.of(0, 0, 0, 0, 0));
+	public AttributeContainer defaultAttribs;
 
 	private void expandEnchantmentsIfNeeded(int idx) {
 		while (idx > this.enchantments.size() - 1) { this.enchantments.add(0); }
@@ -111,6 +113,12 @@ public abstract class LivingEntityMixin implements LapisworksInterface, DamageSu
 	}
 
 
+
+	// gives warning but i'm too afraid to remove it; what if shit breaks?
+	@Inject(at = @At("TAIL"), method = "<init>(Lnet/minecraft/entity/EntityType;Lnet/minecraft/world/World;Lorg/spongepowered/asm/mixin/injection/callback/CallbackInfo;)V")
+	private void constructor(EntityType<? extends LivingEntity> entityType, World world, CallbackInfo ci) {
+		this.defaultAttribs = new AttributeContainer(DefaultAttributeRegistry.get(entityType));
+	}
 
 	@Inject(at = @At("HEAD"), method = "onDeath")
 	public void onDeath(DamageSource damageSource, CallbackInfo ci) {

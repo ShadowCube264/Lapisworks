@@ -1,7 +1,5 @@
 package com.luxof.lapisworks.actions;
 
-import static com.luxof.lapisworks.Lapisworks.isAmel;
-
 import java.util.List;
 import java.util.Optional;
 
@@ -11,12 +9,20 @@ import at.petrak.hexcasting.api.casting.RenderedSpell;
 import at.petrak.hexcasting.api.casting.castables.SpellAction;
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import at.petrak.hexcasting.api.casting.eval.OperationResult;
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment.HeldItemInfo;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem;
 import at.petrak.hexcasting.api.misc.MediaConstants;
+
+import com.luxof.lapisworks.MishapThrowerJava;
+import com.luxof.lapisworks.mishaps.MishapNotEnoughOffhandItems;
+import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
+
+import static com.luxof.lapisworks.Lapisworks.LOGGER;
+import static com.luxof.lapisworks.init.Mutables.isAmel;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -25,22 +31,27 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Hand;
 
-import com.luxof.lapisworks.MishapThrowerJava;
-import com.luxof.lapisworks.mishaps.MishapNotEnoughOffhandItems;
-import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
-
 public class MoarAttr implements SpellAction {
     // i always keep my shit public in case someone needs to do something cursed
     public EntityAttribute modifyAttribute;
     public double limitModifier;
     public double limitOffset; // "only give mobs +60 +2xbase hp at max!"
+    public double attrCompensateMult; // base plr speed is 0.1? set this to 10 or smth.
     public int expendedAmelModifier;
     public boolean playerOnly;
 
-    public MoarAttr(EntityAttribute modifyAttribute, double limitModifier, double limitOffset, int expendedAmelModifier, boolean playerOnly) {
+    public MoarAttr(
+        EntityAttribute modifyAttribute,
+        double limitModifier,
+        double limitOffset,
+        double attrCompensateMult,
+        int expendedAmelModifier,
+        boolean playerOnly
+    ) {
         this.modifyAttribute = modifyAttribute;
         this.limitModifier = limitModifier;
         this.limitOffset = limitOffset;
+        this.attrCompensateMult = attrCompensateMult;
         this.expendedAmelModifier = expendedAmelModifier;
         this.playerOnly = playerOnly;
     }
@@ -57,37 +68,46 @@ public class MoarAttr implements SpellAction {
         } else {
             entity = OperatorUtils.getPlayer(args, 0, getArgc());
         }
-        int count = OperatorUtils.getInt(args, 1, getArgc());
+        double count = OperatorUtils.getPositiveDouble(args, 1, getArgc());
 
         Optional<LivingEntity> casterOption = Optional.of(ctx.getCastingEntity());
         if (casterOption.isEmpty()) {
             MishapThrowerJava.throwMishap(new MishapBadCaster());
         }
-
         LivingEntity caster = casterOption.get();
-        ItemStack offHandItems = caster.getOffHandStack();
-        if (offHandItems.isEmpty()) {
-            MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "amel"));
-        } else if (!isAmel(offHandItems)) {
+
+        HeldItemInfo offHandItemsInfo = ctx.getHeldItemToOperateOn((stack) -> isAmel(stack));
+        if (offHandItemsInfo == null) {
+            MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(ItemStack.EMPTY.copy(), "amel"));
+        }
+        ItemStack offHandItems = offHandItemsInfo.component1();
+        // the hexcasting code has double checks like this too fsr
+        if (!isAmel(offHandItems)) {
             MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "amel"));
         }
 
-        EntityAttributeInstance AttrInst = entity.getAttributes().getCustomInstance(this.modifyAttribute);
-        double currentAttrVal = AttrInst.getBaseValue();
-        double juicedUpAttrVal = ((LapisworksInterface)entity).getAmountOfAttrJuicedUpByAmel(this.modifyAttribute);
-        double defaultAttrVal = currentAttrVal - juicedUpAttrVal;
-        double limit = defaultAttrVal * this.limitModifier + this.limitOffset;
+        double currentCombinedVal = entity.getAttributes()
+            .getCustomInstance(this.modifyAttribute)
+            .getBaseValue();
+        double currentJuicedUpVal = ((LapisworksInterface)entity).getAmountOfAttrJuicedUpByAmel(
+            this.modifyAttribute
+        );
+        double defaultVal = currentCombinedVal - currentJuicedUpVal;
+        double defaultValCompensated = defaultVal * this.attrCompensateMult;
+        double limit = defaultValCompensated * this.limitModifier + this.limitOffset;
 
-        double setTo = Math.min(currentAttrVal + count, limit);
-        int expendedAmel = (int)Math.ceil((setTo - currentAttrVal) * expendedAmelModifier);
+        double addToVal = Math.min(defaultValCompensated + count, limit) - defaultValCompensated;
+        int expendedAmel = (int)Math.ceil(addToVal * this.expendedAmelModifier);
 
         if (offHandItems.getCount() < expendedAmel) {
             MishapThrowerJava.throwMishap(new MishapNotEnoughOffhandItems(offHandItems, expendedAmel));
         }
 
+        LOGGER.info("Expended Amel: " + expendedAmel);
+
         return new SpellAction.Result(
             // caster is kinda being operated on but that's not the main effect so 2nd prio
-            new Spell(entity, caster, expendedAmel, setTo, this.modifyAttribute),
+            new Spell(entity, caster, expendedAmel, addToVal / this.attrCompensateMult, this.modifyAttribute),
             MediaConstants.SHARD_UNIT * expendedAmel,
             List.of(ParticleSpray.burst(caster.getPos(), 2, 25)),
             1
@@ -98,25 +118,33 @@ public class MoarAttr implements SpellAction {
         public final LivingEntity entity;
         public final LivingEntity caster;
         public final int expendedAmel;
-        public final double setTo;
+        public final double addVal;
         public final EntityAttribute attr;
 
-        public Spell(LivingEntity entity, LivingEntity caster, int expendedAmel, double setTo, EntityAttribute attr) {
+        public Spell(
+            LivingEntity entity,
+            LivingEntity caster,
+            int expendedAmel,
+            double addVal,
+            EntityAttribute attr
+        ) {
             this.entity = entity;
             this.caster = caster;
             this.expendedAmel = expendedAmel;
-            this.setTo = setTo;
+            this.addVal = addVal;
             this.attr = attr;
         }
 
 		@Override
 		public void cast(CastingEnvironment ctx) {
             EntityAttributeInstance AttrInst = this.entity.getAttributes().getCustomInstance(this.attr);
-            double juicedUpAttrVal = ((LapisworksInterface)this.entity).getAmountOfAttrJuicedUpByAmel(this.attr);
-            
-            ((LapisworksInterface)this.entity).setAmountOfAttrJuicedUpByAmel(this.attr, juicedUpAttrVal + this.expendedAmel);
-            
-            AttrInst.setBaseValue(this.setTo);
+            AttrInst.setBaseValue(AttrInst.getBaseValue() + this.addVal);
+            double juicedUpAttr = ((LapisworksInterface)this.entity).getAmountOfAttrJuicedUpByAmel(this.attr);
+            ((LapisworksInterface)this.entity).setAmountOfAttrJuicedUpByAmel(
+                this.attr,
+                juicedUpAttr + this.addVal
+            );
+
             this.caster.setStackInHand(
                 Hand.OFF_HAND,
                 new ItemStack(

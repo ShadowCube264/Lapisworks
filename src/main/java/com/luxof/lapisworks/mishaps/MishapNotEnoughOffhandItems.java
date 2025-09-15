@@ -33,9 +33,9 @@ public class MishapNotEnoughOffhandItems extends Mishap {
     public Text errorMessage(CastingEnvironment ctx, Context errorCtx) {
         return Text.translatable(
             "mishaps.lapisworks.not_enough_offhand_items",
-            this.item.getCount(),
-            this.item.getName(),
             this.required,
+            this.item.getName(),
+            this.item.getCount(),
             this.item.getName()
         );
     }

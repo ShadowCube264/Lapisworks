@@ -3,11 +3,12 @@ package com.luxof.lapisworks.items;
 import at.petrak.hexcasting.common.lib.HexSounds;
 
 import static com.luxof.lapisworks.Lapisworks.LOGGER;
-import static com.luxof.lapisworks.Lapisworks.id;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import com.luxof.lapisworks.init.Mutables;
 
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.criterion.Criteria;
@@ -25,11 +26,6 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 
 public class WizardDiaries extends Item {
-    // feel free to fuck with this if you want
-    public static List<Identifier> gainableAdvancements = new ArrayList<Identifier>(List.of(
-        id("rediscover_enchsent")
-    ));
-
     public WizardDiaries(Settings settings) { super(settings); }
     
     @Override
@@ -42,7 +38,7 @@ public class WizardDiaries extends Item {
         }
         ServerPlayerEntity suser = (ServerPlayerEntity)user;
 
-        List<Identifier> shuffled = new ArrayList<Identifier>(gainableAdvancements);
+        List<Identifier> shuffled = new ArrayList<Identifier>(Mutables.wizardDiariesGainableAdvancements);
         Advancement chosenAdvancement = null;
         Collections.shuffle(shuffled);
         for (int i = 0; i < shuffled.size(); i++) {

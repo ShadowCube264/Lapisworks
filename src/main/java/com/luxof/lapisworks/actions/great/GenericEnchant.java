@@ -19,7 +19,7 @@ import com.luxof.lapisworks.mishaps.MishapAlreadyHasEnchantment;
 import com.luxof.lapisworks.mishaps.MishapNotEnoughOffhandItems;
 import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
 
-import static com.luxof.lapisworks.Lapisworks.isAmel;
+import static com.luxof.lapisworks.init.Mutables.isAmel;
 
 import java.util.List;
 import java.util.Optional;

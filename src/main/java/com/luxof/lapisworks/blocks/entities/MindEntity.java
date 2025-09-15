@@ -6,8 +6,6 @@ import com.luxof.lapisworks.blocks.Mind;
 import com.luxof.lapisworks.init.ModBlocks;
 import com.luxof.lapisworks.mixinsupport.ArtMindInterface;
 
-import static com.luxof.lapisworks.Lapisworks.LOGGER;
-
 import java.util.ArrayList;
 import java.util.List;
 

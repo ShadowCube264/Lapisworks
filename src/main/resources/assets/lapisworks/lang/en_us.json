@@ -39,12 +39,15 @@
 
     "block.lapisworks.conjureable": "Conjured Solid Color",
     "block.lapisworks.mind": "Simple Mind Container",
+    "block.lapisworks.amel_constructs.live_jukebox": "Live Jukebox",
 
 
     "advancements.lapisworks.gotlapis.name": "Lapisworks Research",
     "advancements.lapisworks.gotlapis.description": "A deep blue, precious mineral. Just as they wrote..",
     "advancements.lapisworks.rediscover_enchsent.name": "Enchanted Sentinel",
     "advancements.lapisworks.rediscover_enchsent.description": "A Great Spell forcefully and violently changed and twisted into something else.",
+    "advancements.lapisworks.rediscover_flay_artmind.name": "Imbue Mind",
+    "advancements.lapisworks.rediscover_flay_artmind.description": "Story burned, I can only speculate.",
 
 
     "key_category.lapisworks.lapisworks": "Lapisworks",
@@ -111,12 +114,26 @@
     "hexcasting.action.lapisworks:check_mind": "Cognition Purification",
     "hexcasting.action.book.lapisworks:check_mind": "Cognition Purification",
 
-    "hexcasting.action.lapisworks:create_enchsent": "Summon Enchanted Sentinel",
+    "hexcasting.action.lapisworks:teach_song": "Teach Song",
+    "hexcasting.action.book.lapisworks:teach_song": "Teach Song",
+
+    "hexcasting.action.lapisworks:create_enchsent0": "Summon Enchanted Sentinel",
+    "hexcasting.action.lapisworks:create_enchsent1": "Summon Enchanted Sentinel",
+    "hexcasting.action.lapisworks:create_enchsent2": "Summon Enchanted Sentinel",
+    "hexcasting.action.lapisworks:create_enchsent3": "Summon Enchanted Sentinel",
+    "hexcasting.action.lapisworks:create_enchsent4": "Summon Enchanted Sentinel",
+    "hexcasting.action.lapisworks:create_enchsent5": "Summon Enchanted Sentinel",
     "hexcasting.action.book.lapisworks:create_enchsent": "Summon",
     "hexcasting.action.lapisworks:banish_my_enchsent": "Banish Own Enchanted Sentinel",
     "hexcasting.action.book.lapisworks:banish_my_enchsent": "Banish Own",
     "hexcasting.action.lapisworks:banish_other_enchsent": "Banish Other's Enchanted Sentinel",
     "hexcasting.action.book.lapisworks:banish_other_enchsent": "Banish Other's",
+    "hexcasting.action.lapisworks:flay_artmind0": "Imbue Mind",
+    "hexcasting.action.lapisworks:flay_artmind1": "Imbue Mind",
+    "hexcasting.action.lapisworks:flay_artmind2": "Imbue Mind",
+    "hexcasting.action.lapisworks:flay_artmind3": "Imbue Mind",
+    "hexcasting.action.lapisworks:flay_artmind4": "Imbue Mind",
+    "hexcasting.action.book.lapisworks:flay_artmind": "Imbue Mind",
 
 
     "lapisenchantments.lapisworks.fireyfists": "FireyFists",
@@ -133,7 +150,6 @@
     "mishaps.lapisworks.already_enchanted": "Cannot enchant %s with %s, as it is already enchanted with the maximum level of %s it can have right now (%d).",
     "mishaps.lapisworks.no_item.mainhand": "Expected %s in the main hand, but found nothing.",
     "mishaps.lapisworks.bad_item.mainhand": "Expected %s in the main hand, but found %dx %s%s",
-
     "mishaps.lapisworks.bad_item.mainhand.imbueable": "any item imbueable with Amethyst Lazuli (e.g. a staff)",
     "mishaps.lapisworks.bad_item.mainhand.readable": "a readable Iota holder (e.g. a Focus or a Thought-knot)",
     "mishaps.lapisworks.bad_item.mainhand.writeable": "a writeable Iota holder (e.g. a Focus)",
@@ -143,6 +159,10 @@
     "mishaps.lapisworks.bad_item.offhand.scroll_with_pattern": "a scroll with a pattern iota",
     "mishaps.lapisworks.bad_item.offhand.scroll_with_great_spell": "a scroll with a pattern on it that resembles a Great Spell but does not necessarily have the correct stroke order",
     "mishaps.lapisworks.bad_block.full_mind": "*FULL* Simple Mind Container",
+    "mishaps.lapisworks.imbue_artmind.need_imbueable": "a block that can accept a simple mind right now",
+    "mishaps.lapisworks.invalid_iota.need_notelist.intlist": "[x|x∈W^x<=24] (need WHOLE NUMBERS!)",
+    "mishaps.lapisworks.invalid_iota.need_notelist.outofrange": "[x|x∈W^0<=x<=24] (must be 0-24!)",
+    "mishaps.lapisworks.invalid_iota.need_notelist.intlistmotherfucker": "[x|x∈W^0<=x<=24] (need WHOLE NUMBERS, not decimals!)",
 
 
     "notif.lapisworks.wizard_diaries.all_gotten": "It seems I have rediscovered all the surviving ancient tomes.",
@@ -231,13 +251,13 @@
     "pages.lapisworks.imbuement_staves.full_amel_staff.text": "The fully infused staff is less precise than the incomplete ones (has a smaller hex grid boost) but actually lasts. I suppose there is some merit, then, to having an incomplete staff and constantly feeding it low amounts of Amel so it does not decay. It takes about 10 Amel to make this.",
 
     "pages.lapisworks.imbuement_swords.title": "Imbuing Swords",
-    "pages.lapisworks.imbuement_swords.intro": "The Casting Rings started my brain walking. The staves got it running. Now I can't stop, it's simply too enjoyable to re-invent the weapons of the past. This time I got curious about what kinds of swords could be made, so I designed some and documented them here. Each takes 32 Amel to make (with no incomplete version) and can be repaired with Amel when above 90%% durability.",
+    "pages.lapisworks.imbuement_swords.intro": "The Casting Rings started my brain walking. The staves got it running. Now I can't stop, it's simply too enjoyable to re-invent the weapons of the past. This time I got curious about what kinds of swords could be made, so I designed some and documented them here. Each takes 32 Amel to make (with no incomplete version) and are repaired with Amel above 90%% durability, but the normal material when below that.",
     "pages.lapisworks.imbuement_swords.diamond.title": "Diamond",
     "pages.lapisworks.imbuement_swords.diamond.desc": "Infusing Amel into a diamond gives it the ability to sacrifice its durability to shoot out extremely quick and focused jets of media that deal as much damage as the sword itself, when I squeeze the handle. This has a range of 10 blocks. I should infuse the Amel through the top, to sharpen it.",
     "pages.lapisworks.imbuement_swords.iron.title": "Iron",
     "pages.lapisworks.imbuement_swords.iron.desc": "Iron's interaction with Amethyst Lazuli Infusion seems to be that the Amethyst Lazuli reinforces it to twice as much durability, allowing it to be feasibly used as a shield. Additionally attempting to block with it momentarily charges up the Amel like with the Amel-Infused Diamond Sword for a quarter of a second, and if hit at that point the Amel lashes out. I guess I could call this ability \"parrying\".",
     "pages.lapisworks.imbuement_swords.iron.desc2": "The Amel lashes out towards the other person and absorbs some pieces gaining 20 \"points\" of durability. It also hits the enemy with half the power of the sword (launching them away from me as well). If their tool breaks, it steals every piece, gaining 100 \"points\" instead of just 20. Additonally the enemy feels their tool was hit so hard they have to make sure it's not completely broken for a second or two, almost always.",
-    "pages.lapisworks.imbuement_swords.iron.desc3": "The Amel has enough energy that it can even withstand an axe hit and go straight for its handle, making the enemy tool take 100 \"points\" of damage instead of just 20. However if I fail to parry the axe $(o)My$() tool takes 20 \"points\" of damage and $(o)I$() get flung away. Additionally the Amel on my sword is rendered useless for a second due to suffering so much damage while unprepared for it.",
+    "pages.lapisworks.imbuement_swords.iron.desc3": "The Amel has enough energy that it can even withstand an axe hit and go straight for its handle, making the enemy tool take 100 \"points\" of damage instead of just 20. However if I fail to parry the axe $(o)my$() tool takes 20 \"points\" of damage and $(o)I$() get flung away. Additionally the Amel on my sword is rendered useless for a second due to suffering so much damage while unprepared for it.",
     "pages.lapisworks.imbuement_swords.gold.title": "Gold",
     "pages.lapisworks.imbuement_swords.gold.desc": "Gold is a media insulator, so I can't quite infuse Amel into a sword made of it. Still, Amel is a natural toxin to most living beings so I can pour over it and attempt to infuse it so it doesn't slide right off. Hitting entities with this makes the Amel lash out and go into them (destroying a relatively major piece of the sword as well), poisoning them for about ten seconds. Quite a nice glass cannon if I say so myself.",
 
@@ -245,7 +265,7 @@
     "pages.lapisworks.imbuement_artmind.whatwhyhow": "When I first read of the mind and that it produces trace amounts of media, I wondered, \"is it possible to create a mind..?\" Now after my experience with Amel imbuement, I think it is. In my experience a heap of media does not on its own start thinking, which can be explained by the fact media is merely the energy of thought. The energy must, however, be moved and used to think.",
     "pages.lapisworks.imbuement_artmind.whatwhyhow2": "If I were to make a machine that pulls at and copies the flow of media in other organisms, such a machine would surely, with time, gain a mind. For this purpose I believe villagers are most efficient as they are not outright nearly braindead but also not truly sapient. The resultant mind will probably be concious, sapient and will bear emotions (be sentient).",
     "pages.lapisworks.imbuement_artmind.recipe.text": "The Amel will let the machine eat bits and pieces of villager minds, taking \"snapshots\" of the flow of media within. A Diamond should focus it enough to mimic the precision of natural minds. The Charged Amethyst will hold the mind.",
-    "pages.lapisworks.imbuement_artmind.howtouse": "This contraption can pull from the minds of three random waking villagers at most 5 blocks away at once, filling in 20 minutes from just one. A waking villager is exhausted after 4 minutes (and heals in the same amount of time when not near this machine). Sleeping villagers, if selected first (and only when selected first), aren't able to be consumed from again for 20 minutes but fill 15% of the mind container.",
+    "pages.lapisworks.imbuement_artmind.howtouse": "This contraption can pull from the minds of three random waking villagers at most 5 blocks away at once, filling in 20 minutes from just one. A waking villager is exhausted after 4 minutes (and heals in the same amount of time when not near this machine). Sleeping villagers, if selected first (and only when selected first), aren't able to be consumed from again for 20 minutes but fill 15%% of the mind container.",
     "pages.lapisworks.imbuement_artmind.thought_sieve.detailed": "These Great Spells elude me so. There must be a better way than delving into old ruins to rediscover them. If the old ones discovered them on their own, so can I! To that end, I have found a way to directly ask Nature for the stroke order, however it only returns a torrent of information that must be sieved through by someone, or something.. Expendable. The spell eats over a quarter of the mind regardless of success or not. I can't imagine this experience not being excruciatingly painful.$(br)$(o)Should this bother me?$()",
     "pages.lapisworks.imbuement_artmind.thought_sieve.summary": "Sieves the torrent of information using the (full) artificial mind at the given position. 3/5 chance of replacing the pattern in my other hand with one of the correct stroke order.",
     "pages.lapisworks.imbuement_artmind.check_mind.summary": "Pushes the percentage filled of the mind container at the given position to the stack.",
@@ -266,5 +286,13 @@
     "pages.lapisworks.great.create_enchsent.detail": "This Enchanted Sentinel has much more media than a Greater Sentinel, but has chains imposed on it that make its existence dependent on me. It must always be in MY ambit (a Greater Sentinel's ambit is much too weak) or else it falls apart. It's still intangible, but it emanates particles visible to everyone. I perceive the particles as well as a media-dense being which looks like some dark purple, unnaturally twisting geometric shape.",
     "pages.lapisworks.great.create_enchsent.lore": "The wizard wrote it was created by forcing Amethyst Lazuli into the original pattern and molding it violently, shaping the media within to his will. The result is a \"4-dimensional spinning hypercube projected as a tesseract!\" (what does that even mean??) which has some form of feeling and awareness. It knows it's chained to it's user, forced to follow their whims due to being dependent on their media. He writes of it fondly, as if he likes it.",
     "pages.lapisworks.great.banish_my_enchsent.summary": "Peacefully put my Enchanted Sentinel to rest for a negligible amount of media, letting it rest for a time. Perhaps the ethical option, considering \"falling apart\" may not be the most painless.",
-    "pages.lapisworks.great.banish_other_enchsent.summary": "Banish another's Enchanted Sentinel if it's at that block for 5 dust."
+    "pages.lapisworks.great.banish_other_enchsent.summary": "Banish another's Enchanted Sentinel if it's at that block for 5 dust.",
+
+    "pages.lapisworks.great.flay_artmind.title": "Imbue Mind",
+    "pages.lapisworks.great.flay_artmind.lore": "Most of the pages are burned, and only the pattern with it's documentation remains. Unfortunate.. In any case, I've documented the pattern on the next page and then it's uses on the pages after it.",
+    "pages.lapisworks.great.flay_artmind.summary": "Takes the location of a block with limited functionality and a full Simple Mind Container, and imbues the mind into the construct for five charged amethyst. $(l:patterns/great_spells/brainsweep)$(o)This spell reminds me of something..$()",
+    "pages.lapisworks.great.flay_artmind.budding_amethyst": "An Amethyst Block, when imbued with a simple mind, turns into a Budding Amethyst block. Due to the bottom 90%% of these pages being burnt away I can't see what the wizard had to say about them, but they all have a $(thing)smiley face$() drawn in red ink next to each of them.. $(o)Should I be concerned?$()",
+    "pages.lapisworks.tooltips.smiley": "$(#F00)=)$() <-- doesn't work in $(t:) or whatever so i put this here for the time being while i figure out a way to get it ingame, no need to translate or anything",
+    "pages.lapisworks.great.flay_artmind.live_jukebox": "\"A mind so simple can be imbued into functional blocks with great ease and without stripping away unnecessary parts.\" I believe this line refers to the Jukebox on the same page (and others on other pages), which can be turned into a Live Jukebox. A Live Jukebox can be taught to play notes at a frequency, and then hit to play those notes.",
+    "pages.lapisworks.great.flay_artmind.teach_song.summary": "Teach the Live Jukebox at that location these notes (a list of whole numbers 0-24) at this frequency (0-20). After being hit via $(thing)Use$(), it plays the notes like an automatic Note Block."
 }

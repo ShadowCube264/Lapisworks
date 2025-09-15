@@ -17,6 +17,7 @@ import com.luxof.lapisworks.actions.CheckAttr;
 import com.luxof.lapisworks.actions.ImbueLap;
 import com.luxof.lapisworks.actions.MindLiquefaction;
 import com.luxof.lapisworks.actions.SwapAmel;
+import com.luxof.lapisworks.actions.TeachSong;
 import com.luxof.lapisworks.actions.MoarAttr;
 import com.luxof.lapisworks.actions.great.BanishMySent;
 import com.luxof.lapisworks.actions.great.BanishOtherSent;
@@ -33,6 +34,7 @@ import com.luxof.lapisworks.actions.misc.WritableMainHand;
 import com.luxof.lapisworks.actions.misc.WriteMainHand;
 import com.luxof.lapisworks.actions.CheckEnchant;
 import com.luxof.lapisworks.actions.CognitionPrfn;
+import com.luxof.lapisworks.actions.FlayArtMind;
 import com.luxof.lapisworks.actions.HexResearchYoink;
 import com.luxof.lapisworks.actions.ImbueAmel;
 
@@ -45,14 +47,16 @@ public class Patterns {
         MoarAttr MoarHealthAction = new MoarAttr(
             EntityAttributes.GENERIC_MAX_HEALTH,
             2.0,
-            0,
+            0.0,
+            1.0,
             2,
             false
         );
         MoarAttr MoarAttackAction = new MoarAttr(
             EntityAttributes.GENERIC_ATTACK_DAMAGE,
             4.0, // the barbarian and the monk fistfighting a demon because magic is for nerds
-            0,
+            0.0,
+            1.0,
             5,
             false
         );
@@ -64,14 +68,16 @@ public class Patterns {
         MoarAttr MoarSpeedAction = new MoarAttr(
             EntityAttributes.GENERIC_MOVEMENT_SPEED,
             3.0,
-            0,
-            50, // movement speed is base 0.1 and i want 5 amel per 0.1 movement speed
+            0.0,
+            10.0,
+            5,
             false
         );
         MoarAttr GibDexterityAction = new MoarAttr(
             EntityAttributes.GENERIC_ATTACK_SPEED,
-            1,
-            4,
+            1.0,
+            4.0,
+            1.0,
             16,
             true
         );
@@ -111,11 +117,12 @@ public class Patterns {
         register("absorb_mind", "aawqqwqqqaede", HexDir.WEST, new MindLiquefaction());
         register("check_mind", "aawqqwqqq", HexDir.WEST, new CognitionPrfn());
 
+        register("teach_song", "aawwawqwwdd", HexDir.WEST, new TeachSong());
+
         // hol up, let him cook
         // i said LET HIM COOK
         // LET. HIM. COOK :fire:
         SpellAction createEnchSent = new CreateEnchSent();
-        // hell naw i will not learn to speak regex
         register("create_enchsent0", "aqaeawdwwwdwqwdwwwdweqqaqwedeewqded", HexDir.NORTH_WEST, createEnchSent);
         register("create_enchsent1", "aqaeawdwwwdwqwdwwwdwewweaqa", HexDir.NORTH_WEST, createEnchSent);
         register("create_enchsent2", "wdwewdwwwdwwwdwqwdwwwdw", HexDir.NORTH_EAST, createEnchSent);
@@ -133,9 +140,24 @@ public class Patterns {
                 "wdwwwdwqwdwwwdwweeeee"
             )
         );
-        
         register("banish_my_enchsent", "wdwewdwdwqwawwwawewawwwaw", HexDir.NORTH_EAST, new BanishMySent());
         register("banish_other_enchsent", "eeeeedwqwawwwawewawwwaw", HexDir.NORTH_EAST, new BanishOtherSent());
+        
+        register("flay_artmind0", "ewewedwqwqqwqwqaeqe", HexDir.SOUTH_EAST, new FlayArtMind());
+        register("flay_artmind1", "ewewedwqwaqaedqdeaqdewewe", HexDir.SOUTH_EAST, new FlayArtMind());
+        register("flay_artmind2", "ewewedwqwqqwqwqaeqeqaqeqeqa", HexDir.SOUTH_EAST, new FlayArtMind());
+        register("flay_artmind3", "ewewedwqwaqaeweeeweaqdedaeade", HexDir.SOUTH_EAST, new FlayArtMind());
+        register("flay_artmind4", "ewewedwqwaqeqwqadqwqwqdaqeqwqwq", HexDir.SOUTH_EAST, new FlayArtMind());
+        registerPWShapePattern(
+            "lapisworks:flay_artmind",
+            List.of(
+                "ewewedwqwqqwqwqaeqe",
+                "ewewedwqwaqaedqdeaqdewewe",
+                "ewewedwqwqqwqwqaeqeqaqeqeqa",
+                "ewewedwqwaqaeweeeweaqdedaeade",
+                "ewewedwqwaqeqwqadqwqwqdaqeqwqwq"
+            )
+        );
     }
 
     private static void register(

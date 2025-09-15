@@ -21,8 +21,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Hand;
 
 import com.luxof.lapisworks.MishapThrowerJava;
-import com.luxof.lapisworks.init.ModItems;
-import com.luxof.lapisworks.items.AmelRing;
+import com.luxof.lapisworks.init.Mutables;
 
 public class SwapAmel implements SpellAction {
     public int getArgc() {
@@ -31,33 +30,16 @@ public class SwapAmel implements SpellAction {
 
     @Override
     public SpellAction.Result execute(List<? extends Iota> args, CastingEnvironment ctx) {
-        Optional<LivingEntity> casterOption = Optional.of(ctx.getCastingEntity());
-        if (casterOption.isEmpty()) {
-            MishapThrowerJava.throwMishap(new MishapBadCaster());
-        }
-        LivingEntity caster = casterOption.get();
+        // funny
+        LivingEntity caster = Optional.of(ctx.getCastingEntity()).orElseGet(() -> {
+            MishapThrowerJava.throwMishap(new MishapBadCaster()); return null;
+        });
         ItemStack offHandItems = caster.getOffHandStack();
         if (offHandItems.isEmpty()) {
             MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "amel"));
         }
 
-        Item swapWith;
-        if (offHandItems.getItem() instanceof AmelRing) {
-            if (((AmelRing)offHandItems.getItem()).whichOneAmI() == 0) {
-                swapWith = (Item)ModItems.AMEL_RING2;
-            } else {
-                swapWith = (Item)ModItems.AMEL_RING;
-            }
-        } else {
-            int idx = ModItems.AMEL_MODELS.indexOf(offHandItems.getItem());
-            if (idx == -1) { MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "amel")); }
-            if (idx + 1 == ModItems.AMEL_MODELS.size()) {
-                swapWith = ModItems.AMEL_ITEM;
-            } else {
-                swapWith = ModItems.AMEL_MODELS.get(idx + 1);
-            }
-        }
-        
+        Item swapWith = Mutables.getMoldAmelProduct(offHandItems.getItem());
         int count = offHandItems.getCount();
 
         return new SpellAction.Result(

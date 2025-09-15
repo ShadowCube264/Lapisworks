@@ -19,10 +19,9 @@ import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
 import com.luxof.lapisworks.mishaps.MishapBadMainhandItem;
 import com.luxof.lapisworks.mishaps.MishapNotEnoughOffhandItems;
 
-import static com.luxof.lapisworks.Lapisworks.getFullAmelFromNorm;
-import static com.luxof.lapisworks.Lapisworks.getPartAmelFromNorm;
-import static com.luxof.lapisworks.Lapisworks.getRequiredAmelToComplete;
-import static com.luxof.lapisworks.Lapisworks.isAmel;
+import static com.luxof.lapisworks.init.Mutables.getFullyAmelProduct;
+import static com.luxof.lapisworks.init.Mutables.getPartAmelProduct;
+import static com.luxof.lapisworks.init.Mutables.isAmel;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,19 +34,25 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 
 public class ImbueAmel implements SpellAction {
-
     public int getArgc() {
         return 1;
     }
 
     @Override
     public SpellAction.Result execute(List<? extends Iota> args, CastingEnvironment ctx) {
-        Optional<LivingEntity> casterOption = Optional.of(ctx.getCastingEntity());
-        if (casterOption.isEmpty()) {
-            MishapThrowerJava.throwMishap(new MishapBadCaster());
+        LivingEntity caster = Optional.of(ctx.getCastingEntity()).orElseGet(() -> {
+            MishapThrowerJava.throwMishap(new MishapBadCaster()); return null;
+        });
+        int wantToInfuseAmount = OperatorUtils.getInt(args, 0, getArgc());
+        if (wantToInfuseAmount <= 0) {
+            // go fuck yourself
+            return new SpellAction.Result(
+                new DoNothingSpell(),
+                0L,
+                List.of(),
+                1
+            );
         }
-        LivingEntity caster = casterOption.get();
-        int infuseAmount = OperatorUtils.getInt(args, 0, getArgc());
 
         ItemStack offHandItems = caster.getOffHandStack();
         ItemStack mainHandItems = caster.getMainHandStack();
@@ -55,9 +60,7 @@ public class ImbueAmel implements SpellAction {
         MishapBadOffhandItem needAmel = MishapBadOffhandItem.of(offHandItems, "amel");
         MishapBadMainhandItem needImbueable = new MishapBadMainhandItem(
             mainHandItems,
-            Text.translatable(
-                "mishaps.lapisworks.bad_item.mainhand.imbueable"
-            )
+            Text.translatable("mishaps.lapisworks.bad_item.mainhand.imbueable")
         );
 
         if (offHandItems.isEmpty()) {
@@ -66,44 +69,44 @@ public class ImbueAmel implements SpellAction {
             MishapThrowerJava.throwMishap(needAmel);
         } else if (mainHandItems.isEmpty()) {
             MishapThrowerJava.throwMishap(needImbueable);
-        }
-
-        Integer requiredAmelToComplete = getRequiredAmelToComplete(mainHandItems);
-        if (requiredAmelToComplete == null) {
+        } else if (mainHandItems.getItem() instanceof FullyAmelInterface) {
             MishapThrowerJava.throwMishap(needImbueable);
         }
-        infuseAmount = Math.min(infuseAmount, requiredAmelToComplete);
 
-        FullyAmelInterface fullAmelItem = getFullAmelFromNorm(mainHandItems.getItem());
+        Item mainHandItem = mainHandItems.getItem();
+        PartiallyAmelInterface partAmel = getPartAmelProduct(mainHandItem);
+        FullyAmelInterface fullAmel = getFullyAmelProduct(mainHandItem);
+
+        // yes i will explain my math (past programmer is the worst)
+        int requiredAmelForFullInfusion = mainHandItem instanceof PartiallyAmelInterface ?
+            // amel needed to make full amel = damage suffered / 1 amel's worth for healing
+            (int)Math.ceil((double)mainHandItems.getDamage() / (double)partAmel.getAmelWorthInDurability()) :
+            // or just the amount it takes
+            fullAmel.getRequiredAmelToMakeFromBase();
+        // use Math.min() so i don't overspend, calculate amount required to make a fullAmel on one side
+        int infuseAmount = Math.min(wantToInfuseAmount, requiredAmelForFullInfusion);
 
         if (offHandItems.getCount() < infuseAmount) {
             MishapThrowerJava.throwMishap(new MishapNotEnoughOffhandItems(offHandItems, infuseAmount));
-        } else if (infuseAmount < requiredAmelToComplete && fullAmelItem.noPartAmelPhase()) {
-            MishapThrowerJava.throwMishap(new MishapNotEnoughOffhandItems(offHandItems, requiredAmelToComplete));
         }
 
-        ItemStack changeToItem;
-        if (infuseAmount == requiredAmelToComplete) {
-            changeToItem = new ItemStack((Item)fullAmelItem, 1);
-        } else if (infuseAmount > 0) { // don't fuck up my shit by trying to infuse 0 amel into a ring
-            PartiallyAmelInterface partAmelItem = getPartAmelFromNorm(mainHandItems.getItem());
-            changeToItem = new ItemStack((Item)partAmelItem, 1);
-            // no i won't explain my math
-            changeToItem.setDamage(
-                Math.max(
-                    partAmelItem.getMaxDurability() -
-                        partAmelItem.getAmelWorthInDurability() * infuseAmount -
-                        (mainHandItems.getItem() instanceof PartiallyAmelInterface ?
-                            mainHandItems.getDamage() : 0),
-                    0
-                )
+        ItemStack changeToItemStack;
+        if (infuseAmount == requiredAmelForFullInfusion) { changeToItemStack = new ItemStack((Item)fullAmel); }
+        else {
+            changeToItemStack = new ItemStack((Item)partAmel);
+            changeToItemStack.setDamage(
+                mainHandItems.getDamage() - infuseAmount * partAmel.getAmelWorthInDurability()
             );
-        } else {
-            changeToItem = mainHandItems;
+        }
+
+        if (!(mainHandItem instanceof PartiallyAmelInterface)) {
+            changeToItemStack.setDamage(
+                changeToItemStack.getMaxDamage() - infuseAmount * partAmel.getAmelWorthInDurability()
+            );
         }
 
         return new SpellAction.Result(
-            new Spell(caster, changeToItem, infuseAmount),
+            new Spell(caster, changeToItemStack, infuseAmount),
             MediaConstants.SHARD_UNIT * 2 * offHandItems.getCount(),
             List.of(ParticleSpray.burst(caster.getPos(), 1, 10 + offHandItems.getCount())),
             1
@@ -130,6 +133,18 @@ public class ImbueAmel implements SpellAction {
             ));
             this.caster.setStackInHand(Hand.MAIN_HAND, this.changeToItem);
 		}
+
+        @Override
+        public CastingImage cast(CastingEnvironment arg0, CastingImage arg1) {
+            return RenderedSpell.DefaultImpls.cast(this, arg0, arg1);
+        }
+    }
+
+    public class DoNothingSpell implements RenderedSpell {
+        @Override
+        public void cast(CastingEnvironment arg0) {
+            return;
+        }
 
         @Override
         public CastingImage cast(CastingEnvironment arg0, CastingImage arg1) {

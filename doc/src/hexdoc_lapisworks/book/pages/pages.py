@@ -10,7 +10,7 @@ from ..merge_pattern import HexCoord, overlay_patterns
 
 # Look mom, I'm here. Very top of Arasaka tower.
 class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape"):
-    origins: list[HexCoord] | None = None
+    origins: list[HexCoord]
 
     @property
     def patterns(self) -> list[PatternInfo]:
@@ -18,7 +18,6 @@ class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape")
     
     @model_validator(mode="after")
     def _post_root_lookup(self, info: ValidationInfo):
-        if self.origins == None: raise TypeError("No origins provided for " + str(self.op_id))
         hex_ctx = HexContext.of(info)
         patterns: list[tuple[PatternInfo, HexCoord]] = []
         i = 0

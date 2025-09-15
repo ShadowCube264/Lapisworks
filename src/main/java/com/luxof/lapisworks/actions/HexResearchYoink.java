@@ -156,7 +156,7 @@ public class HexResearchYoink implements SpellAction {
 
 		@Override
 		public void cast(CastingEnvironment ctx) {
-            this.blockEntity.mindCompletion -= 25.0f;
+            this.blockEntity.mindCompletion -= 50.0f;
             this.blockEntity.markDirty();
             if (ctx.getWorld().random.nextInt(4) > 2) { return; } // 3/5 chance (number is 0-4 inclusive)
             this.scroll.writeDatum(caster.getOffHandStack(), new PatternIota(this.pattern));

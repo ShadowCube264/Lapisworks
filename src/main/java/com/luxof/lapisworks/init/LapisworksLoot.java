@@ -1,6 +1,4 @@
-package com.luxof.lapisworks;
-
-import com.luxof.lapisworks.init.ModItems;
+package com.luxof.lapisworks.init;
 
 import java.util.List;
 

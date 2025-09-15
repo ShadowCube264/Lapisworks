@@ -54,6 +54,11 @@
             "type": "patchouli:text",
             "advancement": "hexcasting:opened_eyes",
             "text": "pages.lapisworks.imbuement_artmind.reflection"
+        },
+        {
+            "type": "patchouli:text",
+            "advancement": "hexcasting:opened_eyes",
+            "text": "pages.lapisworks.imbuement_artmind.reflection2"
         }
     ]
 }
