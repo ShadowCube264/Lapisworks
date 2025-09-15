@@ -24,8 +24,7 @@
                 {"q": 1, "r": 0},
                 {"q": 1, "r": 0}
             ],
-            "allowed": [0, 1, 2, 3, 4, 5],
-            "forbidden": []
+            "allowed": [0, 1, 2, 3, 4, 5]
         },
         {
             "type": "patchouli:text",
