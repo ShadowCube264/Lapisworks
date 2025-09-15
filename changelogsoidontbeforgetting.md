@@ -32,3 +32,5 @@ Luxof didn't even DREAM of this shit in his prime (1.1.0-1.2.0)
 - Added Equivalent Block Prfn.
 - Imbue Amel can now lowkey make enchanted books more powerful
 - Give me a break ok just look at 1.5.2
+  like LOOOOOOK
+  i wasn't even DREAMING of shit like this in my "prime" (1.2)
