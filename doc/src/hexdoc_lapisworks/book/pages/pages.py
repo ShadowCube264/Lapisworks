@@ -23,7 +23,9 @@ class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape")
         patterns: list[tuple[PatternInfo, HexCoord]] = []
         i = 0
         while pattern := hex_ctx.patterns.get(self.op_id + str(i)):
-            if i not in self.allowed: continue
+            if i not in self.allowed:
+                i += 1
+                continue
             patterns.append((pattern, self.origins[i]))
             i += 1
 
