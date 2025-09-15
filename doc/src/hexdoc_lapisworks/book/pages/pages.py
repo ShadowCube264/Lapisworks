@@ -11,7 +11,6 @@ from ..merge_pattern import HexCoord, overlay_patterns
 # Look mom, I'm here. Very top of Arasaka tower.
 class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape"):
     origins: list[HexCoord]
-    allowed: list[int]
 
     @property
     def patterns(self) -> list[PatternInfo]:
@@ -23,7 +22,6 @@ class LookupPWShapePage(PageWithOpPattern, type="hexcasting:lapisworks/pwshape")
         patterns: list[tuple[PatternInfo, HexCoord]] = []
         i = 0
         while pattern := hex_ctx.patterns.get(self.op_id + str(i)):
-            if i not in self.allowed: continue
             patterns.append((pattern, self.origins[i]))
             i += 1
 
