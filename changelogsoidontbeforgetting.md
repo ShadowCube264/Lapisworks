@@ -27,10 +27,22 @@ Luxof didn't even DREAM of this shit in his prime (1.1.0-1.2.0)
     - Amethyst Block -> Budding Amethyst
     - Jukebox -> Live Jukebox
 1.5.3
-- Added specifically offhand-reading patterns too
-- Added Simulate Time
-- Added Equivalent Block Prfn.
+- Fixed enchantments being able to take too much Amel and making negative nums
+- Fixed Imbue Amel taking too much media
+- Fixed Imbue Amel not properly doing it's fucking thing of repairing shit
+- Fixed a potential crash in Imbue Amel
+- Fixed LivingEntity mixin crashing because i can't mixin to constructors for shit (just removed the inject)
+- Made the Patchouli book read better in some places
+- Renamed the old Imbue Mind (the one that recharges stuff) to Mind Liquefaction
+- Mainhand-reading patterns have been generalized to any hand
+- Also generalized many patterns to take any hand
+- generalization has allowed most patterns to work on casting circles too
+- Mainhand mishap has been generalized to any hand as well
+- Not Enough Items In Offhand mishap has been generalized as well
+- Added Equivalent Block D.
+- Added Equal Block Dist.
+- Added Hastenature
 - Imbue Amel can now lowkey make enchanted books more powerful
-- Give me a break ok just look at 1.5.2
-  like LOOOOOOK
-  i wasn't even DREAMING of shit like this in my "prime" (1.2)
+1.5.4
+- Spell Circle wireless media transmission (costs media per block)
+- Spell Circle wireless ambit extender (costs media per layer)

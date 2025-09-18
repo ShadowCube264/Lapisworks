@@ -1,5 +1,7 @@
 package com.luxof.lapisworks.mishaps;
 
+import static com.luxof.lapisworks.LapisworksIDs.NOT_ENOUGH;
+
 import java.util.List;
 
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
@@ -10,11 +12,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 
-public class MishapNotEnoughOffhandItems extends Mishap {
+public class MishapNotEnoughItems extends Mishap {
     private final ItemStack item;
     private final int required;
 
-    public MishapNotEnoughOffhandItems(ItemStack itemsInOffhand, int requiredAmount) {
+    public MishapNotEnoughItems(ItemStack itemsInOffhand, int requiredAmount) {
         this.item = itemsInOffhand;
         this.required = requiredAmount;
     }
@@ -32,7 +34,7 @@ public class MishapNotEnoughOffhandItems extends Mishap {
     @Override
     public Text errorMessage(CastingEnvironment ctx, Context errorCtx) {
         return Text.translatable(
-            "mishaps.lapisworks.not_enough_offhand_items",
+            NOT_ENOUGH,
             this.required,
             this.item.getName(),
             this.item.getCount(),

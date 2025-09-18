@@ -1,6 +1,6 @@
 package com.luxof.lapisworks.actions.misc;
 
-import at.petrak.hexcasting.api.addldata.ADIotaHolder;
+import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction;
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import at.petrak.hexcasting.api.casting.eval.OperationResult;
@@ -8,28 +8,27 @@ import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.BooleanIota;
 import at.petrak.hexcasting.api.casting.iota.Iota;
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
-import at.petrak.hexcasting.xplat.IXplatAbstractions;
+import at.petrak.hexcasting.api.casting.mishaps.Mishap;
+
+import java.util.List;
 
 import com.luxof.lapisworks.MishapThrowerJava;
 
-import java.util.List;
-import java.util.Optional;
+import net.minecraft.block.BlockState;
+import net.minecraft.util.math.BlockPos;
 
-import net.minecraft.entity.LivingEntity;
+public class EqualBlock implements ConstMediaAction {
+    public BlockPos confirmInAmbit(BlockPos pos, CastingEnvironment ctx) {
+        try { ctx.assertPosInRange(pos); }
+        catch (Mishap e) { MishapThrowerJava.throwMishap(e); }
+        return pos;
+    }
 
-public class WritableMainHand implements ConstMediaAction {
     @Override
     public List<Iota> execute(List<? extends Iota> args, CastingEnvironment ctx) {
-        Optional<LivingEntity> casterOp = Optional.of(ctx.getCastingEntity());
-        if (casterOp.isEmpty()) { MishapThrowerJava.throwMishap(new MishapBadCaster()); }
-        LivingEntity caster = casterOp.get();
-        ADIotaHolder iotaHolder = IXplatAbstractions.INSTANCE.findDataHolder(caster.getMainHandStack());
-        return List.of(new BooleanIota(
-            iotaHolder != null && (
-                iotaHolder.writeable()
-            )
-        ));
+        BlockState a = ctx.getWorld().getBlockState(confirmInAmbit(OperatorUtils.getBlockPos(args, 0, getArgc()), ctx));
+        BlockState b = ctx.getWorld().getBlockState(confirmInAmbit(OperatorUtils.getBlockPos(args, 1, getArgc()), ctx));
+        return List.of(new BooleanIota(a == b));
     }
 
     @Override
@@ -39,7 +38,7 @@ public class WritableMainHand implements ConstMediaAction {
 
     @Override
     public int getArgc() {
-        return 0;
+        return 2;
     }
 
     @Override

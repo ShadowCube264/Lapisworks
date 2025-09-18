@@ -12,6 +12,7 @@ import com.luxof.lapisworks.items.shit.AmelSword;
 import com.luxof.lapisworks.items.shit.FullyAmelInterface;
 
 import static com.luxof.lapisworks.Lapisworks.id;
+import static com.luxof.lapisworks.LapisworksIDs.LAPISMAGICSHITGROUPTEXT;
 import static com.luxof.lapisworks.LapisworksIDs.LAPIS_MAGIC_SHIT_GROUP;
 
 import java.util.List;
@@ -24,7 +25,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.text.Text;
 
 public class ModItems {
     public static FabricItemSettings fullStack = new FabricItemSettings().maxCount(64);
@@ -126,7 +126,7 @@ public class ModItems {
 
     public static final ItemGroup LapisMagicShitGroup = FabricItemGroup.builder()
         .icon(() -> new ItemStack(AMEL_ITEM))
-        .displayName(Text.translatable("itemgroup.lapisworks.lapismagicshitgroup"))
+        .displayName(LAPISMAGICSHITGROUPTEXT)
         .entries((context, entries) -> {
             items.forEach(
                 (Item item) -> {

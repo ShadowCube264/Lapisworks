@@ -1,7 +1,6 @@
 package com.luxof.lapisworks.actions;
 
 import java.util.List;
-import java.util.Optional;
 
 import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.ParticleSpray;
@@ -13,16 +12,15 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment.HeldItemInfo;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 
 import com.luxof.lapisworks.MishapThrowerJava;
-import com.luxof.lapisworks.mishaps.MishapNotEnoughOffhandItems;
+import com.luxof.lapisworks.init.Mutables;
+import com.luxof.lapisworks.mishaps.MishapNotEnoughItems;
 import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
 
 import static com.luxof.lapisworks.Lapisworks.LOGGER;
-import static com.luxof.lapisworks.init.Mutables.isAmel;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
@@ -63,28 +61,16 @@ public class MoarAttr implements SpellAction {
     @Override
     public SpellAction.Result execute(List<? extends Iota> args, CastingEnvironment ctx) {
         LivingEntity entity;
-        if (!playerOnly) {
-            entity = OperatorUtils.getLivingEntityButNotArmorStand(args, 0, getArgc());
-        } else {
-            entity = OperatorUtils.getPlayer(args, 0, getArgc());
-        }
+        if (!playerOnly) { entity = OperatorUtils.getLivingEntityButNotArmorStand(args, 0, getArgc()); }
+        else { entity = OperatorUtils.getPlayer(args, 0, getArgc()); }
         double count = OperatorUtils.getPositiveDouble(args, 1, getArgc());
 
-        Optional<LivingEntity> casterOption = Optional.of(ctx.getCastingEntity());
-        if (casterOption.isEmpty()) {
-            MishapThrowerJava.throwMishap(new MishapBadCaster());
-        }
-        LivingEntity caster = casterOption.get();
-
-        HeldItemInfo offHandItemsInfo = ctx.getHeldItemToOperateOn((stack) -> isAmel(stack));
-        if (offHandItemsInfo == null) {
+        HeldItemInfo AmelInfo = ctx.getHeldItemToOperateOn(Mutables::isAmel);
+        if (AmelInfo == null) {
             MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(ItemStack.EMPTY.copy(), "amel"));
         }
-        ItemStack offHandItems = offHandItemsInfo.component1();
-        // the hexcasting code has double checks like this too fsr
-        if (!isAmel(offHandItems)) {
-            MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "amel"));
-        }
+        ItemStack offHandItems = AmelInfo.stack();
+        Hand hand = AmelInfo.hand();
 
         double currentCombinedVal = entity.getAttributes()
             .getCustomInstance(this.modifyAttribute)
@@ -100,39 +86,39 @@ public class MoarAttr implements SpellAction {
         int expendedAmel = (int)Math.ceil(addToVal * this.expendedAmelModifier);
 
         if (offHandItems.getCount() < expendedAmel) {
-            MishapThrowerJava.throwMishap(new MishapNotEnoughOffhandItems(offHandItems, expendedAmel));
+            MishapThrowerJava.throwMishap(new MishapNotEnoughItems(offHandItems, expendedAmel));
         }
 
         LOGGER.info("Expended Amel: " + expendedAmel);
 
         return new SpellAction.Result(
             // caster is kinda being operated on but that's not the main effect so 2nd prio
-            new Spell(entity, caster, expendedAmel, addToVal / this.attrCompensateMult, this.modifyAttribute),
+            new Spell(entity, expendedAmel, addToVal / this.attrCompensateMult, this.modifyAttribute, hand),
             MediaConstants.SHARD_UNIT * expendedAmel,
-            List.of(ParticleSpray.burst(caster.getPos(), 2, 25)),
+            List.of(ParticleSpray.burst(ctx.mishapSprayPos(), 2, 25)),
             1
         );
     }
 
     public class Spell implements RenderedSpell {
         public final LivingEntity entity;
-        public final LivingEntity caster;
         public final int expendedAmel;
         public final double addVal;
         public final EntityAttribute attr;
+        public final Hand hand;
 
         public Spell(
             LivingEntity entity,
-            LivingEntity caster,
             int expendedAmel,
             double addVal,
-            EntityAttribute attr
+            EntityAttribute attr,
+            Hand hand
         ) {
             this.entity = entity;
-            this.caster = caster;
             this.expendedAmel = expendedAmel;
             this.addVal = addVal;
             this.attr = attr;
+            this.hand = hand;
         }
 
 		@Override
@@ -144,14 +130,12 @@ public class MoarAttr implements SpellAction {
                 this.attr,
                 juicedUpAttr + this.addVal
             );
+            ItemStack amelStack = ctx.getHeldItemToOperateOn(Mutables::isAmel).stack();
 
-            this.caster.setStackInHand(
-                Hand.OFF_HAND,
-                new ItemStack(
-                    this.caster.getOffHandStack().getItem(),
-                    this.caster.getOffHandStack().getCount() - this.expendedAmel
-                )
-            );
+            ctx.replaceItem(Mutables::isAmel, new ItemStack(
+                    amelStack.getItem(),
+                    amelStack.getCount() - this.expendedAmel
+            ), this.hand);
 		}
 
         @Override

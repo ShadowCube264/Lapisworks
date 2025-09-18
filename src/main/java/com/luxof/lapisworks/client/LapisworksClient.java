@@ -13,6 +13,8 @@ import static com.luxof.lapisworks.Lapisworks.clamp;
 import static com.luxof.lapisworks.Lapisworks.nullConfigFlags;
 import static com.luxof.lapisworks.Lapisworks.prettifyFloat;
 import static com.luxof.lapisworks.LapisworksIDs.BLOCKING_MPP;
+import static com.luxof.lapisworks.LapisworksIDs.SCRYING_MIND_END;
+import static com.luxof.lapisworks.LapisworksIDs.SCRYING_MIND_START;
 import static com.luxof.lapisworks.LapisworksIDs.SEND_PWSHAPE_PATS;
 import static com.luxof.lapisworks.LapisworksIDs.SEND_SENT;
 import static com.luxof.lapisworks.init.ModItems.IRON_SWORD;
@@ -83,12 +85,12 @@ public class LapisworksClient implements ClientModInitializer {
                 lines.add(
                     new Pair<ItemStack, Text>(
                         new ItemStack(ModItems.MIND),
-                        Text.translatable("render.lapisworks.scryinglens.mind.start").append(
+                        SCRYING_MIND_START.copy().append(
                             Text.literal(
                                 prettifyFloat(clamp(blockEntity.mindCompletion, 0f, 100f))
                             )
                         ).append(
-                            Text.translatable("render.lapisworks.scryinglens.mind.end")
+                            SCRYING_MIND_END
                         ).formatted(
                             Formatting.LIGHT_PURPLE
                         )

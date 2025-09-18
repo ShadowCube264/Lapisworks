@@ -1,27 +1,25 @@
 package com.luxof.lapisworks.actions;
 
-import java.util.List;
-import java.util.Optional;
-
 import at.petrak.hexcasting.api.casting.ParticleSpray;
 import at.petrak.hexcasting.api.casting.RenderedSpell;
 import at.petrak.hexcasting.api.casting.castables.SpellAction;
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import at.petrak.hexcasting.api.casting.eval.OperationResult;
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment.HeldItemInfo;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem;
 
-import net.minecraft.entity.LivingEntity;
+import com.luxof.lapisworks.MishapThrowerJava;
+import com.luxof.lapisworks.init.Mutables;
+
+import java.util.List;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Hand;
-
-import com.luxof.lapisworks.MishapThrowerJava;
-import com.luxof.lapisworks.init.Mutables;
 
 public class SwapAmel implements SpellAction {
     public int getArgc() {
@@ -30,40 +28,42 @@ public class SwapAmel implements SpellAction {
 
     @Override
     public SpellAction.Result execute(List<? extends Iota> args, CastingEnvironment ctx) {
-        // funny
-        LivingEntity caster = Optional.of(ctx.getCastingEntity()).orElseGet(() -> {
-            MishapThrowerJava.throwMishap(new MishapBadCaster()); return null;
-        });
-        ItemStack offHandItems = caster.getOffHandStack();
-        if (offHandItems.isEmpty()) {
-            MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(offHandItems, "amel"));
+        HeldItemInfo amelInfo = ctx.getHeldItemToOperateOn(Mutables::itemHasMoldAmelProduct);
+        if (amelInfo == null) {
+            MishapThrowerJava.throwMishap(MishapBadOffhandItem.of(ItemStack.EMPTY.copy(), "amel"));
         }
+        ItemStack amelStack = amelInfo.stack();
+        Hand hand = amelInfo.hand();
 
-        Item swapWith = Mutables.getMoldAmelProduct(offHandItems.getItem());
-        int count = offHandItems.getCount();
+        Item swapWith = Mutables.getMoldAmelProduct(amelStack.getItem());
+        int count = amelStack.getCount();
 
         return new SpellAction.Result(
-            new Spell(caster, swapWith, count),
+            new Spell(swapWith, count, hand),
             0,
-            List.of(ParticleSpray.burst(caster.getPos(), 1, 10 + offHandItems.getCount())),
+            List.of(ParticleSpray.burst(ctx.mishapSprayPos(), 1, 10 + count)),
             1
         );
     }
 
     public class Spell implements RenderedSpell {
-        public final LivingEntity caster;
         public final Item item;
         public final int count;
+        public final Hand hand;
 
-        public Spell(LivingEntity caster, Item item, int count) {
-            this.caster = caster;
+        public Spell(Item item, int count, Hand hand) {
             this.item = item;
             this.count = count;
+            this.hand = hand;
         }
 
 		@Override
 		public void cast(CastingEnvironment ctx) {
-            this.caster.setStackInHand(Hand.OFF_HAND, new ItemStack(this.item, this.count));
+            ctx.replaceItem(
+                Mutables::itemHasMoldAmelProduct,
+                new ItemStack(this.item, this.count),
+                this.hand
+            );
 		}
 
         @Override

@@ -1,38 +1,31 @@
 package com.luxof.lapisworks.actions.misc;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
+import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.castables.ConstMediaAction;
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
 import at.petrak.hexcasting.api.casting.eval.OperationResult;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
+import at.petrak.hexcasting.api.casting.iota.BooleanIota;
 import at.petrak.hexcasting.api.casting.iota.Iota;
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 
-import com.luxof.lapisworks.MishapThrowerJava;
-import com.luxof.lapisworks.mishaps.MishapBadMainhandItem;
+import static com.luxof.lapisworks.Lapisworks.getStackFromHand;
+import static com.luxof.lapisworks.init.Mutables.maxHands;
 
 import java.util.List;
-import java.util.Optional;
 
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.text.Text;
-
-public class ReadMainHand implements ConstMediaAction {
+public class ReadableInHand implements ConstMediaAction {
     @Override
     public List<Iota> execute(List<? extends Iota> args, CastingEnvironment ctx) {
-        Optional<LivingEntity> casterOp = Optional.of(ctx.getCastingEntity());
-        if (casterOp.isEmpty()) { MishapThrowerJava.throwMishap(new MishapBadCaster()); }
-        LivingEntity caster = casterOp.get();
-        ADIotaHolder iotaHolder = IXplatAbstractions.INSTANCE.findDataHolder(caster.getMainHandStack());
-        if (iotaHolder == null || (iotaHolder.readIota(ctx.getWorld()) == null && iotaHolder.emptyIota() == null)) {
-            MishapThrowerJava.throwMishap(new MishapBadMainhandItem(
-                caster.getMainHandStack(),
-                Text.translatable("mishaps.lapisworks.bad_item.mainhand.readable")
-            ));
-        }
-        return List.of(iotaHolder.readIota(ctx.getWorld()));
+        int hand = OperatorUtils.getIntBetween(args, 0, 0, maxHands - 1, getArgc());
+        ADIotaHolder iotaHolder = IXplatAbstractions.INSTANCE.findDataHolder(getStackFromHand(ctx, hand));
+        return List.of(new BooleanIota(
+            iotaHolder != null && (
+                iotaHolder.readIota(ctx.getWorld()) != null || iotaHolder.emptyIota() != null
+            )
+        ));
     }
 
     @Override
@@ -42,7 +35,7 @@ public class ReadMainHand implements ConstMediaAction {
 
     @Override
     public int getArgc() {
-        return 0;
+        return 1;
     }
 
     @Override

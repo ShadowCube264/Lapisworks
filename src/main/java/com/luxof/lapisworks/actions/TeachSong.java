@@ -19,6 +19,11 @@ import com.luxof.lapisworks.MishapThrowerJava;
 import com.luxof.lapisworks.blocks.entities.LiveJukeboxEntity;
 import com.luxof.lapisworks.init.ModBlocks;
 
+import static com.luxof.lapisworks.LapisworksIDs.LIVE_JUKEBOX_BLOCK;
+import static com.luxof.lapisworks.LapisworksIDs.NOTELIST;
+import static com.luxof.lapisworks.LapisworksIDs.NOTELIST_MOFO;
+import static com.luxof.lapisworks.LapisworksIDs.NOTELIST_OUTOFRANGE;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +33,6 @@ import org.jetbrains.annotations.Nullable;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
 import net.minecraft.util.math.BlockPos;
 
 public class TeachSong implements SpellAction {
@@ -43,10 +47,7 @@ public class TeachSong implements SpellAction {
             .getBlockEntity(liveJukeboxPos, ModBlocks.LIVE_JUKEBOX_ENTITY_TYPE);
 
         if (jukeboxEntOpt.isEmpty()) {
-            MishapThrowerJava.throwMishap(new MishapBadBlock(
-                liveJukeboxPos,
-                Text.translatable("block.lapisworks.amel_constructs.live_jukebox")
-            ));
+            MishapThrowerJava.throwMishap(new MishapBadBlock(liveJukeboxPos, LIVE_JUKEBOX_BLOCK));
         }
 
         LiveJukeboxEntity blockEntity = (LiveJukeboxEntity)jukeboxEntOpt.get();
@@ -63,7 +64,7 @@ public class TeachSong implements SpellAction {
                         new MishapInvalidIota(
                             mishapOnIota,
                             mishapOnIndex,
-                            Text.translatable("mishaps.lapisworks.invalid_iota.need_notelist.intlistmotherfucker")
+                            NOTELIST_MOFO
                         )
                     );
                 } else if (roundedNote < 0.0 || roundedNote > 24.0) {
@@ -71,7 +72,7 @@ public class TeachSong implements SpellAction {
                         new MishapInvalidIota(
                             mishapOnIota,
                             mishapOnIndex,
-                            Text.translatable("mishaps.lapisworks.invalid_iota.need_notelist.outofrange")
+                            NOTELIST_OUTOFRANGE
                         )
                     );
                 }
@@ -81,7 +82,7 @@ public class TeachSong implements SpellAction {
                     new MishapInvalidIota(
                         mishapOnIota,
                         mishapOnIndex,
-                        Text.translatable("mishaps.lapisworks.invalid_iota.need_notelist.intlist")
+                        NOTELIST
                     )
                 );
             }

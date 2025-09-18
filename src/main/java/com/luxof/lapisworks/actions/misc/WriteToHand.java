@@ -1,6 +1,7 @@
 package com.luxof.lapisworks.actions.misc;
 
 import at.petrak.hexcasting.api.addldata.ADIotaHolder;
+import at.petrak.hexcasting.api.casting.OperatorUtils;
 import at.petrak.hexcasting.api.casting.RenderedSpell;
 import at.petrak.hexcasting.api.casting.castables.SpellAction;
 import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
@@ -8,47 +9,60 @@ import at.petrak.hexcasting.api.casting.eval.OperationResult;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadCaster;
 import at.petrak.hexcasting.api.casting.mishaps.MishapOthersName;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 
 import com.luxof.lapisworks.MishapThrowerJava;
-import com.luxof.lapisworks.mishaps.MishapBadMainhandItem;
+import com.luxof.lapisworks.mishaps.MishapBadHandItem;
+
+import static com.luxof.lapisworks.Lapisworks.getStackFromHand;
+import static com.luxof.lapisworks.Lapisworks.intToHand;
+import static com.luxof.lapisworks.LapisworksIDs.NON_IOTAHOLDER;
+import static com.luxof.lapisworks.LapisworksIDs.READONLY_HOLDER;
+import static com.luxof.lapisworks.LapisworksIDs.WRITEABLE;
+import static com.luxof.lapisworks.init.Mutables.maxHands;
 
 import java.util.List;
-import java.util.Optional;
 
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.text.Text;
+import net.minecraft.util.Hand;
 
-public class WriteMainHand implements SpellAction {
+public class WriteToHand implements SpellAction {
     @Override
     public Result execute(List<? extends Iota> args, CastingEnvironment ctx) {
         Iota iota = args.get(0);
-
-        Optional<LivingEntity> casterOp = Optional.of(ctx.getCastingEntity());
-        if (casterOp.isEmpty()) { MishapThrowerJava.throwMishap(new MishapBadCaster()); }
-        LivingEntity caster = casterOp.get();
-        ADIotaHolder iotaHolder = IXplatAbstractions.INSTANCE.findDataHolder(caster.getMainHandStack());
+        int hand = OperatorUtils.getIntBetween(args, 1, 0, maxHands - 1, getArgc());
+        final Hand HAND = intToHand(hand);
+        ItemStack stack = getStackFromHand(ctx, hand);
+        if (stack == null) {
+            MishapThrowerJava.throwMishap(new MishapBadHandItem(
+                stack,
+                WRITEABLE,
+                HAND
+            ));
+        }
+        ADIotaHolder iotaHolder = IXplatAbstractions.INSTANCE.findDataHolder(stack);
         // "let's make the error message more helpful!"
         // :thumbsup:
-        if (iotaHolder == null) { 
-            MishapThrowerJava.throwMishap(new MishapBadMainhandItem(
-                caster.getMainHandStack(),
-                Text.translatable("mishaps.lapisworks.bad_item.mainhand.writeable"),
-                Text.translatable("mishaps.lapisworks.bad_item.mainhand.noniotaholder")
+        if (iotaHolder == null) {
+            MishapThrowerJava.throwMishap(new MishapBadHandItem(
+                stack,
+                WRITEABLE,
+                NON_IOTAHOLDER,
+                HAND
             ));
         } else if (!iotaHolder.writeIota(iota, true)) {
-            MishapThrowerJava.throwMishap(new MishapBadMainhandItem(
-                caster.getMainHandStack(),
-                Text.translatable("mishaps.lapisworks.bad_item.mainhand.writeable"),
-                Text.translatable("mishaps.lapisworks.bad_item.mainhand.readonly")
+            MishapThrowerJava.throwMishap(new MishapBadHandItem(
+                stack,
+                WRITEABLE,
+                READONLY_HOLDER,
+                HAND
             ));
         }
         PlayerEntity truename = MishapOthersName
-            .getTrueNameFromDatum(iota, caster instanceof PlayerEntity ? (PlayerEntity)caster : null);
+            .getTrueNameFromDatum(iota, (PlayerEntity)ctx.getCastingEntity());
         if (truename != null) { MishapThrowerJava.throwMishap(new MishapOthersName(truename)); }
 
         return new SpellAction.Result(
@@ -80,7 +94,7 @@ public class WriteMainHand implements SpellAction {
 
     @Override
     public int getArgc() {
-        return 1;
+        return 2;
     }
 
     @Override

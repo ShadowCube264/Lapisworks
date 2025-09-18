@@ -3,6 +3,11 @@ package com.luxof.lapisworks.items;
 import at.petrak.hexcasting.common.lib.HexSounds;
 
 import static com.luxof.lapisworks.Lapisworks.LOGGER;
+import static com.luxof.lapisworks.LapisworksIDs.DIARIES_TOOLTIP_1;
+import static com.luxof.lapisworks.LapisworksIDs.DIARIES_TOOLTIP_2;
+import static com.luxof.lapisworks.LapisworksIDs.DIARIES_TOOLTIP_3;
+import static com.luxof.lapisworks.LapisworksIDs.DIARIES_TOOLTIP_4;
+import static com.luxof.lapisworks.LapisworksIDs.GOT_ALL_DIARIES;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -54,10 +59,7 @@ public class WizardDiaries extends Item {
             }
         }
         if (chosenAdvancement == null) {
-            suser.sendMessage(
-                Text.translatable("notif.lapisworks.wizard_diaries.all_gotten"),
-                true
-            );
+            suser.sendMessage(GOT_ALL_DIARIES, true);
             suser.addExperience(100);
         } else {
             // no clue if this'll work
@@ -73,16 +75,16 @@ public class WizardDiaries extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, World world, List<Text> tooltip, TooltipContext ctx) {
-        tooltip.add(Text.translatable("tooltips.lapisworks.wizard_diaries.1").formatted(
+        tooltip.add(DIARIES_TOOLTIP_1.copy().formatted(
             Formatting.DARK_PURPLE
         ));
-        tooltip.add(Text.translatable("tooltips.lapisworks.wizard_diaries.2").formatted(
+        tooltip.add(DIARIES_TOOLTIP_2.copy().formatted(
             Formatting.DARK_PURPLE
         ));
-        tooltip.add(Text.translatable("tooltips.lapisworks.wizard_diaries.3").formatted(
+        tooltip.add(DIARIES_TOOLTIP_3.copy().formatted(
             Formatting.DARK_PURPLE
         ));
-        tooltip.add(Text.translatable("tooltips.lapisworks.wizard_diaries.4").formatted(
+        tooltip.add(DIARIES_TOOLTIP_4.copy().formatted(
             Formatting.DARK_PURPLE
         ));
     }

@@ -1,5 +1,7 @@
 package com.luxof.lapisworks;
 
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment;
+import at.petrak.hexcasting.api.casting.eval.CastingEnvironment.HeldItemInfo;
 import at.petrak.hexcasting.api.casting.math.HexCoord;
 import at.petrak.hexcasting.api.casting.math.HexPattern;
 import at.petrak.hexcasting.api.pigment.FrozenPigment;
@@ -12,7 +14,10 @@ import com.luxof.lapisworks.init.ModBlocks;
 import com.luxof.lapisworks.init.ThemConfigFlags;
 import com.luxof.lapisworks.init.Mutables;
 import com.luxof.lapisworks.items.shit.FullyAmelInterface;
+import com.luxof.lapisworks.mixinsupport.GetStacks;
 
+import static com.luxof.lapisworks.LapisworksIDs.MAINHAND;
+import static com.luxof.lapisworks.LapisworksIDs.OFFHAND;
 import static com.luxof.lapisworks.init.ThemConfigFlags.allPerWorldShapePatterns;
 import static com.luxof.lapisworks.init.ThemConfigFlags.chosenFlags;
 
@@ -32,7 +37,9 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
 
@@ -238,5 +245,33 @@ public class Lapisworks implements ModInitializer {
 	}
 	public static boolean closeEnough(double a, double b, double epsilon) {
 		return Math.abs(b - a) < epsilon;
+	}
+
+    /** returns null if hand isn't MAIN_HAND or OFF_HAND (i'll add more eventually..!!) */
+    @Nullable
+    public static ItemStack getStackFromHand(CastingEnvironment ctx, int hand) {
+        List<HeldItemInfo> stacks = ((GetStacks)ctx).getHeldStacks();
+        try { return stacks.get(hand).stack(); }
+		catch (IndexOutOfBoundsException e) {
+			LOGGER.info("Someone tried to access idx " + hand + " of " + stacks.toString() + ".");
+			return null;
+		}
+    }
+
+	/** returns null if resulting Hand can't be MAIN_HAND or OFF_HAND (MORE WILL COME, THEE SHALL KNOW) */
+	@Nullable
+	public static Hand intToHand(int hand) {
+		switch (hand) {
+			case 0: return Hand.MAIN_HAND;
+			case 1: return Hand.OFF_HAND;
+			default: return null;
+		}
+	}
+
+	/** Returns stuff like "43rd" (A LITERAL, NOT TRANSLATEABLE!!!) if it doesn't know wtf that Hand is */
+	public static Text handToString(Hand hand) {
+		if (hand == Hand.MAIN_HAND) { return MAINHAND; }
+		else if (hand == Hand.OFF_HAND) { return OFFHAND; }
+		return Text.translatable("hands.lapisworks." + hand.ordinal());
 	}
 }

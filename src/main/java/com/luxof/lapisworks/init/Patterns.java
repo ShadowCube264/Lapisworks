@@ -23,15 +23,18 @@ import com.luxof.lapisworks.actions.great.BanishMySent;
 import com.luxof.lapisworks.actions.great.BanishOtherSent;
 import com.luxof.lapisworks.actions.great.CreateEnchSent;
 import com.luxof.lapisworks.actions.great.GenericEnchant;
+import com.luxof.lapisworks.actions.great.Hastenature;
 import com.luxof.lapisworks.actions.misc.ConjureColor;
 import com.luxof.lapisworks.actions.misc.CubeExalt;
 import com.luxof.lapisworks.actions.misc.EmptyPrfn;
-import com.luxof.lapisworks.actions.misc.ReadMainHand;
-import com.luxof.lapisworks.actions.misc.ReadableMainHand;
+import com.luxof.lapisworks.actions.misc.EqualBlock;
+import com.luxof.lapisworks.actions.misc.EquivBlock;
+import com.luxof.lapisworks.actions.misc.ReadFromHand;
+import com.luxof.lapisworks.actions.misc.ReadableInHand;
 import com.luxof.lapisworks.actions.misc.SphereDst;
 import com.luxof.lapisworks.actions.misc.VisibleDstl;
-import com.luxof.lapisworks.actions.misc.WritableMainHand;
-import com.luxof.lapisworks.actions.misc.WriteMainHand;
+import com.luxof.lapisworks.actions.misc.WritableInHand;
+import com.luxof.lapisworks.actions.misc.WriteToHand;
 import com.luxof.lapisworks.actions.CheckEnchant;
 import com.luxof.lapisworks.actions.CognitionPrfn;
 import com.luxof.lapisworks.actions.FlayArtMind;
@@ -108,10 +111,13 @@ public class Patterns {
         register("cubic_exalt", "wqwawqwqqwqwq", HexDir.NORTH_WEST, new CubeExalt());
         register("visible_dstl", "edeewadwewdwe", HexDir.SOUTH_EAST, new VisibleDstl());
         register("empty_prfn", "qqqqqwa", HexDir.NORTH_EAST, new EmptyPrfn());
-        register("read_mainhand", "aqqqqa", HexDir.EAST, new ReadMainHand());
-        register("readable_mainhand", "qqqqadww", HexDir.NORTH_WEST, new ReadableMainHand());
-        register("write_mainhand", "deeeed", HexDir.EAST, new WriteMainHand());
-        register("writable_mainhand", "eeeedaww", HexDir.SOUTH_WEST, new WritableMainHand());
+        register("read_spechand", "aqqqqa", HexDir.EAST, new ReadFromHand());
+        register("readable_spechand", "qqqqadww", HexDir.NORTH_WEST, new ReadableInHand());
+        register("write_spechand", "deeeed", HexDir.EAST, new WriteToHand());
+        register("writable_spechand", "eeeedaww", HexDir.SOUTH_WEST, new WritableInHand());
+        register("writable_offhand", "eeedqww", HexDir.SOUTH_WEST, new WritableInHand());
+        register("equiv_block", "qqqqqeqeeeee", HexDir.NORTH_WEST, new EquivBlock());
+        register("equal_block", "qwawqwadadwewdwe", HexDir.NORTH_WEST, new EqualBlock());
 
         register("thought_sieve", "qadaadadqaqdadqaq", HexDir.WEST, new HexResearchYoink());
         register("absorb_mind", "aawqqwqqqaede", HexDir.WEST, new MindLiquefaction());
@@ -156,6 +162,24 @@ public class Patterns {
                 "ewewedwqwqqwqwqaeqeqaqeqeqa",
                 "ewewedwqwaqaeweeeweaqdedaeade",
                 "ewewedwqwaqeqwqadqwqwqdaqeqwqwq"
+            )
+        );
+
+        register("hastenature0", "awawwwdwdww", HexDir.NORTH_EAST, new Hastenature());
+        register("hastenature1", "qqqqqeawawwwdwdww", HexDir.WEST, new Hastenature());
+        register("hastenature2", "wawqwaweawawwwdwdww", HexDir.WEST, new Hastenature());
+        register("hastenature3", "awqwawqeawawwwdwdww", HexDir.NORTH_WEST, new Hastenature());
+        register("hastenature4", "aaqawawweddedwdww", HexDir.NORTH_WEST, new Hastenature());
+        register("hastenature5", "aeaeaeaeaeadawawwwdwdww", HexDir.NORTH_WEST, new Hastenature());
+        registerPWShapePattern(
+            "lapisworks:hastenature",
+            List.of(
+                "wawawwwdwdw",
+                "eawawwwdwdwwaqqqq",
+                "qaaqawawweddedwdw",
+                "qwawawwwdwdeeeweeweqeweewe",
+                "wqwawqwqawwwdwdwwwa",
+                "qaaqawawweddedwdw"
             )
         );
     }

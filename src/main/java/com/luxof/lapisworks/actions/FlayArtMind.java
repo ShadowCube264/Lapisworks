@@ -19,6 +19,9 @@ import com.luxof.lapisworks.blocks.entities.MindEntity;
 import com.luxof.lapisworks.init.Mutables;
 
 import static com.luxof.lapisworks.Lapisworks.toList;
+import static com.luxof.lapisworks.LapisworksIDs.FULL_SIMPLE_MIND;
+import static com.luxof.lapisworks.LapisworksIDs.IMBUEABLE;
+import static com.luxof.lapisworks.LapisworksIDs.MIND_BLOCK;
 
 import java.util.List;
 import java.util.Map;
@@ -29,7 +32,6 @@ import org.jetbrains.annotations.Nullable;
 
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -46,12 +48,12 @@ public class FlayArtMind implements SpellAction {
         if (flayers.isEmpty()) {
             MishapThrowerJava.throwMishap(new MishapBadBlock(
                 flayIntoPos,
-                Text.translatable("mishaps.lapisworks.imbue_artmind.need_imbueable")
+                IMBUEABLE
             ));
         }
 
         BlockPos mindPos = OperatorUtils.getBlockPos(args, 1, getArgc());
-        Mishap needMind = new MishapBadBlock(mindPos, Text.translatable("block.lapisworks.mind"));
+        Mishap needMind = new MishapBadBlock(mindPos, MIND_BLOCK);
         if (!(ctx.getWorld().getBlockState(mindPos).getBlock() instanceof Mind) ||
             !(ctx.getWorld().getBlockEntity(mindPos) instanceof MindEntity)) {
             MishapThrowerJava.throwMishap(needMind);
@@ -60,7 +62,7 @@ public class FlayArtMind implements SpellAction {
         if (blockEntity.mindCompletion < 100f) {
             MishapThrowerJava.throwMishap(new MishapBadBlock(
                 mindPos,
-                Text.translatable("mishaps.lapisworks.bad_block.full_mind")
+                FULL_SIMPLE_MIND
             ));
         }
         blockEntity.mindCompletion = 0F;
