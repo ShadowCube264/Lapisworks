@@ -3,7 +3,7 @@
     "icon": "lapisworks:textures/entries/iranoutofideas.png",
     "advancement": "lapisworks:rediscover_hastenature",
     "category": "hexcasting:lapisworks/great",
-    "sortnum": 3,
+    "sortnum": 4,
     "pages": [
         {
             "type": "patchouli:text",
