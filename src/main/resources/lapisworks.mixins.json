@@ -13,7 +13,8 @@
 		"ServerPlayerEntityMixin",
 		"PatternRegistryManifestMixin",
 		"VillagerEntityMixin",
-		"CastingEnvironmentMixin"
+		"CastingEnvironmentMixin",
+		"CircleExecutionStateMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

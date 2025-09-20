@@ -16,6 +16,10 @@ import static com.luxof.lapisworks.init.ModItems.AMEL_RING;
 import static com.luxof.lapisworks.init.ModItems.AMEL_RING2;
 import static com.luxof.lapisworks.init.ModItems.AMEL_STAFF;
 import static com.luxof.lapisworks.init.ModItems.CASTING_RING;
+import static com.luxof.lapisworks.init.ModItems.JUMP_SLATE_AM1;
+import static com.luxof.lapisworks.init.ModItems.JUMP_SLATE_AM2;
+import static com.luxof.lapisworks.init.ModItems.JUMP_SLATE_AMETH;
+import static com.luxof.lapisworks.init.ModItems.JUMP_SLATE_LAPIS;
 import static com.luxof.lapisworks.init.ModItems.PARTAMEL_ACACIA_STAFF;
 import static com.luxof.lapisworks.init.ModItems.PARTAMEL_BAMBOO_STAFF;
 import static com.luxof.lapisworks.init.ModItems.PARTAMEL_BIRCH_STAFF;
@@ -211,6 +215,7 @@ public class Mutables {
 
 
     public static void innitBruv() {
+        // i wonder if i could move this and make it be almost completely data-driven?
         wizardDiariesGainableAdvancements.add(ENCHSENT_ADVANCEMENT);
         wizardDiariesGainableAdvancements.add(FLAY_ARTMIND_ADVANCEMENT);
         wizardDiariesGainableAdvancements.add(HASTENATURE_ADVANCEMENT);
@@ -232,12 +237,18 @@ public class Mutables {
         registerInfusionRecipe(CASTING_RING, null, AMEL_RING);
         registerInfusionRecipe(CASTING_RING, null, AMEL_RING2);
 
+        registerInfusionRecipe(HexItems.SLATE, null, (FullyAmelInterface)JUMP_SLATE_AM1);
+
         registerMoldAmelRecipe(AMEL_ITEM, AMEL2_ITEM);
         registerMoldAmelRecipe(AMEL2_ITEM, AMEL3_ITEM);
         registerMoldAmelRecipe(AMEL3_ITEM, AMEL4_ITEM);
         registerMoldAmelRecipe(AMEL4_ITEM, AMEL_ITEM);
         registerMoldAmelRecipe((Item)AMEL_RING, (Item)AMEL_RING2);
         registerMoldAmelRecipe((Item)AMEL_RING2, (Item)AMEL_RING);
+        registerMoldAmelRecipe(JUMP_SLATE_AM1, JUMP_SLATE_AM2);
+        registerMoldAmelRecipe(JUMP_SLATE_AM2, JUMP_SLATE_AMETH);
+        registerMoldAmelRecipe(JUMP_SLATE_AMETH, JUMP_SLATE_LAPIS);
+        registerMoldAmelRecipe(JUMP_SLATE_LAPIS, JUMP_SLATE_AM1);
 
         registerImbueMindRecipe(
             (bp, world) -> world.getBlockState(bp).getBlock() == Blocks.AMETHYST_BLOCK,
@@ -257,14 +268,19 @@ public class Mutables {
                 if (heldInfo.stack().getItem() != Items.ENCHANTED_BOOK) { return false; }
                 else if (heldInfo.hand() != Hand.MAIN_HAND) { return false; }
                 else if (heldInfo.stack().getEnchantments().size() != 0) {
+                    // if you don't like this here for your own special handler, notify me on the discord.
+                    // i suppose a function you can inject into or override to nullify would be nice too,
+                    // but whatever.
                     MishapThrowerJava.throwMishap(new MishapBadHandItem(
                         heldInfo.stack(),
                         ENCHBOOK_WITH_ONE_ENCH,
                         ENCHBOOK_WITH_NOTONE_ENCH,
                         heldInfo.hand()
                     ));
-                } else if (amel.getCount() < 10) {
-                    MishapThrowerJava.throwMishap(new MishapNotEnoughItems(amel, 10));
+                }
+                int requiredAmel = 20 * EnchantmentHelper.get(heldInfo.stack()).values().iterator().next();
+                if (amel.getCount() < requiredAmel) {
+                    MishapThrowerJava.throwMishap(new MishapNotEnoughItems(amel, requiredAmel));
                 }
                 return true;
             },
@@ -272,11 +288,12 @@ public class Mutables {
             (heldInfo, ctx) -> { return MediaConstants.CRYSTAL_UNIT * 5; },
             (heldInfo, ctx) -> {
                 ItemStack amel = getStackFromHand(ctx, 1);
+                int requiredAmel = 20 * EnchantmentHelper.get(heldInfo.stack()).values().iterator().next();
                 ctx.replaceItem(
                     stack -> true,
-                    amel.getCount() == 10 ? ItemStack.EMPTY.copy() : new ItemStack(
+                    amel.getCount() == requiredAmel ? ItemStack.EMPTY.copy() : new ItemStack(
                         amel.getItem(),
-                        amel.getCount() - 10
+                        amel.getCount() - requiredAmel
                     ),
                     Hand.OFF_HAND
                 );

@@ -49,6 +49,7 @@ public class LapisworksIDs {
     public static final Text DIARIES_TOOLTIP_4 = t("tooltips.lapisworks.wizard_diaries.4");
     public static final Text ENCHBOOK_WITH_ONE_ENCH = t("mishaps.lapisworks.descs.oneench_enchbook");
     public static final Text ENCHBOOK_WITH_NOTONE_ENCH = t("mishaps.lapisworks.descs.moreench_enchbook");
+    public static final Text AMEL = t("hexcasting.mishap.bad_item.amel");
 
     public static final String NOT_ENOUGH = "mishaps.lapisworks.not_enough_items";
     public static final String ALREADY_ENCHANTED = "mishaps.lapisworks.already_enchanted";

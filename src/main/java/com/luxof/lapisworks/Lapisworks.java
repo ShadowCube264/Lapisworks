@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.pigment.FrozenPigment;
 import at.petrak.hexcasting.common.lib.HexItems;
 
 import com.luxof.lapisworks.init.ModItems;
+import com.luxof.lapisworks.init.ModPOIs;
 import com.luxof.lapisworks.init.Patterns;
 import com.luxof.lapisworks.init.LapisworksLoot;
 import com.luxof.lapisworks.init.ModBlocks;
@@ -89,6 +90,7 @@ public class Lapisworks implements ModInitializer {
 		ModBlocks.wearASkirt();
 		LapisworksLoot.gibLootexclamationmark();
 		Mutables.innitBruv();
+		ModPOIs.crawlOutOfHell();
 
         LOGGER.info("Luxof's pet Lapisworks is getting a bit hyperactive.");
 		LOGGER.info("\"Lapisworks! Lapis Lapis!\"");

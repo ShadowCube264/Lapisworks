@@ -6,6 +6,7 @@ import com.luxof.lapisworks.items.CastingRing;
 import com.luxof.lapisworks.items.DiamondSword;
 import com.luxof.lapisworks.items.GoldSword;
 import com.luxof.lapisworks.items.IronSword;
+import com.luxof.lapisworks.items.JumpSlateItem;
 import com.luxof.lapisworks.items.PartiallyAmelStaff;
 import com.luxof.lapisworks.items.WizardDiaries;
 import com.luxof.lapisworks.items.shit.AmelSword;
@@ -51,17 +52,18 @@ public class ModItems {
     public static final PartiallyAmelStaff PARTAMEL_SPRUCE_STAFF = new PartiallyAmelStaff(partamel);
     public static final PartiallyAmelStaff PARTAMEL_WARPED_STAFF = new PartiallyAmelStaff(partamel);
     public static final FullyAmelInterface AMEL_RING = new AmelRing(unstackable);
-    public static final FullyAmelInterface AMEL_RING2 = new AmelRing(unstackable) {
-        @Override
-        public int whichOneAmI() { return 1; }
-    };
+    public static final FullyAmelInterface AMEL_RING2 = new AmelRing(unstackable);
     public static final CastingRing CASTING_RING = new CastingRing(unstackable);
     public static final AmelSword DIAMOND_SWORD = new DiamondSword();
     public static final AmelSword IRON_SWORD = new IronSword();
     public static final AmelSword GOLD_SWORD = new GoldSword();
     public static final Item WIZARD_DIARIES = new WizardDiaries(unstackable);
     public static final Item MIND = new BlockItem(ModBlocks.MIND_BLOCK, fullStack);
-    public static final Item LIVE_JUKEBOX = new BlockItem(ModBlocks.LIVE_JUKEBOX_BLOCK, fullStack);
+    public static final Item LIVE_JUKEBOX = new JumpSlateItem(ModBlocks.LIVE_JUKEBOX_BLOCK, fullStack);
+    public static final Item JUMP_SLATE_AM1 = new JumpSlateItem(ModBlocks.JUMP_SLATE_AM1, fullStack);
+    public static final Item JUMP_SLATE_AM2 = new JumpSlateItem(ModBlocks.JUMP_SLATE_AM2, fullStack);
+    public static final Item JUMP_SLATE_AMETH = new JumpSlateItem(ModBlocks.JUMP_SLATE_AMETH, fullStack);
+    public static final Item JUMP_SLATE_LAPIS = new JumpSlateItem(ModBlocks.JUMP_SLATE_LAPIS, fullStack);
 
     private static final List<String> itemNames = List.of(
         "amel",
@@ -91,7 +93,11 @@ public class ModItems {
         "amel_constructs/gold_sword",
         "wizard_diaries",
         "mind",
-        "amel_constructs/live_jukebox"
+        "amel_constructs/live_jukebox",
+        "amel_constructs/jumpslate/am1",
+        "amel_constructs/jumpslate/am2",
+        "amel_constructs/jumpslate/ameth",
+        "amel_constructs/jumpslate/lapis"
     );
     private static final List<Item> items = List.of(
         AMEL_ITEM,
@@ -121,7 +127,11 @@ public class ModItems {
         GOLD_SWORD,
         WIZARD_DIARIES,
         MIND,
-        LIVE_JUKEBOX
+        LIVE_JUKEBOX,
+        JUMP_SLATE_AM1,
+        JUMP_SLATE_AM2,
+        JUMP_SLATE_AMETH,
+        JUMP_SLATE_LAPIS
     );
 
     public static final ItemGroup LapisMagicShitGroup = FabricItemGroup.builder()

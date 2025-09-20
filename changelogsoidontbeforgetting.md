@@ -44,5 +44,15 @@ Luxof didn't even DREAM of this shit in his prime (1.1.0-1.2.0)
 - Added Hastenature
 - Imbue Amel can now lowkey make enchanted books more powerful
 1.5.4
-- Spell Circle wireless media transmission (costs media per block)
-- Spell Circle wireless ambit extender (costs media per layer)
+- Renamed the "Wrong Item In a Hand" mishap to "Wrong Item In Hand" in the book
+- Fixed Imbue Amel using the Incorrect Item mishap for the off-hand where it needs Amel and the
+  Wrong Item In Hand mishap for the main-hand where it needs an imbueable item
+- Made Simple Mind Container's filling have more frames
+  (now a whopping 15 instead of 4, that's almost 4²! /sarcasm)
+- Gave Enchanted Book enhancement with Imbue Amel an actual page in the book
+- Made Enchanted Book enhancement with Imbue Amel take 20 * previous level Amel
+- Added the Jump Slate
+  (WHY WAS THAT SO HARD TO MIXIN)
+- Added variants of the Jump Slate
+  gave em support with Mold Amel too
+- Turned the ancient wizard fully gender neutral this time (headcanon the gender yourself)

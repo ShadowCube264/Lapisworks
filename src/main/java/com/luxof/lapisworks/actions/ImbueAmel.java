@@ -10,7 +10,6 @@ import at.petrak.hexcasting.api.casting.eval.CastingEnvironment.HeldItemInfo;
 import at.petrak.hexcasting.api.casting.eval.vm.CastingImage;
 import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
-import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem;
 import at.petrak.hexcasting.api.misc.MediaConstants;
 
 import com.luxof.lapisworks.MishapThrowerJava;
@@ -21,6 +20,7 @@ import com.luxof.lapisworks.mishaps.MishapNotEnoughItems;
 
 import static com.luxof.lapisworks.Lapisworks.LOGGER;
 import static com.luxof.lapisworks.Lapisworks.getStackFromHand;
+import static com.luxof.lapisworks.LapisworksIDs.AMEL;
 import static com.luxof.lapisworks.LapisworksIDs.IMBUEABLE;
 import static com.luxof.lapisworks.init.Mutables.getBeegInfusionRecipeDoer;
 import static com.luxof.lapisworks.init.Mutables.getBeegInfusionRecipeMediaCostDecider;
@@ -60,7 +60,11 @@ public class ImbueAmel implements SpellAction {
         ItemStack offHandItems = getStackFromHand(ctx, 1);
         ItemStack mainHandItems = getStackFromHand(ctx, 0);
 
-        MishapBadOffhandItem needAmel = MishapBadOffhandItem.of(offHandItems, "amel");
+        MishapBadHandItem needAmel = new MishapBadHandItem(
+            offHandItems,
+            AMEL,
+            Hand.OFF_HAND
+        );
         MishapBadHandItem needImbueable = new MishapBadHandItem(
             mainHandItems,
             IMBUEABLE,
