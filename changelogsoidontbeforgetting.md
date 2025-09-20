@@ -56,3 +56,10 @@ Luxof didn't even DREAM of this shit in his prime (1.1.0-1.2.0)
 - Added variants of the Jump Slate
   gave em support with Mold Amel too
 - Turned the ancient wizard fully gender neutral this time (headcanon the gender yourself)
+1.5.5.5
+Whoopsies
+- "pages.lapisworks.imbuement_artmind.reflection2" lmao deleted that
+- Fixed Jump Slate stuff appearing before enlightenment
+  made it appear after enlightenment and got_lapis in a scuffed ahh way that is hopefully never seen
+1.5.6
+- Gave Jump Slate a friend: Rebound Slate

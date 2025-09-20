@@ -21,6 +21,8 @@ public class LapisworksIDs {
     public static final Identifier HASTENATURE_ADVANCEMENT = id("rediscover_hastenature");
     public static final Identifier LAPIS_MAGIC_SHIT_GROUP = id("lapismagicshitgroup");
     public static final Identifier ENHANCE_ENCHANTED_BOOK = id("enhance_enchanted_book");
+    public static final Identifier ENLIGHTENED = new Identifier("hexcasting", "enlightenment");
+    public static final Identifier GOT_LAPIS = id("got_lapis");
 
     public static final Text IMBUEABLE = t("mishaps.lapisworks.descs.imbueable");
     public static final Text READABLE = t("mishaps.lapisworks.descs.readable");
