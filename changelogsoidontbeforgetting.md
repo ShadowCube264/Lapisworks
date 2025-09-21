@@ -62,4 +62,25 @@ Whoopsies
 - Fixed Jump Slate stuff appearing before enlightenment
   made it appear after enlightenment and got_lapis in a scuffed ahh way that is hopefully never seen
 1.5.5
+- "It is told theywere" kys :broken_heart: (fixed that in the book)
+- Gave the web book a custom icon
 - Gave Jump Slate a friend: Rebound Slate
+- Hextended Gear's staves have Partially Amel-infused variations of them
+  holy FUCK
+  do you KNOW WHAT THAT MEANS?
+  that means 31 NEW FUCKING STAVES
+  31
+  - EXTENDED WOOD STAVES
+  - MOSSY STAVES
+  - PRISMARINE STAVES
+  - OBSIDIAN STAVES
+  - PURPUR STAVES
+  - EXTENDED FANCIFUL STAVES
+- Also added the block counterpart to the Drawing Orb, the Amel-tuned Drawing Orb
+1.5.6
+- Added Enchanted Slipways as interop with Hexal
+  They produce twice as many wisps per second but they can't be turned into portals with Oneironaut
+- Added Complex Mind Containers
+- Added Complex Mind -> Budding Psuedoamethyst as interop with Oneironaut
+1.6.0
+You can have four arms now (procrastination slain)
