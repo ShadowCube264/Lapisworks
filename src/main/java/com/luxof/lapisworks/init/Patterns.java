@@ -167,8 +167,8 @@ public class Patterns {
 
         register("hastenature0", "awawwwdwdww", HexDir.NORTH_EAST, new Hastenature());
         register("hastenature1", "qwdedwqqwdedweawawwwdwdww", HexDir.WEST, new Hastenature());
-        register("hastenature2", "awwdedwwawwdedweawawwwdwdww", HexDir.WEST, new Hastenature());
-        register("hastenature3", "awqwawqeawawwwdwdww", HexDir.NORTH_WEST, new Hastenature());
+        register("hastenature2", "wawqwaweawawwwdwdww", HexDir.WEST, new Hastenature());
+        register("hastenature3", "awwdedwwawwdedweawawwwdwdww", HexDir.NORTH_WEST, new Hastenature());
         register("hastenature4", "aaqawawweddedwdww", HexDir.NORTH_WEST, new Hastenature());
         register("hastenature5", "aeaeaeaeaeadawawwwdwdww", HexDir.NORTH_WEST, new Hastenature());
         registerPWShapePattern(
