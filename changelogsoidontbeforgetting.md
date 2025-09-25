@@ -65,17 +65,23 @@ Whoopsies
 - "It is told theywere" kys :broken_heart: (fixed that in the book)
 - Gave the web book a custom icon
 - Gave Jump Slate a friend: Rebound Slate
-- Hextended Gear's staves have Partially Amel-infused variations of them
-  holy FUCK
-  do you KNOW WHAT THAT MEANS?
-  that means 31 NEW FUCKING STAVES
-  31
-  - EXTENDED WOOD STAVES
-  - MOSSY STAVES
-  - PRISMARINE STAVES
-  - OBSIDIAN STAVES
-  - PURPUR STAVES
-  - EXTENDED FANCIFUL STAVES
+- Fixed up the book a little
+- Hextended Gear's staves have Partially Amel-infused variations of them now
+  my hands bleed
+  31 staves
+  - extended wood staves
+  - mossy staves
+  - prismarine staves
+  - obsidian staves
+  - purpur staves
+  - extended fanciful staves
+- fully amel wands have 28% hex grid boost
+- partially amel wands have 40% hex grid boost
+- Buffed partially amel staves' durability to 200 from 100
+- Debuffed fully amel staves' hex grid boost from 25% to 20%
+- Buffed partially amel staves' hex grid boost from 33% to 35%
+- Amel staff and incomplete amel staves are now held like the vanilla hexcasting staves
+- Changed every hex grid space modifying item to multiply by base, not by total.
 - Also added the block counterpart to the Drawing Orb, the Amel-tuned Drawing Orb
 1.5.6
 - Added Enchanted Slipways as interop with Hexal

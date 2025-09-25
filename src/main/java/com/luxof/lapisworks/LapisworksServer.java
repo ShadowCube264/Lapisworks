@@ -6,6 +6,7 @@ import at.petrak.hexcasting.common.msgs.MsgClearSpiralPatternsS2C;
 import at.petrak.hexcasting.common.msgs.MsgOpenSpellGuiS2C;
 import at.petrak.hexcasting.xplat.IXplatAbstractions;
 
+import com.luxof.lapisworks.init.Mutables;
 import com.luxof.lapisworks.mixinsupport.EnchSentInterface;
 import com.luxof.lapisworks.mixinsupport.LapisworksInterface;
 
@@ -140,6 +141,7 @@ public class LapisworksServer {
         });
         ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
             pickConfigFlags(new Random(pickUsingSeed(server.getOverworld().getSeed())));
+            Mutables.runScheduledRegisterEvents(); // why not by you? because it was meant to be ran HERE.
         });
         ServerLifecycleEvents.SERVER_STOPPING.register((server) -> { nullConfigFlags(); });
     }

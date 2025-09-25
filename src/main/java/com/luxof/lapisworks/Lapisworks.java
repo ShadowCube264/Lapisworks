@@ -33,7 +33,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import net.fabricmc.api.ModInitializer;
-
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -81,8 +81,17 @@ public class Lapisworks implements ModInitializer {
 	public static final String MOD_ID = "lapisworks";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	public static boolean HEXTENDED_INTEROP = false;
+
 	@Override
 	public void onInitialize() {
+		boolean anyInterop = false;
+        if (FabricLoader.getInstance().isModLoaded("hextended")) {
+			HEXTENDED_INTEROP = true;
+			anyInterop = true;
+            com.luxof.lapisworks.interop.hextended.Lapixtended.initHextendedInterop();
+        }
+
 		ThemConfigFlags.declareEm();
 		Patterns.init();
 		ModItems.init_shit();
@@ -94,7 +103,9 @@ public class Lapisworks implements ModInitializer {
 
         LOGGER.info("Luxof's pet Lapisworks is getting a bit hyperactive.");
 		LOGGER.info("\"Lapisworks! Lapis Lapis!\"");
-		LOGGER.info("Feed it redstone.");
+		if (anyInterop) {
+			LOGGER.info("You have an addon that has interop with Lapisworks loaded?! Oh NOO, it's overstimulated, it's gonna throw up a bunch of content! Look what you've done!");
+		} else LOGGER.info("Feed it redstone.");
 	}
 
 	public static Identifier id(String string) {

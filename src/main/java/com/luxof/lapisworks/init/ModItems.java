@@ -16,6 +16,7 @@ import static com.luxof.lapisworks.Lapisworks.id;
 import static com.luxof.lapisworks.LapisworksIDs.LAPISMAGICSHITGROUPTEXT;
 import static com.luxof.lapisworks.LapisworksIDs.LAPIS_MAGIC_SHIT_GROUP;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
@@ -28,9 +29,9 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 
 public class ModItems {
-    public static FabricItemSettings fullStack = new FabricItemSettings().maxCount(64);
-    public static FabricItemSettings unstackable = new FabricItemSettings().maxCount(1);
-    public static FabricItemSettings partamel = new FabricItemSettings().maxCount(1).maxDamage(100);
+    private static FabricItemSettings fullStack = new FabricItemSettings().maxCount(64);
+    private static FabricItemSettings unstackable = new FabricItemSettings().maxCount(1);
+    private static FabricItemSettings partamel = new FabricItemSettings().maxCount(1).maxDamage(100);
     
     public static final Item AMEL_ITEM = new Item(fullStack);
     public static final Item AMEL2_ITEM = new Item(fullStack);
@@ -65,7 +66,7 @@ public class ModItems {
     public static final Item JUMP_SLATE_AMETH = new JumpSlateItem(ModBlocks.JUMP_SLATE_AMETH, fullStack);
     public static final Item JUMP_SLATE_LAPIS = new JumpSlateItem(ModBlocks.JUMP_SLATE_LAPIS, fullStack);
 
-    private static final List<String> itemNames = List.of(
+    private static List<String> itemNames = new ArrayList<>(List.of(
         "amel",
         "amel2",
         "amel3",
@@ -98,8 +99,8 @@ public class ModItems {
         "amel_constructs/jumpslate/am2",
         "amel_constructs/jumpslate/ameth",
         "amel_constructs/jumpslate/lapis"
-    );
-    private static final List<Item> items = List.of(
+    ));
+    private static List<Item> items = new ArrayList<>(List.of(
         AMEL_ITEM,
         AMEL2_ITEM,
         AMEL3_ITEM,
@@ -132,21 +133,22 @@ public class ModItems {
         JUMP_SLATE_AM2,
         JUMP_SLATE_AMETH,
         JUMP_SLATE_LAPIS
-    );
+    ));
 
-    public static final ItemGroup LapisMagicShitGroup = FabricItemGroup.builder()
-        .icon(() -> new ItemStack(AMEL_ITEM))
-        .displayName(LAPISMAGICSHITGROUPTEXT)
-        .entries((context, entries) -> {
-            items.forEach(
-                (Item item) -> {
-                    entries.add(item);
-                }
-            );
-        })
-        .build();
+    public static ItemGroup LapisMagicShitGroup;
 
     public static void init_shit() {
+        LapisMagicShitGroup = FabricItemGroup.builder()
+            .icon(() -> new ItemStack(AMEL_ITEM))
+            .displayName(LAPISMAGICSHITGROUPTEXT)
+            .entries((context, entries) -> {
+                items.forEach(
+                    (Item item) -> {
+                        entries.add(item);
+                    }
+                );
+            })
+        .build();
         Registry.register(
             Registries.ITEM_GROUP,
             LAPIS_MAGIC_SHIT_GROUP,
@@ -157,7 +159,13 @@ public class ModItems {
         }
     }
 
-    public static void register(String name, Item item) {
+    private static void register(String name, Item item) {
         Registry.register(Registries.ITEM, id(name), item);
+    }
+
+    public static <T extends Item> T registerItem(String name, T item) {
+        itemNames.add(name);
+        items.add(item);
+        return item;
     }
 }

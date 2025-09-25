@@ -110,7 +110,7 @@ public class Patterns {
         register("spherical_dstl", "wqwqwqwqwqwaeaqaaeaqaa", HexDir.NORTH_WEST, new SphereDst());
         register("cubic_exalt", "wqwawqwqqwqwq", HexDir.NORTH_WEST, new CubeExalt());
         register("visible_dstl", "edeewadwewdwe", HexDir.SOUTH_EAST, new VisibleDstl());
-        register("empty_prfn", "qqqqqwa", HexDir.NORTH_EAST, new EmptyPrfn());
+        register("empty_prfn", "qqqqqaw", HexDir.NORTH_WEST, new EmptyPrfn());
         register("read_spechand", "aqqqqa", HexDir.EAST, new ReadFromHand());
         register("readable_spechand", "qqqqadww", HexDir.NORTH_WEST, new ReadableInHand());
         register("write_spechand", "deeeed", HexDir.EAST, new WriteToHand());
