@@ -34,6 +34,7 @@ import java.util.stream.Collectors;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
+
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -42,6 +43,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.Util;
 
 import org.jetbrains.annotations.Nullable;
@@ -104,6 +106,14 @@ public class Lapisworks implements ModInitializer {
         LOGGER.info("Luxof's pet Lapisworks is getting a bit hyperactive.");
 		LOGGER.info("\"Lapisworks! Lapis Lapis!\"");
 		if (anyInterop) {
+			// yknow, i would love to make the Interop category unavailable until mods required exist
+			// but what if i keep it right there to garner curiosity and get people to download other addons?
+			// prolly won't produce that big of an effect considering Lapisworks isn't that popular
+			// but i'll make it be that way anyway, as a sign of goodwill or sumn idfk i just felt like it
+			//PatchouliAPI.get().setConfigFlag(
+			//	"lapisworks:any_interop",
+			//	true
+			//)
 			LOGGER.info("You have an addon that has interop with Lapisworks loaded?! Oh NOO, it's overstimulated, it's gonna throw up a bunch of content! Look what you've done!");
 		} else LOGGER.info("Feed it redstone.");
 	}
@@ -181,10 +191,10 @@ public class Lapisworks implements ModInitializer {
 	/** Computes the config flags and selects them for you. ASSUMES THIS IS A FRESHLY-MADE RNG!! */
 	public static void pickConfigFlags(Random rng) {
 		for (String patId : allPerWorldShapePatterns.keySet()) {
-			int chosen = rng.nextInt(allPerWorldShapePatterns.get(patId).size());
+			int chosen = rng.nextInt(32767) % allPerWorldShapePatterns.get(patId).size();
 			PatchouliAPI.get().setConfigFlag(
 				patId + String.valueOf(chosen),
-				false
+				true
 			);
 			chosenFlags.put(patId, chosen);
 		}
@@ -204,13 +214,22 @@ public class Lapisworks implements ModInitializer {
 		}
 	}
 
-	/** removes everything after the first two digits after the dot. */
+	/** truncates to first two digits after the dot. */
 	public static String prettifyFloat(float value) {
 		// val % 0.01 flickers sometimes
 		return String.valueOf(Math.floor((double)value * 100.0) / 100.0);
 	}
+	/** truncates to first two digits after the dot. */
 	public static double prettifyDouble(double value) {
 		return Math.floor(value * 100.0) / 100.0;
+	}
+	/** truncates all components to first 2 digits after the dot. */
+	public static Vec3d prettifyVec3d(Vec3d vec) {
+		return new Vec3d(
+			prettifyDouble(vec.x),
+			prettifyDouble(vec.y),
+			prettifyDouble(vec.z)
+		);
 	}
 
 	public static boolean matchShape(HexPattern pat1, HexPattern p2) {

@@ -62,10 +62,14 @@ Whoopsies
 - Fixed Jump Slate stuff appearing before enlightenment
   made it appear after enlightenment and got_lapis in a scuffed ahh way that is hopefully never seen
 1.5.5
-- "It is told theywere" kys :broken_heart: (fixed that in the book)
+- Fixed up the ingame book a little (stopped implying GSent was visible, etc.)
+  Also fixed the bug where it wouldn't load on multiplayer!
+- Gave the Warped Infused Staff an actual translation key (bruh how did i forger that)
+- Fixed possible bug with Hastenature (wtf)
+- Fixed bug with PWShape interop for Patchouli
+- Fixed bug where Jump Slate would always jump forwards no matter what
 - Gave the web book a custom icon
 - Gave Jump Slate a friend: Rebound Slate
-- Fixed up the book a little
 - Hextended Gear's staves have Partially Amel-infused variations of them now
   my hands bleed
   31 staves
@@ -77,12 +81,15 @@ Whoopsies
   - extended fanciful staves
 - fully amel wands have 28% hex grid boost
 - partially amel wands have 40% hex grid boost
-- Buffed partially amel staves' durability to 200 from 100
+- Buffed partially amel staves' durability from 100 to 200
 - Debuffed fully amel staves' hex grid boost from 25% to 20%
-- Buffed partially amel staves' hex grid boost from 33% to 35%
+- Debuffed partially amel staves' hex grid boost from 33% to 30%
 - Amel staff and incomplete amel staves are now held like the vanilla hexcasting staves
 - Changed every hex grid space modifying item to multiply by base, not by total.
 - Also added the block counterpart to the Drawing Orb, the Amel-tuned Drawing Orb
+
+**NOTES FOR MIGRATORS:**  
+per-world shape patterns have once again changed, this will be the last time. i think.
 1.5.6
 - Added Enchanted Slipways as interop with Hexal
   They produce twice as many wisps per second but they can't be turned into portals with Oneironaut

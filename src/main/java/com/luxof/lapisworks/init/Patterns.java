@@ -8,6 +8,7 @@ import at.petrak.hexcasting.api.casting.ActionRegistryEntry;
 import at.petrak.hexcasting.common.lib.hex.HexActions;
 
 import static at.petrak.hexcasting.api.misc.MediaConstants.CRYSTAL_UNIT;
+
 import static com.luxof.lapisworks.init.ThemConfigFlags.registerPWShapePattern;
 
 import java.util.List;
@@ -174,12 +175,12 @@ public class Patterns {
         registerPWShapePattern(
             "lapisworks:hastenature",
             List.of(
-                "wawawwwdwdw",
-                "eawawwwdwdwwaqqqq",
-                "qaaqawawweddedwdw",
-                "qwawawwwdwdeeeweeweqeweewe",
-                "wqwawqwqawwwdwdwwwa",
-                "qaaqawawweddedwdw"
+                "awawwwdwdww",
+                "qwdedwqqwdedweawawwwdwdww",
+                "wawqwaweawawwwdwdww",
+                "awwdedwwawwdedweawawwwdwdww",
+                "aaqawawweddedwdww",
+                "aeaeaeaeaeadawawwwdwdww"
             )
         );
     }
