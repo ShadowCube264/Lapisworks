@@ -88,12 +88,15 @@ Whoopsies
 - Changed every hex grid space modifying item to multiply by base, not by total.
 - Also added the block counterpart to the Drawing Orb, the Amel-tuned Drawing Orb
 
-**NOTES FOR MIGRATORS:**  
+**NOTE FOR MIGRATORS:**
 per-world shape patterns have once again changed, this will be the last time. i think.
-1.5.6
+1.5.5.5:
+- Fixed staffcasting not working if you don't have hextended (WTF????)
+- Also fixed some staves not opening their spellcasting gui
+1.1.7: "haha i added some funny swords"
+1.5.6:
 - Added Enchanted Slipways as interop with Hexal
   They produce twice as many wisps per second but they can't be turned into portals with Oneironaut
-- Added Complex Mind Containers
-- Added Complex Mind -> Budding Psuedoamethyst as interop with Oneironaut
+- Added the Specific Pedestal as interop with Hexical
 1.6.0
 You can have four arms now (procrastination slain)
