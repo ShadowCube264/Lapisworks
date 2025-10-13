@@ -124,12 +124,14 @@ per-world shape patterns have once again changed, this will be the last time. i 
 **NOTE FOR MIGRATORS:**
 Super sorry, but this is the LAST!! time per-world shape patterns change!
 1.5.7
+- You can datapack Simple Mind Infusion recipes now
 - Added interop with Hexal
   - Simple Minds, when imbued into the air, produce wandering wisps like the ones from a slipway,
     but these ones last MUCH longer and thus collect MUCH more eatable media
   - Enchanted Slipways
     Only makeable with a new PW-Shape spell
     They produce twice as many wandering wisps per second but they can't be turned into portals with Oneironaut
+1.5.8
 - Hierophantics interop
   - Max experience fishermen villagers can be flayed into you
     costs 64 amel and 10 charged amethyst
@@ -161,3 +163,4 @@ You can have four arms now (procrastination slain)
 - Your third and fourth arms can auto-cast 20x a second
   Both must be devoted to auto-cast, but one can hold something (e.g. Focus, Amel-tuned Orb, etc.)
 - Your third and fourth arms can hold items
+- You may swap arms 1-2 with 3-4, or use them with mouse3-4 (yes middle click and mouse4, rebindable)
