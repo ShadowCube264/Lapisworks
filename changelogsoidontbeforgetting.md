@@ -123,6 +123,8 @@ per-world shape patterns have once again changed, this will be the last time. i 
 
 **NOTE FOR MIGRATORS:**
 Super sorry, but this is the LAST!! time per-world shape patterns change!
+1.5.6.5
+- Fixed the Copper Rod and Amel-Copper Item Cradle and the Handed Prison not dropping their items
 1.5.7
 - You can datapack Simple Mind Infusion recipes now
 - Added interop with Hexal

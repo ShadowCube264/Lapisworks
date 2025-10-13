@@ -1,7 +1,8 @@
 {
   "replace": false,
   "values": [
-    "lapisworks:cradle",
-    "lapisworks:rod"
+    { "id": "lapisworks:amel_constructs/holder", "required": false },
+    { "id": "lapisworks:cradle", "required": false },
+    { "id": "lapisworks:rod", "required": false }
   ]
 }
