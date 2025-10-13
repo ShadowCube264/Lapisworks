@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "lapisworks:item/container",
-		"particle": "lapisworks:item/container"
+		"0": "lapisworks:item/energy_container",
+		"particle": "lapisworks:item/energy_container"
 	},
 	"elements": [
 		{

@@ -132,7 +132,7 @@ Super sorry, but this is the LAST!! time per-world shape patterns change!
   - Simple Minds, when imbued into the air, produce wandering wisps like the ones from a slipway,
     but these ones last MUCH longer and thus collect MUCH more eatable media
   - Enchanted Slipways
-    Only makeable with a new PW-Shape spell
+    Simple Mind Infusion recipe (that costs Amel as well)
     They produce twice as many wandering wisps per second but they can't be turned into portals with Oneironaut
 1.5.8
 - Hierophantics interop
