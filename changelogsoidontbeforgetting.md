@@ -126,7 +126,12 @@ Super sorry, but this is the LAST!! time per-world shape patterns change!
 1.5.6.5
 - Fixed the Copper Rod and Amel-Copper Item Cradle and the Handed Prison not dropping their items
 - Fixed those items also not being mineable
+1.5.6.6
+- Fixed up the book a little (online and patchouli)
+- Fixed Dark Primarine Staves having no Amel Imbuement recipe
+- Fixed crash lmao
 1.5.7
+- Amel Imbuement is datapack-friendlier now
 - You can datapack Simple Mind Infusion recipes now
 - Added interop with Hexal
   - Simple Minds, when imbued into the air, produce wandering wisps like the ones from a slipway,

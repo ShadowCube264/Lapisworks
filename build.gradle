@@ -54,6 +54,10 @@ loom {
 
 }
 
+// hello people looking at this build.gradle
+// some of you might hate me for using files()
+// uh don't hate the player hate the game :skull:
+// what no maven does to a mf
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
@@ -95,7 +99,8 @@ dependencies {
 	// test 1.5.0
 	//modLocalRuntime "maven.modrinth:hexical:1.5.0-fabric,1.20.1"
 	// Lapisal
-
+	modCompileOnly files("${rootProject.rootDir}\\libs\\hexal-fabric-1.20.1-0.3.0-3-skyevg-unofficial.jar")
+	modLocalRuntime files("${rootProject.rootDir}\\libs\\hexal-fabric-1.20.1-0.3.0-3-skyevg-unofficial.jar")
 	// Enchants the Mind
 
 

@@ -64,12 +64,11 @@ public abstract class ServerPlayerEntityMixin extends PlayerEntity implements Ge
         Vec3d sentPos = ((EnchSentInterface)this).getEnchantedSentinel();
         Double ambit = ((EnchSentInterface)this).getEnchantedSentinelAmbit();
         nbt.putBoolean("LAPISWORKS_EnchSent_exists", sentPos != null);
-        Vec3d usePos = sentPos != null ? sentPos : new Vec3d(0.0, 0.0, 0.0);
-        double useAmbit = ambit != null ? ambit : 0.0;
-        nbt.putDouble("LAPISWORKS_EnchSent_posX", usePos.x);
-        nbt.putDouble("LAPISWORKS_EnchSent_posY", usePos.y);
-        nbt.putDouble("LAPISWORKS_EnchSent_posZ", usePos.z);
-        nbt.putDouble("LAPISWORKS_EnchSent_Ambit", useAmbit);
+        if (sentPos == null) return;
+        nbt.putDouble("LAPISWORKS_EnchSent_posX", sentPos.x);
+        nbt.putDouble("LAPISWORKS_EnchSent_posY", sentPos.y);
+        nbt.putDouble("LAPISWORKS_EnchSent_posZ", sentPos.z);
+        nbt.putDouble("LAPISWORKS_EnchSent_Ambit", ambit);
     }
 
     public Vec3d spawnAt = ((EnchSentInterface)this).getEnchantedSentinel();
