@@ -65,7 +65,7 @@ public class MoldRec implements Recipe<HandsInv> {
     }
 
     @Override
-    public RecipeSerializer<?> getSerializer() { return ImbuementRecSerializer.INSTANCE; }
+    public RecipeSerializer<?> getSerializer() { return MoldRecSerializer.INSTANCE; }
 
     @Override
     public RecipeType<?> getType() { return Type.INSTANCE; }
