@@ -5,21 +5,18 @@ import at.petrak.hexcasting.common.lib.HexAttributes;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
+
+import com.luxof.lapisworks.items.shit.DurabilityPartAmel;
 
 import java.util.UUID;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
-import net.minecraft.world.World;
 
-public class PartiallyAmelStaff extends ItemStaff implements PartiallyAmelInterface {
+public class PartiallyAmelStaff extends ItemStaff implements DurabilityPartAmel {
     private static FabricItemSettings static_settings = new FabricItemSettings().maxCount(1).maxDamage(200);
 
     public EntityAttributeModifier GRID_ZOOM = new EntityAttributeModifier(
@@ -43,16 +40,6 @@ public class PartiallyAmelStaff extends ItemStaff implements PartiallyAmelInterf
         return out;
     }
 
-    @Override
-    public void specialUseBehaviour(PlayerEntity player, World world, Hand hand) {
-        ItemStack staff = player.getStackInHand(hand);
-        staff.damage(1, player, (LivingEntity entity) -> {});
-    }
-
-    @Override
-    public boolean isDamageable() { return true; }
-    @Override
-    public int getMaxDurability() { return 200; }
     @Override
     public int getAmelWorthInDurability() { return 20; }
 }

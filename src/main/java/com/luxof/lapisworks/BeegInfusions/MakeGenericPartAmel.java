@@ -10,7 +10,7 @@ import com.luxof.lapisworks.VAULT.Flags;
 import com.luxof.lapisworks.init.Mutables.BeegInfusion;
 import com.luxof.lapisworks.init.Mutables.Mutables;
 import com.luxof.lapisworks.interop.hextended.LapixtendedInterface;
-import com.luxof.lapisworks.items.shit.PartiallyAmelInterface;
+import com.luxof.lapisworks.items.shit.DurabilityPartAmel;
 import com.luxof.lapisworks.mishaps.MishapNotEnoughItems;
 import com.luxof.lapisworks.mixinsupport.GetStacks;
 import com.luxof.lapisworks.recipes.HandsInv;
@@ -32,11 +32,11 @@ public class MakeGenericPartAmel extends BeegInfusion {
     @Override
     protected void postSetUp() {
         try {
-            fullInfusionCost = item instanceof PartiallyAmelInterface ?
-                (int)Math.ceil(
-                    stack.getDamage() /
-                    (double)((PartiallyAmelInterface)item).getAmelWorthInDurability()
-                ) : Mutables.getBaseCostForInfusionOf(LapixtendedInterface.getAppropriateFullAmel(item));
+            fullInfusionCost = item instanceof DurabilityPartAmel ?
+                stack.getMaxDamage() * ((DurabilityPartAmel)item).getAmelWorthInDurability()
+                : Mutables.getBaseCostForInfusionOf(
+                    LapixtendedInterface.getAppropriateFullAmel(item)
+                );
         } catch (NullPointerException e) {}
         infusing = Math.min(
             OperatorUtils.getPositiveInt(hexStack, 0, hexStack.size()),
@@ -58,6 +58,7 @@ public class MakeGenericPartAmel extends BeegInfusion {
                     new HandsInv(((GetStacks)ctx).getHeldItemStacks()),
                     ctx.getWorld()
                 ).isPresent()) ret = false;
+            if (ret) break;
         }
         return ret;
     }
@@ -81,11 +82,11 @@ public class MakeGenericPartAmel extends BeegInfusion {
     public void accept() {
         vault.drain(Mutables::isAmel, infusing, Flags.PRESET_Stacks_InvItem_UpToHotbar);
 
-        PartiallyAmelInterface partAmel = LapixtendedInterface.getAppropriatePartAmelGeneric(item);
+        DurabilityPartAmel partAmel = (DurabilityPartAmel)LapixtendedInterface.getAppropriatePartAmelGeneric(item);
         Item fullAmel = LapixtendedInterface.getAppropriateFullAmel(item);
         ItemStack newStaff;
         if (infusing == fullInfusionCost) { newStaff = new ItemStack(fullAmel); }
-        else if (!(item instanceof PartiallyAmelInterface)) {
+        else if (!(item instanceof DurabilityPartAmel)) {
             newStaff = new ItemStack((Item)partAmel);
             newStaff.setDamage(
             newStaff.getMaxDamage() - infusing * partAmel.getAmelWorthInDurability()
