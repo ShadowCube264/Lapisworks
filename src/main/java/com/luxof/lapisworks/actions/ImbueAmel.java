@@ -12,7 +12,6 @@ import at.petrak.hexcasting.api.casting.eval.vm.SpellContinuation;
 import at.petrak.hexcasting.api.casting.iota.Iota;
 import at.petrak.hexcasting.api.casting.mishaps.MishapBadOffhandItem;
 import at.petrak.hexcasting.api.misc.MediaConstants;
-import at.petrak.hexcasting.api.utils.NBTHelper;
 
 import com.luxof.lapisworks.MishapThrowerJava;
 import com.luxof.lapisworks.VAULT.Flags;
@@ -26,9 +25,11 @@ import com.luxof.lapisworks.mixinsupport.GetVAULT;
 import com.luxof.lapisworks.recipes.HandsInv;
 import com.luxof.lapisworks.recipes.ImbuementRec;
 
+import static com.luxof.lapisworks.Lapisworks.getInfusedAmel;
+import static com.luxof.lapisworks.Lapisworks.hasInfusedAmel;
+import static com.luxof.lapisworks.Lapisworks.setInfusedAmel;
 import static com.luxof.lapisworks.LapisworksIDs.AMEL;
 import static com.luxof.lapisworks.LapisworksIDs.IMBUEABLE;
-import static com.luxof.lapisworks.LapisworksIDs.INFUSED_AMEL;
 import static com.luxof.lapisworks.init.Mutables.Mutables.testBeegInfusionFilters;
 
 import java.util.List;
@@ -41,6 +42,8 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 
+// someone one called this code "unreadable"
+// i agree 75%
 public class ImbueAmel implements SpellAction {
     public int getArgc() {
         return 1;
@@ -108,8 +111,7 @@ public class ImbueAmel implements SpellAction {
         Item partAmel = recipe.getPartAmel();
         Item fullAmel = recipe.getFullAmel();
 
-        int fullInfuseCost = recipe.getFullAmelsCost()
-            - NBTHelper.getInt(items, INFUSED_AMEL, 0);
+        int fullInfuseCost = recipe.getFullAmelsCost() - getInfusedAmel(items);
         int infuseAmount = Math.min(wantToInfuseAmount, fullInfuseCost);
 
         if (availableAmel < infuseAmount) {
@@ -123,13 +125,9 @@ public class ImbueAmel implements SpellAction {
                 new MishapNotEnoughItems(AMEL, infuseAmount, fullInfuseCost)
             );
         } else {
-            if (NBTHelper.contains(items, INFUSED_AMEL)) newStack = items;
+            if (hasInfusedAmel(items)) newStack = items;
             else newStack = new ItemStack(partAmel);
-            NBTHelper.putInt(
-                newStack,
-                INFUSED_AMEL,
-                NBTHelper.getInt(newStack, INFUSED_AMEL, 0) + infuseAmount
-            );
+            setInfusedAmel(newStack, getInfusedAmel(newStack) + infuseAmount);
             if (newStack.getItem() instanceof BasePartAmel partAmelI)
                 partAmelI.onImbue(newStack, infuseAmount);
         }

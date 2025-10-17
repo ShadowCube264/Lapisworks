@@ -15,6 +15,11 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.world.World;
 
 public class PartiallyAmelStaff extends ItemStaff implements DurabilityPartAmel {
     private static FabricItemSettings static_settings = new FabricItemSettings().maxCount(1).maxDamage(200);
@@ -42,4 +47,13 @@ public class PartiallyAmelStaff extends ItemStaff implements DurabilityPartAmel 
 
     @Override
     public int getAmelWorthInDurability() { return 20; }
+
+    @Override
+    public boolean isDamageable() { return true; }
+
+    @Override
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
+        this.damageWRTAmelCount(user, world, hand, 1);
+        return super.use(world, user, hand);
+    }
 }

@@ -1,8 +1,9 @@
 package com.luxof.lapisworks.items.shit;
 
-import static com.luxof.lapisworks.LapisworksIDs.INFUSED_AMEL;
+import static com.luxof.lapisworks.Lapisworks.LOGGER;
+import static com.luxof.lapisworks.Lapisworks.getInfusedAmel;
+import static com.luxof.lapisworks.Lapisworks.setInfusedAmel;
 
-import at.petrak.hexcasting.api.utils.NBTHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
@@ -12,10 +13,8 @@ public interface DurabilityPartAmel extends BasePartAmel {
     int getAmelWorthInDurability();
 
     default void makeAmelCountAppropriate(ItemStack stack) {
-        NBTHelper.putInt(
+        setInfusedAmel(
             stack,
-            INFUSED_AMEL,
-            // hope intdiv does it :pray:
             (stack.getMaxDamage() - stack.getDamage()) / getAmelWorthInDurability()
         );
     }
@@ -26,6 +25,15 @@ public interface DurabilityPartAmel extends BasePartAmel {
         makeAmelCountAppropriate(stack);
     }
 
+    default void makeDurabilityAppropriate(ItemStack stack) {
+        stack.setDamage(
+            stack.getMaxDamage() -
+            getInfusedAmel(stack) * getAmelWorthInDurability()
+        );
+    }
+
     @Override
-    default void onImbue(ItemStack stack, int addedAmel) { makeAmelCountAppropriate(stack); }
+    default void onImbue(ItemStack stack, int addedAmel) {
+        makeDurabilityAppropriate(stack);
+    }
 }

@@ -134,6 +134,9 @@ Super sorry, but this is the LAST!! time per-world shape patterns change!
 - Technically Amel Imbuement is datapack-friendlier now but untrusted (unfinished i think)
 - Fixed BeegInfusions not fucking working a lot of the time
 - Fixed no Amel Imbuement recipe for Casting Rings
+1.5.6.8
+- Read 1.5.6.7's changelog. Yeah.
+- Fixed partially amel stuff's durability not changing.
 1.5.7
 - Amel Imbuement is datapack-friendlier now
 - You can datapack Simple Mind Infusion recipes now
