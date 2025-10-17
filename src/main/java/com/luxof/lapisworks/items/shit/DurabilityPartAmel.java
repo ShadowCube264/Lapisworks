@@ -15,6 +15,7 @@ public interface DurabilityPartAmel extends BasePartAmel {
     default void makeAmelCountAppropriate(ItemStack stack) {
         setInfusedAmel(
             stack,
+            // hope intdiv saves me ass
             (stack.getMaxDamage() - stack.getDamage()) / getAmelWorthInDurability()
         );
     }

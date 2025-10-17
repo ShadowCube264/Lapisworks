@@ -41,7 +41,7 @@ public class MakeGenericPartAmel extends BeegInfusion {
             }
         }
         fullInfusionCost = item instanceof DurabilityPartAmel durab ?
-            stack.getMaxDamage() * durab.getAmelWorthInDurability()
+            stack.getMaxDamage() / durab.getAmelWorthInDurability()
             : Mutables.getBaseCostForInfusionOf(
                 LapixtendedInterface.getAppropriateFullAmel(item)
             );
@@ -49,6 +49,7 @@ public class MakeGenericPartAmel extends BeegInfusion {
             OperatorUtils.getPositiveInt(hexStack, 0, hexStack.size()),
             fullInfusionCost
         );
+        LOGGER.info("full vs infusing: " + fullInfusionCost + " " + infusing);
         return ret;
     }
 
