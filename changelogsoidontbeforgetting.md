@@ -137,6 +137,8 @@ Super sorry, but this is the LAST!! time per-world shape patterns change!
 1.5.6.8
 - Read 1.5.6.7's changelog. Yeah.
 - Fixed partially amel stuff's durability not changing.
+1.5.6.9
+- Fixed requiring Hexical or it'll break the book :sob:
 1.5.7
 - Amel Imbuement is datapack-friendlier now
 - You can datapack Simple Mind Infusion recipes now
