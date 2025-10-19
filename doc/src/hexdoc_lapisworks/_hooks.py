@@ -63,8 +63,8 @@ class LapisworksModPlugin(ModPluginWithBook):
     def jinja_template_root(self) -> tuple[Package, str]:
         return hexdoc_lapisworks, "_templates"
     
-    @override
-    def default_rendered_templates(self) -> dict[str | Path, str]:
-        return {
-            "lapisworks.js": "lapisworks.js.jinja"
-        }
+    #@override
+    #def default_rendered_templates(self) -> dict[str | Path, str]:
+    #    return {
+    #        "lapisworks.js": "lapisworks.js.jinja"
+    #    }
