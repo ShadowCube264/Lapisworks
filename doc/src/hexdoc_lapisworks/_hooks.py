@@ -66,6 +66,5 @@ class LapisworksModPlugin(ModPluginWithBook):
     @override
     def default_rendered_templates(self) -> dict[str | Path, str]:
         return {
-            "hexcasting.js": "hexcasting.js.jinja",
-            "hexcasting_render.js": "hexcasting_render.js.jinja",
+            "lapisworks.js": "lapisworks.js.jinja"
         }
