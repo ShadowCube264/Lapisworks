@@ -1,4 +1,5 @@
 from importlib.resources import Package
+from pathlib import Path
 from typing_extensions import override
 
 from hexdoc.plugin import (
@@ -61,3 +62,10 @@ class LapisworksModPlugin(ModPluginWithBook):
     @override
     def jinja_template_root(self) -> tuple[Package, str]:
         return hexdoc_lapisworks, "_templates"
+    
+    @override
+    def default_rendered_templates(self) -> dict[str | Path, str]:
+        return {
+            "hexcasting.js": "hexcasting.js.jinja",
+            "hexcasting_render.js": "hexcasting_render.js.jinja",
+        }
