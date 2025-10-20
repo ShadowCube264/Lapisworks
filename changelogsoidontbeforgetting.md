@@ -142,6 +142,7 @@ Super sorry, but this is the LAST!! time per-world shape patterns change!
 1.5.7
 - Amel Imbuement is datapack-friendlier now
 - You can datapack Simple Mind Infusion recipes now
+- Fixed up the book a lil
 - Added interop with Hexal
   - Simple Minds, when imbued into the air, produce wandering wisps like the ones from a slipway,
     but these ones last MUCH longer and thus collect MUCH more eatable media

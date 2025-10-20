@@ -1,4 +1,4 @@
-{% include "hexdoc:index.js.jinja" %}
+{% extends "hexdoc:index.js.jinja" %}
 
 function stupidver_valid(v) {
     console.log("checking if " + v + " is valid.");
@@ -14,7 +14,7 @@ function stupidver_valid(v) {
             return true;
         } else {
             console.log("falling back to semver");
-            return semver.valid(v);
+            return semver.valid(v) != null;
         }
     } catch (anything) {
         console.log("invalid!");
@@ -69,8 +69,8 @@ function stupidver_rcompare(v1, v2) {
     }
 }
 
-window.sortSitemapVersions = function (unsortedVersions) {
-    let [versions, branches] = partition(unsortedVersions, (v) => stupidver_valid(v) != null);
+sortSitemapVersions = function(unsortedVersions) {
+    let [versions, branches] = partition(unsortedVersions, (v) => stupidver_valid(v));
 
     // branches ascending, versions descending
     // eg. ["dev", "main"], ["0.10.0", "0.9.0"]
