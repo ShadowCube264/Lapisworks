@@ -31,7 +31,7 @@
         },
         {
             "type": "patchouli:spotlight",
-            "flag": "&mod:hexical,!lapisworks:fulllapixical",
+            "flag": "&mod:hexical,lapisworks:fulllapixical",
             "advancement": "hexcasting:enlightenment",
             "item": "lapisworks:amel_constructs/holder",
             "text": "pages.lapisworks.interop.lapixical.holder"
