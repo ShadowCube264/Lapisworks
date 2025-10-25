@@ -141,29 +141,51 @@ Super sorry, but this is the LAST!! time per-world shape patterns change!
 - Fixed requiring Hexical or it'll break the book :sob:
 1.5.7
 - Amel Imbuement is datapack-friendlier now
-- You can datapack Simple Mind Infusion recipes now
-- Fixed up the book a lil
+- Fixed Imbue Mind giving you the wrong mishap desc (imbueable with Amel rather than a Simple Mind)
+- Fixed Jump Slates not working in Cleric Spell Circles
+- Fixed the Simple Mind Container looking FUCKED
+- Fixed the book.
+- Amel Jar's sprite's positioning continues.
+- Decreased the cost of Enchantments to 32 Amel.
 - Added interop with Hexal
   - Enchanted Slipways
-    Simple Mind Infusion recipe (that costs Amel as well)
+    It's a Simple Mind Infusion recipe (that costs Amel as well)
     They produce twice as many wandering wisps per second but they can't be turned into portals with Oneironaut
+  - Simple Minds, when infused into the air, produce a wandering wisp
 - Added the Geode Dowser
   - Imbue 5 Amel into a compass
   - Consumes 1 amethyst dust per use
+- Added the Simple Impetus
+  - Infuse a Simple Mind into an empty Impetus
+  - By default executes when ANY pattern is executed nearby
+  - Can be taught to only execute on specific patterns
+- Added Teach Simple Impetus
+  - Teaches the Simple Impetus at the target location the pattern it should focus on
 - Added the Enchanted Brewing Stand
   - Imbue 10 Amel into a Brewing Stand
   - 2x blaze usage for 2x speed
-  - Takes 2 amethyst dust per brewing session/step in brewing process
-- Added the Thinking Brewing Stand
+  - Takes 1 amethyst dust per brewing session/step in brewing process
+- Added the Rote Brewer Stand
   - Infuse a Simple Mind into a Brewing Stand
   - Can remember up to 5 potion recipes
   - Each write is permanent, stops brewing anything but remembered potions when at the limit
-  - When a potion from memory is selected, takes items automatically and always takes 2 brewing
-    sessions worth of time (so if there's 7 in-between potions it only takes 2 steps worth of time)
-- Added the Enchanted Scroll
-  - It's literally a Hex Casting IDE, I don't know what more to tell you
+  - When a potion from memory is selected, takes items automatically.
+  - ALWAYS takes 2 steps worth of time.
+    Manual brewing (or teaching it) is a pain as each step takes twice as long.
+    Automated brewing (or using what's been taught) is a breeze as N steps take only 2 to do.
+- Imbue Mind can now imbue into entities
+  - this has potential
+  - currently it can be imbued into flayed villagers, which, when they get a j\*b, immediately
+    become level 2 or 3 (50/50)
+- Added Amethyst Chalk
+  - You can put chalk on specific blocks with it
+  - The chalk on the blocks itself currently does nothing
+- Added Amethyst Duster
+  - You can erase chalk with it
+  - Chalk disappears forever
 1.5.8
 - Hierophantics interop
+  - Flaying "talented" into other villagers or vice versa works now
   - Max experience fishermen villagers can be flayed into you
     costs 64 amel and 10 charged amethyst
     they only have the on_my_reference_found trigger, triggers when your reference is found in a stack of an
@@ -189,6 +211,13 @@ Super sorry, but this is the LAST!! time per-world shape patterns change!
 - EMI interop
   - You can now see Imbue Amel, Mold Amel and Simple Mind Infusion recipes in EMI
   - You can also see BeegInfusion recipes in EMI
+  - On that note, the same recipes also show up in Patchouli
+- Added Rituals
+- Added the Enchanted Scroll
+  - It's literally a Hex Casting IDE.
+- Heal your mind after breaking it.
+1.5.9
+- Hexic interop?
 1.6.0
 You can have four arms now (procrastination slain)
 - Your third and fourth arms can auto-cast 20x a second
